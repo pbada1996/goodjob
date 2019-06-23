@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">GoodJob</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_addactivity">Add Activity</string>
+
+    <!-- strings for fragment home -->
+
+    <string name="title">Titulo</string>
+    <string name="author">Publicante</string>
+    <string name="author_name">Nombre Publicante</string>
+    <string name="participants_counter">actuales / necesarios</string>
+    <string name="short_description">Breve descripción</string>
+    <string name="separator"> / </string>
+    <string name="more_info"> Más información...</string>
+
+    <!-- string for details and apply fragment -->
+
+    <string name="creation_date">Día de publicación</string>
+    <string name="end_date">Día a realizarse</string>
+    <string name="apply">Postular a esta actividad!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- strings for fragment selectedRegister-->
+    <string name="user">Soy Usuario</string>
+    <string name="company">Soy Empresa</string>
+    <string name="Login">Iniciar Sesión</string>
+    <string name="Tvuser">Ingrese Usuario...</string>
+    <string name="TvPass">Ingrese Contraseña...</string>
+    <string name="TvRegister">Registrate Aquí</string>
+
+    <!-- strings for fragment formRegisterUser-->
+    <string name="Form_First_Name">Nombre:</string>
+    <string name="Form_Last_Name">Apellidos:</string>
+    <string name="Form_DNI">DNI/PASAPORTE:</string>
+    <string name="Form_Fech_Nac">Fecha de Nacimiento:</string>
+    <string name="Form_Phone">Celular:</string>
+    <string name="Form_Pass">Contraseña:</string>
+    <string name="Form_Profile">Perfil Profesional:</string>
+    <string name="Form_btn_Register">Registrarse</string>
+    <string name="Form_btn_Noregister">Cancelar</string>
+    <string name="Acept_Ter_Con">Aceptas todos Nuestros Términos y Condiciones.</string>
+
+    <!-- strings for fragment formRegisterCompany-->
+
+    <string name="Form_Name_Company">Razón Social:</string>
+    <string name="Form_RUC_Company">RUC:</string>
+    <string name="Form_Area_Company">Área:</string>
+    <string name="Form_cellphone_Company">Teléfono-Celular</string>
+    <string name="Form_Pass_Company">Contraseña:</string>
+</resources>
