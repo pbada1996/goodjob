@@ -83,7 +83,7 @@ Nuevamente recalco, donde dice 'castillo' va el nombre de SUS ramas
 
 8. Toca ir a sus repositorios de github, ya que una vez hayan ejecutado ese comando les aparecerá algo como esto:
 
-[pull_request]:https://i.gyazo.com/3b681d77b854cd890b8c40888467fe1b.png "pull request"
+[pull_request]:https://i.gyazo.com/e24937b233aa49d1a6d1abc1a70305ee.png "pull request"
 
 >![alt text][pull_request]
 
