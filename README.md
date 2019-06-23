@@ -83,13 +83,19 @@ Nuevamente recalco, donde dice 'castillo' va el nombre de SUS ramas
 
 8. Toca ir a sus repositorios de github, ya que una vez hayan ejecutado ese comando les aparecerá algo como esto:
 
-[pull_request]:  "pull request"
+[pull_request]:https://i.gyazo.com/3b681d77b854cd890b8c40888467fe1b.png "pull request"
 
-![alt text][pull_request]
+>![alt text][pull_request]
 
-9. Solo queda proseguir con colocar un buen titulo y una descripción de los cambios realizados para que Cachi deba aprobarlos y queden recepcionados en la rama master del repositorio de Cachi.
+9. Solo queda ubicarnos en la rama con nuestro nombre/apellido y darle click a alguno de los 'pull request'. Nos toparemos con la siguiente pantalla.
 
-10. Una vez Cachi lo apruebe, uds harán uso de este comando
+[open_pull_request]:https://i.gyazo.com/4e4944774a20d33f6e3a6e4f412a94a9.png "opening"
+
+>![alt text][open_pull_request]
+
+10. Solo debemos asegurarnos que diga **base repository:Anthonyca18m/APPGOODJOB base: master** y al lado derecho debe estar su repositorio junto al nombre de su rama. Terminan con el título y una descripción de lo hecho para que Cachi proceda a revisarlo y aceptarlo.
+
+11. Una vez Cachi lo apruebe, uds harán uso de este comando
 
 ```bash
 git pull main master
