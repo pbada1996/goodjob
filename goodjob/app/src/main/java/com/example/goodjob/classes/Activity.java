@@ -33,7 +33,7 @@ public class Activity implements Parcelable {
         this.status = status;
     }
 
-    public Activity(){};
+    public Activity(){}
 
     protected Activity(Parcel in) {
         if (in.readByte() == 0) {

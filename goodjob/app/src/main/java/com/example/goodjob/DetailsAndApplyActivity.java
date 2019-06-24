@@ -2,8 +2,11 @@ package com.example.goodjob;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.goodjob.classes.Activity;
 
@@ -18,6 +21,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private TextView currentParticipants;
     private TextView requiredParticipants;
     private ImageView photo;
+    private Button moreInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +36,29 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         currentParticipants = findViewById(R.id.tvCurrent);
         requiredParticipants = findViewById(R.id.tvRequired);
         photo = findViewById(R.id.imgPhoto);
+        moreInfo = findViewById(R.id.btnMoreInfo);
 
         Activity selected = getIntent().getExtras().getParcelable("selectedActivity");
         loadData(selected);
+
+        moreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /* primero validar si la sesión está iniciada, de no estarlo indicar
+                 *  que debe iniciar sesión para realizar esta operación
+                 */
+                if (validateStartedSession())
+                {
+                    /* validar si tiene 'espacio' en actividades disponibles */
+                    if (validateAvailableActivities())
+                    {
+
+                    }
+                    shortErrorMessage("No cuentas con más actividades disponibles");
+                }
+                shortErrorMessage("Debes iniciar sesión para realizar esta operación");
+            }
+        });
     }
 
     private void loadData(Activity activity)
@@ -47,5 +71,20 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         currentParticipants.setText("De momento hay " + activity.getCurrentParticipants() + " postulantes");
         requiredParticipants.setText("Se necesitan " + activity.getRequiredParticipants() + " personas");
         photo.setImageResource(activity.getPhoto());
+    }
+
+    private boolean validateStartedSession()
+    {
+        return false;
+    }
+
+    private boolean validateAvailableActivities()
+    {
+        return false;
+    }
+
+    private void shortErrorMessage(String message)
+    {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
