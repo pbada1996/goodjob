@@ -1,5 +1,9 @@
 package com.example.goodjob;
 
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -54,9 +58,13 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
                     {
 
                     }
-                    shortErrorMessage("No cuentas con más actividades disponibles");
+                    // TODO: cambiar por el de suscripción cuando esté
+                    dialogMessage("", "No cuentas con más participaciones disponibles " +
+                                    "para aplicar a esta actividad", "Comprar más participaciones"
+                                    , null);
                 }
-                shortErrorMessage("Debes iniciar sesión para realizar esta operación");
+                dialogMessage("Inicio de sesión", "Debes iniciar sesión para " +
+                        "realizar esta operación", "Iniciar sesión!", LoginActivity.class);
             }
         });
     }
@@ -83,8 +91,21 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         return false;
     }
 
-    private void shortErrorMessage(String message)
+    private void dialogMessage(String title, String message, String positivo, final Class<?> next)
     {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(DetailsAndApplyActivity.this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton(positivo, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                startActivity(new Intent(DetailsAndApplyActivity.this, next));
+            }
+        });
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
