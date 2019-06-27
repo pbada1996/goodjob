@@ -7,6 +7,13 @@
 -- Versión del servidor: 10.3.15-MariaDB
 -- Versión de PHP: 7.3.6
 
+-- cambios que acabo de hacer para que corra el script
+
+create database goodjod;
+use goodjod;
+
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
