@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2019 a las 19:07:31
+-- Tiempo de generación: 27-06-2019 a las 06:07:07
 -- Versión del servidor: 10.3.15-MariaDB
 -- Versión de PHP: 7.3.6
 
@@ -29,15 +29,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `carreras` (
-  `idPerfilP` int(11) NOT NULL,
-  `Nombre` varchar(100) NOT NULL
+  `idPerfilProfesional` int(11) NOT NULL,
+  `PPNombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `carreras`
 --
 
-INSERT INTO `carreras` (`idPerfilP`, `Nombre`) VALUES
+INSERT INTO `carreras` (`idPerfilProfesional`, `PPNombre`) VALUES
 (1, 'Técnico de Fibra Óptica Planta Interna'),
 (2, 'Técnico de Fibra Óptica Panta Externa'),
 (3, 'Ingeniero de Redes'),
@@ -56,14 +56,14 @@ INSERT INTO `carreras` (`idPerfilP`, `Nombre`) VALUES
 
 CREATE TABLE `distrito` (
   `idDistrito` int(11) NOT NULL,
-  `Nombre` varchar(150) NOT NULL
+  `DNombre` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `distrito`
 --
 
-INSERT INTO `distrito` (`idDistrito`, `Nombre`) VALUES
+INSERT INTO `distrito` (`idDistrito`, `DNombre`) VALUES
 (1, 'Callao'),
 (2, 'Bellavista'),
 (3, 'Carmen de La Legua'),
@@ -118,23 +118,42 @@ INSERT INTO `distrito` (`idDistrito`, `Nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipopremiun`
+--
+
+CREATE TABLE `tipopremiun` (
+  `idTipoPremiun` int(11) NOT NULL,
+  `TPnombre` varchar(100) NOT NULL,
+  `TPdescripcion` varchar(500) NOT NULL,
+  `TPprecio` double NOT NULL,
+  `TPcantidadPost` int(11) NOT NULL,
+  `TPfechaInicio` datetime NOT NULL,
+  `TPfechaExpiracion` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
-  `Uid` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `UFoto` blob DEFAULT NULL,
   `Unombre` varchar(50) NOT NULL,
   `UPaterno` varchar(50) NOT NULL,
   `UMaterno` varchar(50) NOT NULL,
-  `Udni` bigint(20) NOT NULL,
+  `Udni` bigint(20) DEFAULT NULL,
+  `UPasaporte` bigint(20) DEFAULT NULL,
   `UfechaNacimiento` date NOT NULL,
-  `Ucelular` bigint(20) NOT NULL,
+  `Ucelular` bigint(20) DEFAULT NULL,
   `idPerfilP` int(11) NOT NULL,
   `Ucorreo` varchar(50) NOT NULL,
   `idDistrito` int(11) NOT NULL,
-  `Udireccion` varchar(150) NOT NULL,
+  `Udireccion` varchar(150) DEFAULT NULL,
   `Upass` varchar(20) NOT NULL,
-  `Upremiun` char(1) NOT NULL,
+  `idTipoPremiun` int(11) DEFAULT NULL,
+  `UfechaRegistro` date NOT NULL,
   `Uestado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -142,8 +161,8 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`Uid`, `Unombre`, `UPaterno`, `UMaterno`, `Udni`, `UfechaNacimiento`, `Ucelular`, `idPerfilP`, `Ucorreo`, `idDistrito`, `Udireccion`, `Upass`, `Upremiun`, `Uestado`) VALUES
-(1, 'Anthony', 'Cachi', 'Ayala', 63571099, '1999-03-01', 987654321, 2, 'anthony@gmail.com', 2, 'comascity', 'admin', '1', 1);
+INSERT INTO `usuario` (`idUsuario`, `UFoto`, `Unombre`, `UPaterno`, `UMaterno`, `Udni`, `UPasaporte`, `UfechaNacimiento`, `Ucelular`, `idPerfilP`, `Ucorreo`, `idDistrito`, `Udireccion`, `Upass`, `idTipoPremiun`, `UfechaRegistro`, `Uestado`) VALUES
+(2, NULL, 'anthony', 'cachi', 'ayala', 63571099, NULL, '1999-01-03', 985863707, 5, 'anthonyca18m@gmail.com', 17, 'comas city #123', 'admin', NULL, '2019-06-25', 1);
 
 --
 -- Índices para tablas volcadas
@@ -153,7 +172,7 @@ INSERT INTO `usuario` (`Uid`, `Unombre`, `UPaterno`, `UMaterno`, `Udni`, `Ufecha
 -- Indices de la tabla `carreras`
 --
 ALTER TABLE `carreras`
-  ADD PRIMARY KEY (`idPerfilP`);
+  ADD PRIMARY KEY (`idPerfilProfesional`);
 
 --
 -- Indices de la tabla `distrito`
@@ -162,13 +181,20 @@ ALTER TABLE `distrito`
   ADD PRIMARY KEY (`idDistrito`);
 
 --
+-- Indices de la tabla `tipopremiun`
+--
+ALTER TABLE `tipopremiun`
+  ADD PRIMARY KEY (`idTipoPremiun`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`Uid`),
+  ADD PRIMARY KEY (`idUsuario`),
   ADD UNIQUE KEY `Udni` (`Udni`),
   ADD KEY `idDistrito` (`idDistrito`),
-  ADD KEY `idPerfilP` (`idPerfilP`);
+  ADD KEY `idPerfilP` (`idPerfilP`),
+  ADD KEY `idTipoPremiun` (`idTipoPremiun`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -178,7 +204,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `carreras`
 --
 ALTER TABLE `carreras`
-  MODIFY `idPerfilP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idPerfilProfesional` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `distrito`
@@ -187,10 +213,16 @@ ALTER TABLE `distrito`
   MODIFY `idDistrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
+-- AUTO_INCREMENT de la tabla `tipopremiun`
+--
+ALTER TABLE `tipopremiun`
+  MODIFY `idTipoPremiun` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -201,7 +233,8 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idDistrito`) REFERENCES `distrito` (`idDistrito`),
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`idPerfilP`) REFERENCES `carreras` (`idPerfilP`);
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`idPerfilP`) REFERENCES `carreras` (`idPerfilProfesional`),
+  ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`idTipoPremiun`) REFERENCES `tipopremiun` (`idTipoPremiun`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
