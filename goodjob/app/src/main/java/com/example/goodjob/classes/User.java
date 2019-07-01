@@ -17,7 +17,7 @@ public class User {
     private String cellphone;
     private String password;
     private Integer professionalProfile; // este puede ser el id de otra clase/tabla :thinking:
-    private Integer availableActivies; // por defecto cada usuario tendrá 1 actividad disponible
+    private Integer availableActivities; // por defecto cada usuario tendrá 1 actividad disponible
     // para poder aplicar a las diferentes actividades.
     private Integer availablePosts; // la cantidad de actividades que se pueden publicar
     private boolean premium;
@@ -97,12 +97,12 @@ public class User {
         this.professionalProfile = professionalProfile;
     }
 
-    public Integer getAvailableActivies() {
-        return availableActivies;
+    public Integer getAvailableActivities() {
+        return availableActivities;
     }
 
-    public void setAvailableActivies(Integer availableActivies) {
-        this.availableActivies = availableActivies;
+    public void setAvailableActivities(Integer availableActivities) {
+        this.availableActivities = availableActivities;
     }
 
     public Integer getAvailablePosts() {
@@ -140,7 +140,7 @@ public class User {
         this.cellphone = jsonObject.optString("Ucelular");
         this.password = jsonObject.optString("Upass");
         this.professionalProfile = jsonObject.optInt("idPerfilP");
-        this.availableActivies = 0;
+        this.availableActivities = 1;
         this.availablePosts = 0;
         this.premium = false;
         this.status = jsonObject.optInt("Uestado");

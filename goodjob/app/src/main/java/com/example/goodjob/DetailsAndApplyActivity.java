@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.goodjob.classes.Activity;
+import com.example.goodjob.classes.ValidSession;
 
 
 public class DetailsAndApplyActivity extends AppCompatActivity {
@@ -48,23 +48,25 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /* primero validar si la sesión está iniciada, de no estarlo indicar
-                 *  que debe iniciar sesión para realizar esta operación
-                 */
+
                 if (validateStartedSession())
                 {
                     /* validar si tiene 'espacio' en actividades disponibles */
                     if (validateAvailableActivities())
                     {
-
+                        // TODO: realizar proceso de inclusión a la actividad como participante
+                        ValidSession.usuarioLogueado.setAvailableActivities(
+                                ValidSession.usuarioLogueado.getAvailableActivities() - 1);
+                        return;
                     }
-                    // TODO: cambiar por el de suscripción cuando esté
                     dialogMessage("", "No cuentas con más participaciones disponibles " +
                                     "para aplicar a esta actividad", "Comprar más participaciones"
-                                    , null);
+                                    , SuscriptionActivity.class);
+                    return;
                 }
                 dialogMessage("Inicio de sesión", "Debes iniciar sesión para " +
                         "realizar esta operación", "Iniciar sesión!", LoginActivity.class);
+
             }
         });
     }
@@ -83,12 +85,12 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
 
     private boolean validateStartedSession()
     {
-        return false;
+        return ValidSession.usuarioLogueado.getId() != null;
     }
 
     private boolean validateAvailableActivities()
     {
-        return false;
+        return ValidSession.usuarioLogueado.getAvailableActivities() > 0;
     }
 
     private void dialogMessage(String title, String message, String positivo, final Class<?> next)
