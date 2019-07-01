@@ -51,4 +51,8 @@
     <string name="Form_Area_Company">Área:</string>
     <string name="Form_cellphone_Company">Teléfono-Celular</string>
     <string name="Form_Pass_Company">Contraseña:</string>
+
+    <!-- string resources -->
+
+    <string name="incorrect_user">Usuario y/o Contraseña incorrectas</string>
 </resources>

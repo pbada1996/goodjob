@@ -16,10 +16,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.classes.User;
+import com.example.goodjob.classes.ValidSession;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.SecureRandom;
@@ -84,23 +89,35 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         String url="https://192.168.1.7/Conexiones/WS_Login.php?Ucorreo="+txtUser.getText().toString()+"&Upass="+txtPass.getText().toString();
         jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         requestQueue.add(jsonRequest);
-
     }
 
     @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "trme T_T!"+ error.toString(), Toast.LENGTH_SHORT).show();
+    public void onErrorResponse(VolleyError error)
+    {
+        Toast.makeText(getApplicationContext(), R.string.incorrect_user, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onResponse(JSONObject response) {
-        Toast.makeText(getApplicationContext(), "exito!", Toast.LENGTH_SHORT).show();
+    public void onResponse(JSONObject response)
+    {
+        JSONArray jsonArray = response.optJSONArray("datos");
+
+        try {
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            loadUserDataFromDatabase(jsonObject);
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
     }
 
+    private void loadUserDataFromDatabase(JSONObject data)
+    {
+        ValidSession.usuarioLogueado.loadUserDataFromJsonObject(data);
+    }
 
-
-    //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
-    //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
     //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
     //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
     @SuppressLint("TrulyRandom")

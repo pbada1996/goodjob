@@ -1,5 +1,7 @@
 package com.example.goodjob.classes;
 
+import org.json.JSONObject;
+
 public class User {
 
     /* TODO: estoy mapeando al usuario, al igual que en la clase de actividad,
@@ -20,6 +22,8 @@ public class User {
     private Integer availablePosts; // la cantidad de actividades que se pueden publicar
     private boolean premium;
     private Integer status;
+
+    public User() {}
 
     public Integer getId() {
         return id;
@@ -123,5 +127,24 @@ public class User {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public void loadUserDataFromJsonObject(JSONObject jsonObject)
+    {
+        this.id = jsonObject.optInt("idUsuario");
+        this.name = jsonObject.optString("Unombre");
+        this.surname = jsonObject.optString("UPaterno");
+        this.maternalFamilyName = jsonObject.optString("UMaterno");
+        this.dni = jsonObject.optString("Udni");
+        this.birthDate = jsonObject.optString("UfechaNacimiento");
+        this.cellphone = jsonObject.optString("Ucelular");
+        this.password = jsonObject.optString("Upass");
+        this.professionalProfile = jsonObject.optInt("idPerfilP");
+        this.availableActivies = 0;
+        this.availablePosts = 0;
+        this.premium = false;
+        this.status = jsonObject.optInt("Uestado");
+
+        // TODO: faltan campos y setear algunos existentes.
     }
 }
