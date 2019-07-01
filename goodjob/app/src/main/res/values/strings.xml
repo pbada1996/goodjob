@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GoodJob</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_profile">Profile</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_addactivity">Add Activity</string>
 
@@ -55,4 +55,5 @@
     <!-- string resources -->
 
     <string name="incorrect_user">Usuario y/o Contraseña incorrectas</string>
+    <string name="already_in">Ya has postulado a esta actividad!</string>
 </resources>

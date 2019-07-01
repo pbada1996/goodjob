@@ -8,14 +8,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.example.goodjob.classes.ValidSession;
 
 public class MainActivity extends AppCompatActivity {
 
-    //DECLARATION THE VARIABLES
-
-    private ImageView imgprofile;
+    private BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +25,19 @@ public class MainActivity extends AppCompatActivity {
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
+            public void onClick(View v)
+            {
+                if (ValidSession.usuarioLogueado == null)
+                {
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    navigation.setSelectedItemId(R.id.navigation_profile);
+                }
             }
         });
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // setting the initial fragment on app start
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     selectedFragment = new HomeFragment();
                     break;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_profile:
                     selectedFragment = new ProfileFragment();
                     break;
                 case R.id.navigation_notifications:

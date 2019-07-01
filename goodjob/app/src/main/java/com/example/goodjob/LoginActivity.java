@@ -51,10 +51,10 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         setContentView(R.layout.activity_login);
 
 
-        txtUser =       (EditText)    findViewById(R.id.txtUser);
-        txtPass =       (EditText)    findViewById(R.id.txtPass);
-        tvregister =    (TextView)    findViewById(R.id.TvRegister);
-        btnIngresar =   (Button)      findViewById(R.id.btnLogin);
+        txtUser =           findViewById(R.id.txtUser);
+        txtPass =           findViewById(R.id.txtPass);
+        tvregister =        findViewById(R.id.TvRegister);
+        btnIngresar =       findViewById(R.id.btnLogin);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -71,11 +71,8 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
             @Override
             public void onClick(View v) {
                 iniciarSesion();
-
-
                 /*String usuario = txtUser.getText().toString();
                  String pass = txtPass.getText().toString();
-
 
                 RequestLogin loginRequest = new RequestLogin(usuario,pass,respuesta);
                 RequestQueue cola = Volley.newRequestQueue(LoginActivity.this);
@@ -115,6 +112,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
     private void loadUserDataFromDatabase(JSONObject data)
     {
+        ValidSession.usuarioLogueado = new User();
         ValidSession.usuarioLogueado.loadUserDataFromJsonObject(data);
     }
 

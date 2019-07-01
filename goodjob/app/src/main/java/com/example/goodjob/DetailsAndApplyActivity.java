@@ -54,6 +54,8 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
                     /* validar si tiene 'espacio' en actividades disponibles */
                     if (validateAvailableActivities())
                     {
+                        moreInfo.setText(R.string.already_in);
+                        moreInfo.setEnabled(false);
                         // TODO: realizar proceso de inclusión a la actividad como participante
                         ValidSession.usuarioLogueado.setAvailableActivities(
                                 ValidSession.usuarioLogueado.getAvailableActivities() - 1);
@@ -85,7 +87,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
 
     private boolean validateStartedSession()
     {
-        return ValidSession.usuarioLogueado.getId() != null;
+        return ValidSession.usuarioLogueado != null;
     }
 
     private boolean validateAvailableActivities()

@@ -2,6 +2,6 @@ package com.example.goodjob.classes;
 
 public class ValidSession {
 
-    public static User usuarioLogueado = new User();
+    public static User usuarioLogueado = null;
 
 }
