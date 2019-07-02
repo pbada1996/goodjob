@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
@@ -6,6 +6,13 @@
 -- Tiempo de generación: 27-06-2019 a las 06:07:07
 -- Versión del servidor: 10.3.15-MariaDB
 -- Versión de PHP: 7.3.6
+
+-- cambios que acabo de hacer para que corra el script
+
+create database goodjod;
+use goodjod;
+
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -240,3 +247,8 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+create table actividad
+(
+	
+);
