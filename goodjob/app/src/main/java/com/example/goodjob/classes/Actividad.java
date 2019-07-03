@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import org.json.JSONObject;
 
-public class Activity implements Parcelable {
+public class Actividad implements Parcelable {
 
     // TODO: probablemente me estoy olvidando de varios campos, agregarlos con confianza.
 
@@ -22,7 +22,7 @@ public class Activity implements Parcelable {
     private Double reward;
     private Integer status;
 
-    protected Activity(Parcel in) {
+    protected Actividad(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
         } else {
@@ -61,38 +61,38 @@ public class Activity implements Parcelable {
         }
     }
 
-    public static final Creator<Activity> CREATOR = new Creator<Activity>() {
+    public static final Creator<Actividad> CREATOR = new Creator<Actividad>() {
         @Override
-        public Activity createFromParcel(Parcel in) {
-            return new Activity(in);
+        public Actividad createFromParcel(Parcel in) {
+            return new Actividad(in);
         }
 
         @Override
-        public Activity[] newArray(int size) {
-            return new Activity[size];
+        public Actividad[] newArray(int size) {
+            return new Actividad[size];
         }
     };
 
-    public static Activity loadActivityDataFromJsonObject(JSONObject jsonObject)
+    public static Actividad loadActivityDataFromJsonObject(JSONObject jsonObject)
     {
-        Activity activity = new Activity();
+        Actividad actividad = new Actividad();
 
-        activity.id = jsonObject.optInt("id");
-        activity.title = jsonObject.optString("titulo");
-        activity.description = jsonObject.optString("descripcion");
-        activity.author = jsonObject.optString("nombreCompleto");
-        activity.creationDate = jsonObject.optString("fecha_creacion");
-        activity.endDate = jsonObject.optString("fecha_fin");
-        activity.currentParticipants = jsonObject.optInt("participantes_actuales");
-        activity.requiredParticipants = jsonObject.optInt("participantes_requeridos");
-        activity.rewardType = jsonObject.optString("tipo_recompensa");
-        activity.reward = jsonObject.optDouble("recompensa");
-        activity.status = jsonObject.optInt("estado");
+        actividad.id = jsonObject.optInt("id");
+        actividad.title = jsonObject.optString("titulo");
+        actividad.description = jsonObject.optString("descripcion");
+        actividad.author = jsonObject.optString("nombre_completo");
+        actividad.creationDate = jsonObject.optString("fecha_creacion");
+        actividad.endDate = jsonObject.optString("fecha_fin");
+        actividad.currentParticipants = jsonObject.optInt("participantes_actuales");
+        actividad.requiredParticipants = jsonObject.optInt("participantes_requeridos");
+        actividad.rewardType = jsonObject.optString("tipo_recompensa");
+        actividad.reward = jsonObject.optDouble("recompensa");
+        actividad.status = jsonObject.optInt("estado");
 
-        return activity;
+        return actividad;
     }
 
-    public Activity(){}
+    public Actividad(){}
 
     public Integer getId() {
         return id;

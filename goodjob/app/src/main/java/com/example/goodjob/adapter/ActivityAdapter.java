@@ -8,18 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.goodjob.R;
-import com.example.goodjob.classes.Activity;
+import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.viewholder.ActivityViewHolder;
 
 import java.util.List;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
 
-    private List<Activity> activities;
+    private List<Actividad> activities;
     private Context context;
     private OnActivityListener onActivityListener;
 
-    public ActivityAdapter(List<Activity> activities, Context context, OnActivityListener onActivityListener)
+    public ActivityAdapter(List<Actividad> activities, Context context, OnActivityListener onActivityListener)
     {
         this.activities = activities;
         this.context = context;

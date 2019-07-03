@@ -20,7 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.goodjob.classes.Activity;
+import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.classes.ValidSession;
 
 import org.json.JSONArray;
@@ -49,7 +49,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private ImageView photo;
     private Button moreInfo;
     private TextView reward;
-    private Activity selectedActivity;
+    private Actividad selectedActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,17 +100,17 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         handleSSLHandshake();
     }
 
-    private void loadData(Activity activity)
+    private void loadData(Actividad actividad)
     {
-        title.setText(activity.getTitle());
-        description.setText(activity.getDescription());
-        author.setText(activity.getAuthor().substring(0, 20));
-        creationDate.setText(formatDate(activity.getCreationDate()));
-        endDate.setText(formatDate(activity.getEndDate()));
-        currentParticipants.setText("De momento hay " + activity.getCurrentParticipants() + " postulantes");
-        requiredParticipants.setText("Se necesitan " + activity.getRequiredParticipants() + " personas");
+        title.setText(actividad.getTitle());
+        description.setText(actividad.getDescription());
+        author.setText(actividad.getAuthor().substring(0, 20));
+        creationDate.setText(formatDate(actividad.getCreationDate()));
+        endDate.setText(formatDate(actividad.getEndDate()));
+        currentParticipants.setText("De momento hay " + actividad.getCurrentParticipants() + " postulantes");
+        requiredParticipants.setText("Se necesitan " + actividad.getRequiredParticipants() + " personas");
         photo.setImageResource(R.drawable.placeholder);
-        reward.setText(activity.getRewardType() + " : " + activity.getReward());
+        reward.setText(actividad.getRewardType() + " : " + actividad.getReward());
     }
 
     private boolean validateStartedSession()

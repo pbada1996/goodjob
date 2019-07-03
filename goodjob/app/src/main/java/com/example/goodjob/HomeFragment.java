@@ -16,12 +16,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.goodjob.adapter.ActivityAdapter;
-import com.example.goodjob.classes.Activity;
+import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.classes.ValidSession;
 
 import org.json.JSONArray;
@@ -44,7 +42,7 @@ import javax.net.ssl.X509TrustManager;
 public class HomeFragment extends Fragment implements ActivityAdapter.OnActivityListener {
 
     private RecyclerView activitiesRecycler;
-    private List<Activity> activities;
+    private List<Actividad> activities;
 
     public HomeFragment() {}
 
@@ -81,8 +79,8 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
                     for (int i = 0; i < jsonArray.length(); i++)
                     {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        Activity activity = loadActivityDataFromDatabase(jsonObject);
-                        activities.add(activity);
+                        Actividad actividad = loadActivityDataFromDatabase(jsonObject);
+                        activities.add(actividad);
                     }
                     loadAdapter();
 
@@ -100,9 +98,9 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
         requestQueue.add(jsonRequest);
     }
 
-    private Activity loadActivityDataFromDatabase(JSONObject jsonObject)
+    private Actividad loadActivityDataFromDatabase(JSONObject jsonObject)
     {
-        return Activity.loadActivityDataFromJsonObject(jsonObject);
+        return Actividad.loadActivityDataFromJsonObject(jsonObject);
     }
 
     private void loadAdapter()
@@ -114,7 +112,7 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
     @Override
     public void onActivityClick(int position)
     {
-        Activity selectedActivity = activities.get(position);
+        Actividad selectedActivity = activities.get(position);
         Intent details = new Intent(getContext(), DetailsAndApplyActivity.class);
         details.putExtra("selectedActivity", selectedActivity);
         startActivity(details);

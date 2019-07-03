@@ -6,7 +6,7 @@
     android:layout_height="360dp"
     android:id="@+id/item_container">
 
-    <!-- this is for each activity shown in the list(recyclerView) -->
+    <!-- this is for each actividad shown in the list(recyclerView) -->
 
     <ImageView
         android:id="@+id/imgPhoto"
