@@ -1,17 +1,5 @@
-﻿-- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2019 a las 06:07:07
--- Versión del servidor: 10.3.15-MariaDB
--- Versión de PHP: 7.3.6
-
--- cambios que acabo de hacer para que corra el script
-
 create database goodjod;
 use goodjod;
-
 
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -145,15 +133,15 @@ CREATE TABLE `tipopremiun` (
 --
 
 CREATE TABLE `usuario` (
-  `idUsuario` int(11) NOT NULL,
+  `idUsuario` int auto_increment primary key,
   `UFoto` blob DEFAULT NULL,
   `Unombre` varchar(50) NOT NULL,
   `UPaterno` varchar(50) NOT NULL,
   `UMaterno` varchar(50) NOT NULL,
-  `Udni` bigint(20) DEFAULT NULL,
+  `Udni` varchar(8) DEFAULT NULL,
   `UPasaporte` bigint(20) DEFAULT NULL,
-  `UfechaNacimiento` date NOT NULL,
-  `Ucelular` bigint(20) DEFAULT NULL,
+  `UfechaNacimiento` date,
+  `Ucelular` varchar(11) DEFAULT NULL,
   `idPerfilP` int(11) NOT NULL,
   `Ucorreo` varchar(50) NOT NULL,
   `idDistrito` int(11) NOT NULL,
@@ -161,15 +149,53 @@ CREATE TABLE `usuario` (
   `Upass` varchar(20) NOT NULL,
   `idTipoPremiun` int(11) DEFAULT NULL,
   `UfechaRegistro` date NOT NULL,
+  actividades_disponibles int,
+  publicaciones_disponibles int,
+  puntaje int,
   `Uestado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `usuario`
---
+INSERT INTO usuario VALUES
+(null, NULL, 'Juan Carlos', 'Castillo', 'Aycachi', '70555913', NULL, '1993-04-01', '979666355', 5, 'carlosjordi@hotmail.com', 42, 'Las Margaritas', 'admin', NULL, '2019-07-02', 2, 1, 0, 1);
 
-INSERT INTO `usuario` (`idUsuario`, `UFoto`, `Unombre`, `UPaterno`, `UMaterno`, `Udni`, `UPasaporte`, `UfechaNacimiento`, `Ucelular`, `idPerfilP`, `Ucorreo`, `idDistrito`, `Udireccion`, `Upass`, `idTipoPremiun`, `UfechaRegistro`, `Uestado`) VALUES
-(2, NULL, 'anthony', 'cachi', 'ayala', 63571099, NULL, '1999-01-03', 985863707, 5, 'anthonyca18m@gmail.com', 17, 'comas city #123', 'admin', NULL, '2019-06-25', 1);
+INSERT INTO usuario VALUES
+(null, NULL, 'anthony', 'cachi', 'ayala', '63571099', NULL, '1999-01-03', '985863707', 5, 'anthonyca18m@gmail.com', 17, 'comas city #123', 'admin', NULL, '2019-06-25', 2, 1, 0, 1);
+
+INSERT INTO usuario VALUES
+(null, NULL, 'Gustavo Adolfo', 'Lizarzaburu', 'Mercado', null, NULL, null, '935902409', 5, 'lizarzaburu@gmail.com', 42, 'Ovalo Granda', 'admin', NULL, '2019-07-02', 2, 1, 0, 1);
+
+INSERT INTO usuario VALUES
+(null, NULL, 'Yaser Andre', 'Quiñonez', 'Chapoñan', null, NULL, null, '922721204', 5, 'quiñonez@gmail.com', 1, 'Lejos de casa', 'admin', NULL, '2019-07-02', 2, 1, 0, 1);
+
+create table tipo_recompensa
+(
+	id int auto_increment primary key,
+    descripcion varchar(30)
+);
+
+insert into tipo_recompensa values(null, 'puntos');
+insert into tipo_recompensa values(null, 'dinero');
+
+create table actividad
+(
+	id int auto_increment primary key,
+    titulo varchar(30),
+    descripcion varchar(140),
+    id_usuario int,
+    fecha_creacion date,
+    fecha_fin date, 
+    participantes_actuales int, 
+    participantes_requeridos int,
+    foto blob default null,
+    tipo_recompensa int,
+    recompensa decimal(10,2),
+    estado int,
+    foreign key(tipo_recompensa) references tipo_recompensa(id),
+    foreign key(id_usuario) references usuario(idUsuario)
+);
+
+insert into actividad values (null, 'La playita bonita', 'Playa bastante contaminada, muchas personas acuden a esta, pero nadie 
+se toma la molestia de recoger la basura', 1, '2019-07-02', '2019-07-09', 0, 5, null, 1, 100, 1);
 
 --
 -- Índices para tablas volcadas
@@ -197,7 +223,6 @@ ALTER TABLE `tipopremiun`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`),
   ADD UNIQUE KEY `Udni` (`Udni`),
   ADD KEY `idDistrito` (`idDistrito`),
   ADD KEY `idPerfilP` (`idPerfilP`),
@@ -226,12 +251,6 @@ ALTER TABLE `tipopremiun`
   MODIFY `idTipoPremiun` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- Restricciones para tablas volcadas
 --
 
@@ -248,7 +267,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-create table actividad
-(
-	
-);

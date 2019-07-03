@@ -50,11 +50,10 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        txtUser =           findViewById(R.id.txtUser);
-        txtPass =           findViewById(R.id.txtPass);
-        tvregister =        findViewById(R.id.TvRegister);
-        btnIngresar =       findViewById(R.id.btnLogin);
+        txtUser =       findViewById(R.id.txtUser);
+        txtPass =       findViewById(R.id.txtPass);
+        tvregister =    findViewById(R.id.TvRegister);
+        btnIngresar =   findViewById(R.id.btnLogin);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -69,14 +68,9 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 iniciarSesion();
-                /*String usuario = txtUser.getText().toString();
-                 String pass = txtPass.getText().toString();
-
-                RequestLogin loginRequest = new RequestLogin(usuario,pass,respuesta);
-                RequestQueue cola = Volley.newRequestQueue(LoginActivity.this);
-                cola.add(loginRequest);*/
             }
         });
         handleSSLHandshake();
@@ -116,7 +110,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         ValidSession.usuarioLogueado.loadUserDataFromJsonObject(data);
     }
 
-    //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
     //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
     @SuppressLint("TrulyRandom")
     public static void handleSSLHandshake() {

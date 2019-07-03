@@ -16,6 +16,7 @@ public class Activity implements Parcelable {
     private Integer currentParticipants;
     private Integer requiredParticipants;
     private Integer photo;
+    private Double reward;
     private Integer status;
 
     public Activity(Integer id, String title, String description, String author,
@@ -150,6 +151,14 @@ public class Activity implements Parcelable {
 
     public void setPhoto(Integer photo) {
         this.photo = photo;
+    }
+
+    public Double getReward() {
+        return reward;
+    }
+
+    public void setReward(Double reward) {
+        this.reward = reward;
     }
 
     public Integer getStatus() {
