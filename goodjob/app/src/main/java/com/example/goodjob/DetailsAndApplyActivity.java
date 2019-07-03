@@ -26,6 +26,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private TextView requiredParticipants;
     private ImageView photo;
     private Button moreInfo;
+    private TextView reward;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         requiredParticipants = findViewById(R.id.tvRequired);
         photo = findViewById(R.id.imgPhoto);
         moreInfo = findViewById(R.id.btnMoreInfo);
+        reward = findViewById(R.id.tvReward);
 
         Activity selected = getIntent().getExtras().getParcelable("selectedActivity");
         loadData(selected);
@@ -51,7 +53,6 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
 
                 if (validateStartedSession())
                 {
-                    /* validar si tiene 'espacio' en actividades disponibles */
                     if (validateAvailableActivities())
                     {
                         moreInfo.setText(R.string.already_in);
@@ -77,12 +78,13 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     {
         title.setText(activity.getTitle());
         description.setText(activity.getDescription());
-        author.setText(activity.getAuthor());
-        creationDate.setText(activity.getCreationDate());
-        endDate.setText(activity.getEndDate());
+        author.setText(activity.getAuthor().substring(0, 20));
+        creationDate.setText(formatDate(activity.getCreationDate()));
+        endDate.setText(formatDate(activity.getEndDate()));
         currentParticipants.setText("De momento hay " + activity.getCurrentParticipants() + " postulantes");
         requiredParticipants.setText("Se necesitan " + activity.getRequiredParticipants() + " personas");
-        photo.setImageResource(activity.getPhoto());
+        photo.setImageResource(R.drawable.placeholder);
+        reward.setText(activity.getRewardType() + " : " + activity.getReward());
     }
 
     private boolean validateStartedSession()
@@ -111,5 +113,11 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private String formatDate(String date)
+    {
+        String [] fechaEnPartes = date.split("-");
+        return fechaEnPartes[2] + "/" + fechaEnPartes[1] + "/" + fechaEnPartes[0];
     }
 }

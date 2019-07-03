@@ -42,11 +42,12 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
     public void onBindViewHolder(@NonNull ActivityViewHolder avh, int index)
     {
         avh.title.setText(activities.get(index).getTitle());
-        avh.authorName.setText(activities.get(index).getAuthor());
+        avh.authorName.setText(activities.get(index).getAuthor().substring(0, 20));
         avh.description.setText(activities.get(index).getDescription());
         avh.participantsCounter.setText(activities.get(index).getCurrentParticipants()
                 + " / " + activities.get(index).getRequiredParticipants());
-        avh.photo.setImageResource(activities.get(index).getPhoto());
+        avh.photo.setImageResource(R.drawable.placeholder);
+        // TODO: cambiar foto
     }
 
     @Override

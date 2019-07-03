@@ -3,6 +3,8 @@ package com.example.goodjob.classes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONObject;
+
 public class Activity implements Parcelable {
 
     // TODO: probablemente me estoy olvidando de varios campos, agregarlos con confianza.
@@ -16,25 +18,9 @@ public class Activity implements Parcelable {
     private Integer currentParticipants;
     private Integer requiredParticipants;
     private Integer photo;
+    private String rewardType;
     private Double reward;
     private Integer status;
-
-    public Activity(Integer id, String title, String description, String author,
-                    String creationDate, String endDate, Integer currentParticipants,
-                    Integer requiredParticipants, Integer photo, Integer status) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.author = author;
-        this.creationDate = creationDate;
-        this.endDate = endDate;
-        this.currentParticipants = currentParticipants;
-        this.requiredParticipants = requiredParticipants;
-        this.photo = photo;
-        this.status = status;
-    }
-
-    public Activity(){}
 
     protected Activity(Parcel in) {
         if (in.readByte() == 0) {
@@ -62,6 +48,12 @@ public class Activity implements Parcelable {
         } else {
             photo = in.readInt();
         }
+        rewardType = in.readString();
+        if (in.readByte() == 0) {
+            reward = null;
+        } else {
+            reward = in.readDouble();
+        }
         if (in.readByte() == 0) {
             status = null;
         } else {
@@ -80,6 +72,27 @@ public class Activity implements Parcelable {
             return new Activity[size];
         }
     };
+
+    public static Activity loadActivityDataFromJsonObject(JSONObject jsonObject)
+    {
+        Activity activity = new Activity();
+
+        activity.id = jsonObject.optInt("id");
+        activity.title = jsonObject.optString("titulo");
+        activity.description = jsonObject.optString("descripcion");
+        activity.author = jsonObject.optString("nombreCompleto");
+        activity.creationDate = jsonObject.optString("fecha_creacion");
+        activity.endDate = jsonObject.optString("fecha_fin");
+        activity.currentParticipants = jsonObject.optInt("participantes_actuales");
+        activity.requiredParticipants = jsonObject.optInt("participantes_requeridos");
+        activity.rewardType = jsonObject.optString("tipo_recompensa");
+        activity.reward = jsonObject.optDouble("recompensa");
+        activity.status = jsonObject.optInt("estado");
+
+        return activity;
+    }
+
+    public Activity(){}
 
     public Integer getId() {
         return id;
@@ -153,6 +166,14 @@ public class Activity implements Parcelable {
         this.photo = photo;
     }
 
+    public String getRewardType() {
+        return rewardType;
+    }
+
+    public void setRewardType(String rewardType) {
+        this.rewardType = rewardType;
+    }
+
     public Double getReward() {
         return reward;
     }
@@ -204,6 +225,13 @@ public class Activity implements Parcelable {
         } else {
             parcel.writeByte((byte) 1);
             parcel.writeInt(photo);
+        }
+        parcel.writeString(rewardType);
+        if (reward == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(reward);
         }
         if (status == null) {
             parcel.writeByte((byte) 0);

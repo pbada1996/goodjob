@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
             }
         });
 
-
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -77,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
     }
 
     private void iniciarSesion() {
-        String url="https://192.168.1.7/Conexiones/WS_Login.php?Ucorreo="+txtUser.getText().toString()+"&Upass="+txtPass.getText().toString();
+        String url= ValidSession.IP + "/WS_Login.php?Ucorreo="+txtUser.getText().toString()+"&Upass="+txtPass.getText().toString();
         jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         requestQueue.add(jsonRequest);
     }
