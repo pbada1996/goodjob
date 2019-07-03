@@ -173,8 +173,10 @@ create table tipo_recompensa
     descripcion varchar(30)
 );
 
-insert into tipo_recompensa values(null, 'puntos');
-insert into tipo_recompensa values(null, 'dinero');
+select * from usuario;
+
+insert into tipo_recompensa values(null, 'Puntos');
+insert into tipo_recompensa values(null, 'Dinero');
 
 create table actividad
 (
@@ -196,6 +198,22 @@ create table actividad
 
 insert into actividad values (null, 'La playita bonita', 'Playa bastante contaminada, muchas personas acuden a esta, pero nadie 
 se toma la molestia de recoger la basura', 1, '2019-07-02', '2019-07-09', 0, 5, null, 1, 100, 1);
+
+insert into actividad values (null, 'Parque Huaqueno', 'Ubicado en el cruce de Av. universitaria con antunez de mayolo. Referencia
+ frente a la botica', 1, '2019-07-02', '2019-07-09', 0, 2, null, 1, 50, 1);
+
+insert into actividad values (null, 'Jr. La Camita', 'Ya no se me ocurrió que más escribir acá, así que esto solo es para hacer bulto'
+, 1, '2019-07-02', '2019-07-09', 0, 3, null, 1, 70, 1);
+
+create table postulacion_actividad
+(
+	id int auto_increment primary key,
+    id_actividad int not null,
+    id_usuario int not null,
+    estado int, -- 1: en espera | 2: aceptado | 3: rechazado
+    foreign key(id_actividad) references actividad(id),
+    foreign key(id_usuario) references usuario(idUsuario)
+);
 
 --
 -- Índices para tablas volcadas

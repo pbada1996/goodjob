@@ -15,8 +15,6 @@ import java.util.List;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
 
-    // TODO: reemplazar eventualmente por data de la base de datos.
-    //added the onActivityListener in the constructor for the clicks
     private List<Activity> activities;
     private Context context;
     private OnActivityListener onActivityListener;
