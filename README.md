@@ -1,6 +1,17 @@
+
+
+
 # Buen Trabajo
 Proyecto 'Buen Trabajo' para el curso de android
 
+### LINK DE DATABASE
+
+LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! 
+https://www.db4free.net/phpMyAdmin/db_structure.php?server=1&db=goodjob
+ LEER IMPORTANTE!!!  LEER IMPORTANTE!!!  LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! 
+ID: anthonyca18m
+Clave anthonyca18m
+LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! 
 ### Prioridades en historias de usuario :
 
 ### Alta
