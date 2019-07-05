@@ -60,7 +60,7 @@
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="336dp"
-        android:layout_height="235dp"
+        android:layout_height="180dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
@@ -180,5 +180,18 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRequired" />
+
+    <TextView
+        android:id="@+id/tvReward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Recompensa"
+        android:textSize="20sp"
+        android:textColor="#0099ff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -56,4 +56,7 @@
 
     <string name="incorrect_user">Usuario y/o Contraseña incorrectas</string>
     <string name="already_in">Ya has postulado a esta actividad!</string>
+    <string name="no_more_available_activities">No cuentas con más participaciones disponibles para aplicar a esta actividad</string>
+    <string name="should_start_session">Debes iniciar sesión para realizar esta operación</string>
+    <string name="postulacion_exitosa">Gracias por aplicar a esta actividad!</string>
 </resources>

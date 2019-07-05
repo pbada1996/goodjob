@@ -3,7 +3,9 @@ package com.example.goodjob.classes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Activity implements Parcelable {
+import org.json.JSONObject;
+
+public class Actividad implements Parcelable {
 
     // TODO: probablemente me estoy olvidando de varios campos, agregarlos con confianza.
 
@@ -16,26 +18,11 @@ public class Activity implements Parcelable {
     private Integer currentParticipants;
     private Integer requiredParticipants;
     private Integer photo;
+    private String rewardType;
+    private Double reward;
     private Integer status;
 
-    public Activity(Integer id, String title, String description, String author,
-                    String creationDate, String endDate, Integer currentParticipants,
-                    Integer requiredParticipants, Integer photo, Integer status) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.author = author;
-        this.creationDate = creationDate;
-        this.endDate = endDate;
-        this.currentParticipants = currentParticipants;
-        this.requiredParticipants = requiredParticipants;
-        this.photo = photo;
-        this.status = status;
-    }
-
-    public Activity(){}
-
-    protected Activity(Parcel in) {
+    protected Actividad(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
         } else {
@@ -61,6 +48,12 @@ public class Activity implements Parcelable {
         } else {
             photo = in.readInt();
         }
+        rewardType = in.readString();
+        if (in.readByte() == 0) {
+            reward = null;
+        } else {
+            reward = in.readDouble();
+        }
         if (in.readByte() == 0) {
             status = null;
         } else {
@@ -68,17 +61,38 @@ public class Activity implements Parcelable {
         }
     }
 
-    public static final Creator<Activity> CREATOR = new Creator<Activity>() {
+    public static final Creator<Actividad> CREATOR = new Creator<Actividad>() {
         @Override
-        public Activity createFromParcel(Parcel in) {
-            return new Activity(in);
+        public Actividad createFromParcel(Parcel in) {
+            return new Actividad(in);
         }
 
         @Override
-        public Activity[] newArray(int size) {
-            return new Activity[size];
+        public Actividad[] newArray(int size) {
+            return new Actividad[size];
         }
     };
+
+    public static Actividad loadActivityDataFromJsonObject(JSONObject jsonObject)
+    {
+        Actividad actividad = new Actividad();
+
+        actividad.id = jsonObject.optInt("id");
+        actividad.title = jsonObject.optString("titulo");
+        actividad.description = jsonObject.optString("descripcion");
+        actividad.author = jsonObject.optString("nombre_completo");
+        actividad.creationDate = jsonObject.optString("fecha_creacion");
+        actividad.endDate = jsonObject.optString("fecha_fin");
+        actividad.currentParticipants = jsonObject.optInt("participantes_actuales");
+        actividad.requiredParticipants = jsonObject.optInt("participantes_requeridos");
+        actividad.rewardType = jsonObject.optString("tipo_recompensa");
+        actividad.reward = jsonObject.optDouble("recompensa");
+        actividad.status = jsonObject.optInt("estado");
+
+        return actividad;
+    }
+
+    public Actividad(){}
 
     public Integer getId() {
         return id;
@@ -152,6 +166,22 @@ public class Activity implements Parcelable {
         this.photo = photo;
     }
 
+    public String getRewardType() {
+        return rewardType;
+    }
+
+    public void setRewardType(String rewardType) {
+        this.rewardType = rewardType;
+    }
+
+    public Double getReward() {
+        return reward;
+    }
+
+    public void setReward(Double reward) {
+        this.reward = reward;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -195,6 +225,13 @@ public class Activity implements Parcelable {
         } else {
             parcel.writeByte((byte) 1);
             parcel.writeInt(photo);
+        }
+        parcel.writeString(rewardType);
+        if (reward == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(reward);
         }
         if (status == null) {
             parcel.writeByte((byte) 0);

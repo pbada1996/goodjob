@@ -6,7 +6,7 @@
     android:layout_height="360dp"
     android:id="@+id/item_container">
 
-    <!-- this is for each activity shown in the list(recyclerView) -->
+    <!-- this is for each actividad shown in the list(recyclerView) -->
 
     <ImageView
         android:id="@+id/imgPhoto"
@@ -104,5 +104,16 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvParticipantsCounter" />
+
+    <ImageView
+        android:id="@+id/ivIcono"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvParticipantsCounter"
+        app:srcCompat="@drawable/user_count_icon"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

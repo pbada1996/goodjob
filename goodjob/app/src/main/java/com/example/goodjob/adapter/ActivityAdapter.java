@@ -8,20 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.goodjob.R;
-import com.example.goodjob.classes.Activity;
+import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.viewholder.ActivityViewHolder;
 
 import java.util.List;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
 
-    // TODO: reemplazar eventualmente por data de la base de datos.
-    //added the onActivityListener in the constructor for the clicks
-    private List<Activity> activities;
+    private List<Actividad> activities;
     private Context context;
     private OnActivityListener onActivityListener;
 
-    public ActivityAdapter(List<Activity> activities, Context context, OnActivityListener onActivityListener)
+    public ActivityAdapter(List<Actividad> activities, Context context, OnActivityListener onActivityListener)
     {
         this.activities = activities;
         this.context = context;
@@ -42,11 +40,12 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
     public void onBindViewHolder(@NonNull ActivityViewHolder avh, int index)
     {
         avh.title.setText(activities.get(index).getTitle());
-        avh.authorName.setText(activities.get(index).getAuthor());
+        avh.authorName.setText(activities.get(index).getAuthor().substring(0, 20));
         avh.description.setText(activities.get(index).getDescription());
         avh.participantsCounter.setText(activities.get(index).getCurrentParticipants()
                 + " / " + activities.get(index).getRequiredParticipants());
-        avh.photo.setImageResource(activities.get(index).getPhoto());
+        avh.photo.setImageResource(R.drawable.placeholder);
+        // TODO: cambiar foto
     }
 
     @Override
