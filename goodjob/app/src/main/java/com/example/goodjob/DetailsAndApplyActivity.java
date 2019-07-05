@@ -150,7 +150,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private void consultarSiYaPostulo(Integer idUsuario, Integer idActividad)
     {
         String url = ValidSession.IP + "/ws_consultarPostulacionUsuario.php?id_usuario=" + idUsuario + "&id_actividad=" + idActividad;
-
+        
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -189,18 +189,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response)
             {
-                AlertDialog.Builder builder = new AlertDialog.Builder(DetailsAndApplyActivity.this);
-                builder.setTitle("");
-                builder.setMessage(R.string.postulacion_exitosa);
-                builder.setPositiveButton("Seguir navegando", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-                builder.setIcon(android.R.drawable.ic_dialog_info);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
