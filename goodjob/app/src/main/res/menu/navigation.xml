@@ -10,9 +10,9 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_profile" />
     <item
-        android:id="@+id/navigation_addactivity"
+        android:id="@+id/navigation_estado_mis_actividades"
         android:icon="@drawable/ic_add_to_activity_black_24dp"
-        android:title="@string/title_addactivity" />
+        android:title="@string/title_estado_mis_actividades" />
 
     <item
         android:id="@+id/navigation_notifications"

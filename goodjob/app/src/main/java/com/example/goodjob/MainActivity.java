@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     selectedFragment = new MyActivityFragment();
                     break;
-                case R.id.navigation_addactivity:
-                    selectedFragment = new AddActivityFragment();
+                case R.id.navigation_estado_mis_actividades:
+                    selectedFragment = new EstadoMisActividadesFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments,selectedFragment).commit();

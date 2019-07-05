@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_addactivity">Add Activity</string>
+    <string name="title_estado_mis_actividades">Mis Actividades</string>
 
     <!-- strings for fragment home -->
 
@@ -20,6 +20,7 @@
     <string name="creation_date">Día de publicación</string>
     <string name="end_date">Día a realizarse</string>
     <string name="apply">Postular a esta actividad!</string>
+    <string name="estado">Estado</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -196,14 +196,11 @@ create table actividad
     foreign key(id_usuario) references usuario(idUsuario)
 );
 
-insert into actividad values (null, 'La playita bonita', 'Playa bastante contaminada, muchas personas acuden a esta, pero nadie 
-se toma la molestia de recoger la basura', 1, '2019-07-02', '2019-07-09', 0, 5, null, 1, 100, 1);
+insert into actividad values (null, 'La playita bonita', 'Playa bastante contaminada, muchas personas acuden a esta, pero nadie se toma la molestia de recoger la basura', 1, '2019-07-02', '2019-07-09', 0, 5, null, 1, 100, 1);
 
-insert into actividad values (null, 'Parque Huaqueno', 'Ubicado en el cruce de Av. universitaria con antunez de mayolo. Referencia
- frente a la botica', 1, '2019-07-02', '2019-07-09', 0, 2, null, 1, 50, 1);
+insert into actividad values (null, 'Parque Huaqueno', 'Ubicado en el cruce de Av. universitaria con antunez de mayolo. Referencia frente a la botica', 1, '2019-07-02', '2019-07-09', 0, 2, null, 1, 50, 1);
 
-insert into actividad values (null, 'Jr. La Camita', 'Ya no se me ocurrio que mas escribir aca, asi que esto solo es para hacer bulto'
-, 1, '2019-07-02', '2019-07-09', 0, 3, null, 1, 70, 1);
+insert into actividad values (null, 'Jr. La Camita', 'Ya no se me ocurrio que mas escribir aca, asi que esto solo es para hacer bulto', 1, '2019-07-02', '2019-07-09', 0, 3, null, 1, 70, 1);
 
 create table postulacion_actividad
 (
