@@ -22,9 +22,6 @@
     <string name="apply">Postular a esta actividad!</string>
     <string name="estado">Estado</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <!-- strings for fragment selectedRegister-->
     <string name="user">Soy Usuario</string>
     <string name="company">Soy Empresa</string>
@@ -60,4 +57,10 @@
     <string name="no_more_available_activities">No cuentas con más participaciones disponibles para aplicar a esta actividad</string>
     <string name="should_start_session">Debes iniciar sesión para realizar esta operación</string>
     <string name="postulacion_exitosa">Gracias por aplicar a esta actividad!</string>
+    <string name="inicio_sesion">Inicio de Sesión</string>
+    <string name="iniciar_sesion">Debes iniciar sesión para visualizar tus actividades</string>
+    <string name="ok_sesion">Iniciar Sesión</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -15,10 +15,12 @@ import java.util.List;
 public class EstadoMisActividadesAdapter extends RecyclerView.Adapter<EstadoMisActividadesViewHolder> {
 
     private List<EstadoMisActividadesResponse> misActividades;
+    private OnEstadoActividadListener onEstadoActividadListener;
 
-    public EstadoMisActividadesAdapter(List<EstadoMisActividadesResponse> misActividades)
+    public EstadoMisActividadesAdapter(List<EstadoMisActividadesResponse> misActividades, OnEstadoActividadListener onEstadoActividadListener)
     {
         this.misActividades = misActividades;
+        this.onEstadoActividadListener = onEstadoActividadListener;
     }
 
     @NonNull
@@ -28,7 +30,7 @@ public class EstadoMisActividadesAdapter extends RecyclerView.Adapter<EstadoMisA
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.estado_mis_actividades_item,
                 viewGroup, false);
 
-        return new EstadoMisActividadesViewHolder(view);
+        return new EstadoMisActividadesViewHolder(view, onEstadoActividadListener);
     }
 
     @Override
@@ -49,5 +51,10 @@ public class EstadoMisActividadesAdapter extends RecyclerView.Adapter<EstadoMisA
     {
         String [] fechaEnPartes = misActividades.get(posicion).getFecha().split("-");
         return fechaEnPartes[2] + "/" + fechaEnPartes[1] + "/" + fechaEnPartes[0];
+    }
+
+    public interface OnEstadoActividadListener
+    {
+        void onEstadoActividadClick(int posicion);
     }
 }
