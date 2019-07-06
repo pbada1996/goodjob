@@ -145,6 +145,12 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
     @Override
     public void onUsuarioParticipanteClick(int posicion)
     {
-        // TODO: acá programar el paso al perfil del usuario
+        UsuarioParticipante usuarioSeleccionado = usuariosParticipantes.get(posicion);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", usuarioSeleccionado.getId());
+        Fragment perfil = new ProfileFragment();
+        perfil.setArguments(bundle);
+        getFragmentManager().beginTransaction().replace(R.id.containerFragments, perfil).commit();
     }
 }
