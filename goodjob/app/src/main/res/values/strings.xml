@@ -61,5 +61,8 @@
     <string name="iniciar_sesion">Debes iniciar sesión para visualizar tus actividades</string>
     <string name="ok_sesion">Iniciar Sesión</string>
 
+    <!-- string para fragment Actividad Aceptada -->
 
+    <string name="participantes">Participantes</string>
+    <string name="reputacion">Reputación</string>
 </resources>

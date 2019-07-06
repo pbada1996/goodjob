@@ -14,7 +14,7 @@
 	
 	$id_actividad = $_GET['id_actividad'];
 	
-	$consulta = $con->prepare("select u.idUsuario, concat(Unombre, ' ', Upaterno, ' ', Umaterno) as nombre, u.reputacion_ptos, u.cantidad_votos
+	$consulta = $con->prepare("select u.idUsuario, Unombre, u.reputacion_ptos, u.cantidad_votos
 	from postulacion_actividad p inner join usuario u 
 	on p.id_usuario = u.idUsuario 
 	where p.id_actividad = {$id_actividad} and p.estado = 2;");
