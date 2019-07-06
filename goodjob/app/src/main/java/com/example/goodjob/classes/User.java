@@ -26,6 +26,8 @@ public class User {
     private Integer availableActivities; // por defecto cada usuario tendrá 1 actividad disponible
     // para poder aplicar a las diferentes actividades.
     private Integer availablePosts; // la cantidad de actividades que se pueden publicar
+    private Double reputacionPuntos;
+    private Integer cantidadVotos;
     private boolean premium;
     private Integer status;
 
@@ -167,6 +169,22 @@ public class User {
         this.availablePosts = availablePosts;
     }
 
+    public Double getReputacionPuntos() {
+        return reputacionPuntos;
+    }
+
+    public void setReputacionPuntos(Double reputacionPuntos) {
+        this.reputacionPuntos = reputacionPuntos;
+    }
+
+    public Integer getCantidadVotos() {
+        return cantidadVotos;
+    }
+
+    public void setCantidadVotos(Integer cantidadVotos) {
+        this.cantidadVotos = cantidadVotos;
+    }
+
     public boolean isPremium() {
         return premium;
     }
@@ -202,6 +220,8 @@ public class User {
         this.accountCreationDate = jsonObject.optString("UfechaRegistro");
         this.availableActivities = jsonObject.optInt("actividades_disponibles");
         this.availablePosts = jsonObject.optInt("publicaciones_disponibles");
+        this.reputacionPuntos = jsonObject.optDouble("reputacion_ptos");
+        this.cantidadVotos = jsonObject.optInt("cantidad_votos");
         Integer checkingPremiun = jsonObject.optInt("idTipoPremiun");
         this.premium = checkingPremiun != null; // pay attention here, might a bug occur
         this.status = jsonObject.optInt("Uestado");
