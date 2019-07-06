@@ -11,7 +11,6 @@ import com.example.goodjob.adapter.EstadoMisActividadesAdapter;
 public class EstadoMisActividadesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView titulo;
-    public TextView autor;
     public TextView fecha;
     public TextView estado;
 
@@ -22,7 +21,6 @@ public class EstadoMisActividadesViewHolder extends RecyclerView.ViewHolder impl
         super(itemView);
 
         titulo = itemView.findViewById(R.id.tvTitulo);
-        autor = itemView.findViewById(R.id.tvAutor);
         fecha = itemView.findViewById(R.id.tvFecha);
         estado = itemView.findViewById(R.id.tvEstado);
 

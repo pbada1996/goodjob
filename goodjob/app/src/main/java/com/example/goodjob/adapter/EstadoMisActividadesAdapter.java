@@ -37,7 +37,6 @@ public class EstadoMisActividadesAdapter extends RecyclerView.Adapter<EstadoMisA
     public void onBindViewHolder(@NonNull EstadoMisActividadesViewHolder eav, int posicion)
     {
         eav.titulo.setText(misActividades.get(posicion).getTitulo());
-        eav.autor.setText(misActividades.get(posicion).getAutor().substring(0, 20));
         eav.fecha.setText(dateFormat(posicion));
         eav.estado.setText(misActividades.get(posicion).getEstado());
     }

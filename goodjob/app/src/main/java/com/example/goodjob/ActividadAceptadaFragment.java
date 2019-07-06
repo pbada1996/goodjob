@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActividadAceptadaFragment extends Fragment {
+public class ActividadAceptadaFragment extends Fragment implements UsuarioParticipanteAdapter.OnUsuarioParticipanteListener {
 
     private TextView tituloActividad;
     private TextView nombreAutor;
@@ -138,8 +138,13 @@ public class ActividadAceptadaFragment extends Fragment {
 
     private void cargarAdaptador()
     {
-        UsuarioParticipanteAdapter adapter = new UsuarioParticipanteAdapter(usuariosParticipantes);
+        UsuarioParticipanteAdapter adapter = new UsuarioParticipanteAdapter(usuariosParticipantes, this);
         rvUsuariosParticipantes.setAdapter(adapter);
     }
 
+    @Override
+    public void onUsuarioParticipanteClick(int posicion)
+    {
+        // TODO: acá programar el paso al perfil del usuario
+    }
 }

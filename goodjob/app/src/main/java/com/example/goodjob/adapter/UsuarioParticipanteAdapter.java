@@ -15,10 +15,12 @@ import java.util.List;
 public class UsuarioParticipanteAdapter extends RecyclerView.Adapter<UsuarioParticipanteViewHolder> {
 
     private List<UsuarioParticipante> usuariosParticipantes;
+    private OnUsuarioParticipanteListener onUsuarioParticipanteListener;
 
-    public UsuarioParticipanteAdapter(List<UsuarioParticipante> usuariosParticipantes)
+    public UsuarioParticipanteAdapter(List<UsuarioParticipante> usuariosParticipantes, OnUsuarioParticipanteListener onUsuarioParticipanteListener)
     {
         this.usuariosParticipantes = usuariosParticipantes;
+        this.onUsuarioParticipanteListener = onUsuarioParticipanteListener;
     }
 
     @NonNull
@@ -28,7 +30,7 @@ public class UsuarioParticipanteAdapter extends RecyclerView.Adapter<UsuarioPart
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.usuario_participante_item,
                 viewGroup, false);
 
-        return new UsuarioParticipanteViewHolder(view);
+        return new UsuarioParticipanteViewHolder(view, onUsuarioParticipanteListener);
     }
 
     @Override
@@ -41,5 +43,10 @@ public class UsuarioParticipanteAdapter extends RecyclerView.Adapter<UsuarioPart
     @Override
     public int getItemCount() {
         return usuariosParticipantes.size();
+    }
+
+    public interface OnUsuarioParticipanteListener
+    {
+        void onUsuarioParticipanteClick(int posicion);
     }
 }

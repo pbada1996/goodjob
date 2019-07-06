@@ -16,7 +16,6 @@ public class EstadoMisActividadesResponse {
 
         miActividad.id = data.optInt("id");
         miActividad.titulo = data.optString("titulo");
-        miActividad.autor = data.optString("nombre_completo");
         miActividad.fecha = data.optString("fecha_fin");
         Integer estado = data.optInt("estado");
         if (estado == 1)

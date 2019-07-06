@@ -79,7 +79,7 @@ public class EstadoMisActividadesFragment extends Fragment implements EstadoMisA
                     for (int i = 0; i < jsonArray.length(); i++)
                     {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        EstadoMisActividadesResponse actividad = EstadoMisActividadesResponse.cargarDataDesdeJsonObject(jsonObject);
+                        final EstadoMisActividadesResponse actividad = EstadoMisActividadesResponse.cargarDataDesdeJsonObject(jsonObject);
                         misActividades.add(actividad);
                     }
                     cargarAdaptador();
@@ -122,6 +122,22 @@ public class EstadoMisActividadesFragment extends Fragment implements EstadoMisA
         dialog.show();
     }
 
+    @Override
+    public void onEstadoActividadClick(int posicion)
+    {
+        EstadoMisActividadesResponse actividadSeleccionada = misActividades.get(posicion);
+        if (actividadSeleccionada.getEstado().equals("Aceptado"))
+        {
+            // pasando data de fragment a fragment
+            Integer id = actividadSeleccionada.getId();
+            Fragment actividadAceptada = new ActividadAceptadaFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", id);
+            actividadAceptada.setArguments(bundle);
+            getFragmentManager().beginTransaction().replace(R.id.containerFragments, actividadAceptada).commit();
+        }
+    }
+
     @SuppressLint("TrulyRandom")
     public static void handleSSLHandshake() {
         try {
@@ -149,22 +165,6 @@ public class EstadoMisActividadesFragment extends Fragment implements EstadoMisA
                 }
             });
         } catch (Exception ignored) {
-        }
-    }
-
-    @Override
-    public void onEstadoActividadClick(int posicion)
-    {
-        EstadoMisActividadesResponse actividadSeleccionada = misActividades.get(posicion);
-        if (actividadSeleccionada.getEstado().equals("Aceptado"))
-        {
-            // pasando data de fragment a fragment
-            Integer id = actividadSeleccionada.getId();
-            Fragment actividadAceptada = new ActividadAceptadaFragment();
-            Bundle bundle = new Bundle();
-            bundle.putInt("id", id);
-            actividadAceptada.setArguments(bundle);
-            getFragmentManager().beginTransaction().replace(R.id.containerFragments, actividadAceptada).commit();
         }
     }
 }
