@@ -82,8 +82,8 @@
         android:layout_marginRight="40dp"
         android:layout_marginBottom="40dp"
         android:text="@string/apply"
-        android:background="#7d7"
-        android:padding="10dp"
+        android:backgroundTint="#7d7"
+        android:padding="15dp"
         android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="@+id/imgPhoto"
         app:layout_constraintEnd_toEndOf="@+id/imgPhoto" />
