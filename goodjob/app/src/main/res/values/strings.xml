@@ -70,7 +70,7 @@
 
     <string name="puntaje">Puntaje</string>
     <string name="contactar">Contactar</string>
-    
+
     <!-- resources for suscription -->
 
     <string name="plan_titulo">Descubre más oportunidades con Premium</string>
@@ -83,4 +83,13 @@
     <string name="plan_compra_1">1 mes&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;39 PEN</string>
     <string name="plan_compra_2">6 meses&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;169 PEN</string>
     <string name="plan_compra_3">1 año&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;319 PEN</string>
+
+    <!-- strings for publicar actividad -->
+    <string name="Nombre_de_la_Actividad">Nombre de la Actividad</string>
+    <string name="Descripcion_de_la_Actividad">Descripción de la Actividad</string>
+    <string name="Fecha_Inicio">Fecha Inicio</string>
+    <string name="Fecha_Fin">Fecha Fin</string>
+    <string name="Tiempo_de_Expiracion">Tiempo de Expiración</string>
+    <string name="Cantidad_de_Integrantes">Cantidad de Integrantes</string>
+    <string name="Recompensa">Recompensa</string>
 </resources>

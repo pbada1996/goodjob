@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGustavo"
+    tools:context=".PublicarActividadActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#4d81a2" />
+
+    <ScrollView
+        android:layout_width="395dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="363dp"
+                android:layout_height="46dp"
+                android:text="FORMULARIO DE ACTIVIDAD"
+                android:textColor="@color/colorWhite"
+                android:textColorHighlight="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="25dp"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="48dp" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:contentPaddingBottom="15dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="307dp"
+                    android:layout_height="502dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:paddingLeft="25dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_account_circle_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/txtNombreActividad"
+                            android:layout_width="234dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center_vertical"
+                            android:hint="@string/Nombre_de_la_Actividad"
+                            android:paddingLeft="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:paddingLeft="25dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_content_paste_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/txtDescrionActividad"
+                            android:layout_width="234dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center_vertical"
+                            android:hint="@string/Descripcion_de_la_Actividad"
+                            android:paddingLeft="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:paddingLeft="25dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_date_range_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/txtFechaInicio"
+                            android:layout_width="150dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center_vertical"
+                            android:hint="@string/Fecha_Inicio"
+                            android:paddingLeft="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:paddingLeft="25dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_date_range_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/txtFechaFin"
+                            android:layout_width="150dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center_vertical"
+                            android:hint="@string/Fecha_Fin"
+                            android:paddingLeft="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:paddingLeft="25dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_timer_off_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/txtTiempoExpiracion"
+                            android:layout_width="234dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center_vertical"
+                            android:hint="@string/Tiempo_de_Expiracion"
+                            android:paddingLeft="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:paddingLeft="25dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_group_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/txtCantidadIntegrantes"
+                            android:layout_width="234dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center_vertical"
+                            android:hint="@string/Cantidad_de_Integrantes"
+                            android:paddingLeft="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:paddingLeft="25dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_local_atm_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/txtRecompensa"
+                            android:layout_width="234dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center_vertical"
+                            android:hint="@string/Recompensa"
+                            android:paddingLeft="10dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="62dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btnPublicar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/btn_uno"
+                    android:text="PUBLICAR"
+                    android:textColor="@drawable/txt_btn_uno" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/btn_dos"
+                    android:text="CANCELAR"
+                    android:textColor="@drawable/txt_btn_dos" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
