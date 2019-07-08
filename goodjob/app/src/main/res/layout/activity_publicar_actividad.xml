@@ -115,7 +115,7 @@
                             android:layout_height="45dp"
                             android:layout_gravity="center_vertical"
                             android:hint="@string/Fecha_Inicio"
-                            android:inputType="date"
+                            android:inputType="text"
                             android:paddingLeft="10dp" />
 
                     </LinearLayout>
@@ -137,7 +137,7 @@
                             android:layout_height="45dp"
                             android:layout_gravity="center_vertical"
                             android:hint="@string/Fecha_Fin"
-                            android:inputType="date"
+                            android:inputType="text"
                             android:paddingLeft="10dp" />
                     </LinearLayout>
 
@@ -224,7 +224,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
