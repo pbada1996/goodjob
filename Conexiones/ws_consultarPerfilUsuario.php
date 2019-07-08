@@ -14,15 +14,12 @@
 	
 	$id_usuario = $_GET['id_usuario'];
 	
-	$consulta = $con->prepare("select a.id, concat(Unombre, ' ', Upaterno, ' ', Umaterno) as nombre_completo, titulo, a.fecha_fin, p.estado 
-		from postulacion_actividad p inner join actividad a 
-		on p.id_actividad = a.id inner join usuario u 
-		on u.idUsuario = p.id_usuario 
-		where p.id_usuario = {$id_usuario};");
+	$consulta = $con->prepare("SELECT idUsuario, concat(Unombre, ' ', UPaterno, ' ', UMaterno) as nombre, puntaje, reputacion_ptos, cantidad_votos
+from usuario where idUsuario = {$id_usuario};");
 		
 	$consulta->execute();
 	
-	$consulta->bind_result($id, $nombre_completo, $titulo, $fecha_fin, $estado);
+	$consulta->bind_result($id, $nombre, $puntaje, $reputacion_ptos, $cantidad_votos);
 	
 	$actividad = array();
 	
@@ -30,10 +27,10 @@
 	{
 		$temp = array();
 		$temp['id'] = $id;
-		$temp['titulo'] = $titulo;
-		$temp['nombre_completo'] = $nombre_completo;
-		$temp['fecha_fin'] = $fecha_fin;
-		$temp['estado'] = $estado;
+		$temp['nombre'] = $nombre;
+		$temp['puntaje'] = $puntaje;
+		$temp['reputacion_ptos'] = $reputacion_ptos;
+		$temp['cantidad_votos'] = $cantidad_votos;
 		
 		array_push($actividad, $temp);
 	}

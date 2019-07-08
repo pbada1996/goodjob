@@ -58,12 +58,12 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tvNombreCompletoPerfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="60dp"
-                                android:text="Jose Arquimidez"
-                                android:textSize="25dp"
+                                android:textSize="22sp"
                                 android:textStyle="bold" />
 
 
@@ -142,7 +142,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:paddingLeft="20dp"
-                                    android:text="ajustes" />
+                                    android:text="Ajustes" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -163,19 +163,19 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tvReputacionPerfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="4.8"
-                                android:textSize="35dp"
+                                android:textSize="35sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Rating"
-                                android:textSize="20dp"
+                                android:text="@string/reputacion"
+                                android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -187,19 +187,19 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tvPuntajePerfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="15"
-                                android:textSize="35dp"
+                                android:textSize="35sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Project"
-                                android:textSize="20dp"
+                                android:text="@string/puntaje"
+                                android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -213,12 +213,13 @@
                         android:weightSum="2">
 
                         <Button
-                            android:layout_width="125dp"
+                            android:id="@+id/btnContactar"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_weight="2"
-                            android:text="Hire me"
+                            android:text="@string/contactar"
                             android:textColor="@color/colorPrimaryDark" />
                     </LinearLayout>
                 </LinearLayout>

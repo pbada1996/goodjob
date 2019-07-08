@@ -65,4 +65,9 @@
 
     <string name="participantes">Participantes</string>
     <string name="reputacion">Reputación</string>
+
+    <!-- strings para perfil fragment -->
+
+    <string name="puntaje">Puntaje</string>
+    <string name="contactar">Contactar</string>
 </resources>
