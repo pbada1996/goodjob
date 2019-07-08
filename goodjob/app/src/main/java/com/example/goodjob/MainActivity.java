@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import com.example.goodjob.classes.ValidSession;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
+    private FloatingActionButton publicarActividad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
         });
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // boton flotante
+        publicarActividad = findViewById(R.id.fabPublicarActividad);
+        publicarActividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PublicarActividadActivity.class));
+            }
+        });
 
         // setting the initial fragment on app start
         Fragment initialFragment = new HomeFragment();
