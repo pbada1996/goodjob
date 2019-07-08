@@ -70,4 +70,17 @@
 
     <string name="puntaje">Puntaje</string>
     <string name="contactar">Contactar</string>
+    
+    <!-- resources for suscription -->
+
+    <string name="plan_titulo">Descubre más oportunidades con Premium</string>
+    <string name="plan_1">Postula a todas las actividades</string>
+    <string name="plan_2">Decora tu perfil con stickers</string>
+    <string name="plan_3">Desbloquea medallas por colaborar</string>
+    <string name="plan_4">Destaca entre los demás</string>
+    <string name="plan_5">Sé el responsable del grupo con más frecuencia</string>
+    <string name="plan_6">Y mucho más &#8230;</string>
+    <string name="plan_compra_1">1 mes&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;39 PEN</string>
+    <string name="plan_compra_2">6 meses&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;169 PEN</string>
+    <string name="plan_compra_3">1 año&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;319 PEN</string>
 </resources>

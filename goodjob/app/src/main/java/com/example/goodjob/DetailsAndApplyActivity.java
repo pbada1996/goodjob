@@ -204,7 +204,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private void cambioDeEstadoBoton()
     {
         moreInfo.setText(R.string.already_in);
-        moreInfo.setBackgroundColor(Color.parseColor("#dd2244"));
+        moreInfo.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.rojo));
         moreInfo.setEnabled(false);
     }
 
