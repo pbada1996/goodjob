@@ -161,13 +161,13 @@ INSERT INTO usuario VALUES
 (null, NULL, 'Juan Carlos', 'Castillo', 'Aycachi', '70555913', NULL, '1993-04-01', '979666355', 5, 'carlosjordi@hotmail.com', 42, 'Las Margaritas', 'admin', NULL, '2019-07-02', 2, 1, 0, 0, 0, 1);
 
 INSERT INTO usuario VALUES
-(null, NULL, 'anthony', 'cachi', 'ayala', '63571099', NULL, '1999-01-03', '985863707', 5, 'anthonyca18m@gmail.com', 17, 'comas city #123', 'admin', NULL, '2019-06-25', 2, 1, 0, 0, 0, 1);
+(null, NULL, 'Max Anthony', 'Cachi', 'Ayala', '63571099', NULL, '1999-01-03', '985863707', 5, 'anthonyca18m@gmail.com', 17, 'comas city #123', 'admin', NULL, '2019-06-25', 2, 1, 0, 0, 0, 1);
 
 INSERT INTO usuario VALUES
-(null, NULL, 'Gustavo Adolfo', 'Lizarzaburu', 'Mercado', null, NULL, null, '935902409', 5, 'lizarzaburu@gmail.com', 42, 'Ovalo Granda', 'admin', NULL, '2019-07-02', 2, 1, 0, 0, 0, 1);
+(null, NULL, 'Gustavo Adolfo', 'Lizarzaburu', 'Mercado', null, NULL, null, '935902409', 5, 'lizarzaburu@gmail.com', 42, 'Ovalo Granda', 'admin', NULL, '2019-07-02', 2, 1, 70, 9, 2, 1);
 
 INSERT INTO usuario VALUES
-(null, NULL, 'Yaser Andre', 'Quinonez', 'Chaponan', null, NULL, null, '922721204', 5, 'quinonez@gmail.com', 1, 'Lejos de casa', 'admin', NULL, '2019-07-02', 2, 1, 0, 0, 0, 1);
+(null, NULL, 'Yaser Andre', 'Quinonez', 'Chaponan', null, NULL, null, '922721204', 5, 'yaser@gmail.com', 1, 'Lejos de casa', 'admin', NULL, '2019-07-02', 2, 1, 0, 0, 0, 1);
 
 create table tipo_recompensa
 (

@@ -27,14 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if (ValidSession.usuarioLogueado == null)
-                {
-                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            public void onClick(View v) {
+                if (ValidSession.usuarioLogueado == null) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
-                }
-                else{
+                } else {
                     navigation.setSelectedItemId(R.id.navigation_profile);
                 }
             }
@@ -47,13 +44,14 @@ public class MainActivity extends AppCompatActivity {
         publicarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PublicarActividadActivity.class));
+                if (ValidSession.usuarioLogueado != null)
+                    startActivity(new Intent(MainActivity.this, PublicarActividadActivity.class));
             }
         });
 
         // setting the initial fragment on app start
         Fragment initialFragment = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments,initialFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments, initialFragment).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new EstadoMisActividadesFragment();
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments,selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments, selectedFragment).commit();
             return true;
         }
     };
