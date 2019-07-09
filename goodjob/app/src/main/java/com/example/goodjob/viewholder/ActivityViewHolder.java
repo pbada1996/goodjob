@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.goodjob.R;
 import com.example.goodjob.adapter.ActivityAdapter;
 
-public class ActivityViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
+public class ActivityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView title;
     public TextView authorName;
