@@ -7,34 +7,27 @@
 
 	$json=array();
 
-	if (isset($_GET["idUsuario"]) && isset($_GET["UFoto"]) && isset($_GET["Unombre"]) && isset($_GET["UPaterno"]) && isset($_GET["UMaterno"]) && isset($_GET["Udni"]) && isset($_GET["UPasaporte"]) && isset($_GET["UfechaNacimiento"]) && isset($_GET["Ucelular"]) && isset($_GET["idPerfilP"]) && isset($_GET["Ucorreo"]) && isset($_GET["idDistrito"]) && isset($_GET["Udireccion"]) && isset($_GET["Upass"]) && isset($_GET["idTipoPremiun"]) && isset($_GET["UfechaRegistro"]) && isset($_GET["Uestado"])) {
+	if (isset($_GET["Unombre"]) && isset($_GET["UPaterno"]) && isset($_GET["UMaterno"]) && isset($_GET["Udni"]) && isset($_GET["UfechaNacimiento"]) && isset($_GET["Ucelular"]) && isset($_GET["Ucorreo"]) && isset($_GET["Upass"]) && isset($_GET["UfechaRegistro"]) && isset($_GET["Uestado"])) {
 		
-		$idUsuario=$_GET['idUsuario'];
-		$UFoto=$_GET['UFoto'];
 		$Unombre=$_GET['Unombre'];
 		$UPaterno=$_GET['UPaterno'];
 		$UMaterno=$_GET['UMaterno'];
 		$Udni=$_GET['Udni'];
-		$UPasaporte=$_GET['UPasaporte'];
 		$UfechaNacimiento=$_GET['UfechaNacimiento'];
 		$Ucelular=$_GET['Ucelular'];
-		$idPerfilP=$_GET['idPerfilP'];
 		$Ucorreo=$_GET['Ucorreo'];
-		$idDistrito=$_GET['idDistrito'];
-		$Udireccion=$_GET['Udireccion'];
 		$Upass=$_GET['Upass'];
-		$idTipoPremiun=$_GET['idTipoPremiun'];
 		$UfechaRegistro=$_GET['UfechaRegistro'];
 		$Uestado=$_GET['Uestado'];
 
 		$conexion=mysqli_connect($hostname_localhost,$username_localhost,$password_localhost,$database_localhost);
 
-		$insert="INSERT INTO usuario(idUsuario, UFoto, Unombre, UPaterno, UMaterno, Udni, UPasaporte, UfechaNacimiento, Ucelular, idPerfilP, Ucorreo, idDistrito, Udireccion, Upass, idTipoPremiun, UfechaRegistro, Uestado) VALUES('{$idUsuario}','{$UFoto}','{$Unombre}','{$UPaterno}','{$UMaterno}','{$Udni}','{$UPasaporte}','{$UfechaNacimiento}','{$Ucelular}','{$idPerfilP}','{$Ucorreo}','{$idDistrito}','{$Udireccion}','{$Upass}','{$idTipoPremiun}','{$UfechaRegistro}','{$Uestado}')";
+		$insert="INSERT INTO usuario(Unombre, UPaterno, UMaterno, Udni, UfechaNacimiento, Ucelular, Ucorreo, Upass, UfechaRegistro, Uestado) VALUES('{$Unombre}','{$UPaterno}','{$UMaterno}','{$Udni}','{$UfechaNacimiento}','{$Ucelular}','{$Ucorreo}','{$Upass}','{$UfechaRegistro}','{$Uestado}')";
 
 		$resultado_insert=mysqli_query($conexion,$insert);
 
 		if ($resultado_insert) {
-			$consulta="SELECT * FROM usuario WHERE idUsuario= '{$idUsuario}'";
+			$consulta="SELECT * FROM usuario WHERE Udni= '{$Udni}'";
 			$resultado=mysqli_query($conexion,$consulta);
 
 			if ($registro=mysqli_fetch_array($resultado)) {
