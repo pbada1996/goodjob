@@ -22,7 +22,7 @@
 
 		$conexion=mysqli_connect($hostname_localhost,$username_localhost,$password_localhost,$database_localhost);
 
-		$insert="INSERT INTO usuario(Unombre, UPaterno, UMaterno, Udni, UfechaNacimiento, Ucelular, Ucorreo, Upass, UfechaRegistro, Uestado) VALUES('{$Unombre}','{$UPaterno}','{$UMaterno}','{$Udni}','{$UfechaNacimiento}','{$Ucelular}','{$Ucorreo}','{$Upass}','{$UfechaRegistro}','{$Uestado}')";
+		$insert="INSERT INTO usuario(Unombre, UPaterno, UMaterno, Udni, UfechaNacimiento, Ucelular, Ucorreo, Upass, UfechaRegistro, Uestado, actividades_disponibles, publicaciones_disponibles, puntaje, reputacion_ptos, cantidad_votos) VALUES('{$Unombre}','{$UPaterno}','{$UMaterno}','{$Udni}','{$UfechaNacimiento}','{$Ucelular}','{$Ucorreo}','{$Upass}','{$UfechaRegistro}','{$Uestado}', 2, 0, 0, 0, 0)";
 
 		$resultado_insert=mysqli_query($conexion,$insert);
 

@@ -89,12 +89,17 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
         handleSSLHandshake();
     }
 
-    private void CargarWebServiceRegistrarUser() {
+    private void CargarWebServiceRegistrarUser()
+    {
+        String fecha = tvfechanacimiento.getText().toString();
+        String [] fec = fecha.split("/");
+        fecha = fec[2] + "-" + fec[1] + "-" + fec[0];
+
         String url = ValidSession.IP + "/WS_RegistrarUsuario.php?Unombre="+tvnombre.getText().toString()+"&"+
                 "UPaterno="+tvpaterno.getText().toString()+"&"+
                 "UMaterno="+tvmaterno.getText().toString()+"&"+
                 "Udni="+tvdni.getText().toString()+"&"+
-                "UfechaNacimiento="+tvfechanacimiento.getText().toString()+"&"+
+                "UfechaNacimiento="+fecha+"&"+
                 "Ucelular="+tvcelular.getText().toString()+"&"+
                 "Ucorreo="+tvcorreo.getText().toString()+"&"+
                 "Upass="+tvpass.getText().toString()+"&"+
@@ -106,8 +111,8 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
     }
 
     @Override
-    public void onErrorResponse(VolleyError error) {
-
+    public void onErrorResponse(VolleyError error)
+    {
         Toast.makeText(getApplicationContext(),"Oh! será el fin del hombre araña?"+ error.toString(),Toast.LENGTH_SHORT).show();
     }
 
@@ -116,9 +121,6 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
         Toast.makeText(getApplicationContext(),"Te has Registrado con Exito",Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
     }
-
-
-
 
     //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
     @SuppressLint("TrulyRandom")

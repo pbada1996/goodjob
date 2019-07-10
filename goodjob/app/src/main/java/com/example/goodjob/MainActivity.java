@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_profile:
                     selectedFragment = new ProfileFragment();
                     break;
-                case R.id.navigation_notifications:
-                    selectedFragment = new MyActivityFragment();
-                    break;
+                case R.id.navigation_premiun:
+                    startActivity(new Intent(MainActivity.this, SuscriptionActivity.class));
+                    return true;
                 case R.id.navigation_estado_mis_actividades:
                     selectedFragment = new EstadoMisActividadesFragment();
                     break;

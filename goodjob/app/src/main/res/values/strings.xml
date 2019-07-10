@@ -2,7 +2,7 @@
     <string name="app_name">GoodJob</string>
     <string name="title_home">Inicio</string>
     <string name="title_profile">Perfil</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_premiun">Premiun</string>
     <string name="title_estado_mis_actividades">Mis Actividades</string>
 
     <!-- strings for fragment home -->
