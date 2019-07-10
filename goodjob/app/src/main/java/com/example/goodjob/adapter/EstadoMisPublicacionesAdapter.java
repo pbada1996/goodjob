@@ -15,10 +15,12 @@ import java.util.List;
 public class EstadoMisPublicacionesAdapter extends RecyclerView.Adapter<EstadoMisPublicacionesViewHolder> {
 
     private List<EstadoMisPublicacionesResponse> publicaciones;
+    private OnEstadoMisPublicacionesListener onEstadoMisPublicacionesListener;
 
-    public EstadoMisPublicacionesAdapter(List<EstadoMisPublicacionesResponse> publicaciones)
+    public EstadoMisPublicacionesAdapter(List<EstadoMisPublicacionesResponse> publicaciones, OnEstadoMisPublicacionesListener onEstadoMisPublicacionesListener)
     {
         this.publicaciones = publicaciones;
+        this.onEstadoMisPublicacionesListener = onEstadoMisPublicacionesListener;
     }
 
     @NonNull
@@ -28,7 +30,7 @@ public class EstadoMisPublicacionesAdapter extends RecyclerView.Adapter<EstadoMi
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.estado_mis_publicaciones_item,
                 viewGroup, false);
 
-        return new EstadoMisPublicacionesViewHolder(view);
+        return new EstadoMisPublicacionesViewHolder(view, onEstadoMisPublicacionesListener);
     }
 
     @Override
@@ -49,5 +51,10 @@ public class EstadoMisPublicacionesAdapter extends RecyclerView.Adapter<EstadoMi
     {
         String [] fechaEnPartes = fecha.split("-");
         return fechaEnPartes[2] + "/" + fechaEnPartes[1] + "/" + fechaEnPartes[0];
+    }
+
+    public interface OnEstadoMisPublicacionesListener
+    {
+        void onMisPublicacionesClick(int posicion);
     }
 }

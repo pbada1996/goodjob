@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstadoMisPublicacionesFragment extends Fragment {
+public class EstadoMisPublicacionesFragment extends Fragment implements EstadoMisPublicacionesAdapter.OnEstadoMisPublicacionesListener {
 
     private RecyclerView rvMisPublicaciones;
     private List<EstadoMisPublicacionesResponse> publicaciones;
@@ -91,8 +91,20 @@ public class EstadoMisPublicacionesFragment extends Fragment {
 
     private void cargarAdapter()
     {
-        EstadoMisPublicacionesAdapter adapter = new EstadoMisPublicacionesAdapter(publicaciones);
+        EstadoMisPublicacionesAdapter adapter = new EstadoMisPublicacionesAdapter(publicaciones, this);
         rvMisPublicaciones.setAdapter(adapter);
     }
 
+    @Override
+    public void onMisPublicacionesClick(int posicion)
+    {
+        Integer id = publicaciones.get(posicion).getId();
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", id);
+
+        Fragment detalle = new DetalleMiPublicacionFragment();
+        detalle.setArguments(bundle);
+
+        getFragmentManager().beginTransaction().replace(R.id.containerFragments, detalle).commit();
+    }
 }
