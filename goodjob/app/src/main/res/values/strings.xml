@@ -92,4 +92,12 @@
     <string name="Tiempo_de_Expiracion">Tiempo de Expiración</string>
     <string name="Cantidad_de_Integrantes">Cantidad de Integrantes</string>
     <string name="Recompensa">Recompensa</string>
+
+    <!-- string for fragment pre actividades -->
+    <string name="mis_postulaciones">Mis postulaciones</string>
+    <string name="mis_publicaciones">Mis publicaciones</string>
+
+    <!-- string for fragment mis publicaciones -->
+    <string name="postulantes_cantidad">Postulantes</string>
+
 </resources>

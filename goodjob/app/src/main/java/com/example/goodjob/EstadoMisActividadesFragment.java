@@ -59,8 +59,6 @@ public class EstadoMisActividadesFragment extends Fragment implements EstadoMisA
 
         if (ValidSession.usuarioLogueado != null)
             cargarData(ValidSession.usuarioLogueado.getId());
-        else
-            cuadroDialogo();
 
         handleSSLHandshake();
         return view;
@@ -102,24 +100,6 @@ public class EstadoMisActividadesFragment extends Fragment implements EstadoMisA
     {
         EstadoMisActividadesAdapter adapter = new EstadoMisActividadesAdapter(misActividades, this);
         rvEstadoMisActividades.setAdapter(adapter);
-    }
-
-    private void cuadroDialogo()
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(R.string.inicio_sesion);
-        builder.setMessage(R.string.iniciar_sesion);
-        builder.setPositiveButton(R.string.ok_sesion, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
-            }
-        });
-        builder.setIcon(android.R.drawable.ic_dialog_alert);
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 
     @Override

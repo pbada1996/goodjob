@@ -1,11 +1,13 @@
 package com.example.goodjob;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,12 +75,35 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, SuscriptionActivity.class));
                     return true;
                 case R.id.navigation_estado_mis_actividades:
-                    selectedFragment = new EstadoMisActividadesFragment();
+                    if (ValidSession.usuarioLogueado == null)
+                    {
+                        cuadroDialogo();
+                        return true;
+                    }
+                    selectedFragment = new PreMyActivitesFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments, selectedFragment).commit();
             return true;
         }
     };
+
+    private void cuadroDialogo()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.inicio_sesion);
+        builder.setMessage(R.string.iniciar_sesion);
+        builder.setPositiveButton(R.string.ok_sesion, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 }
