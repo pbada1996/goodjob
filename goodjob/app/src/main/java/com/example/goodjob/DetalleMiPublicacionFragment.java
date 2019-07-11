@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetalleMiPublicacionFragment extends Fragment {
+public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPostulanteAdapter.OnUsuarioPostulanteListener {
 
     private TextView titulo;
     private TextView autor;
@@ -37,6 +37,8 @@ public class DetalleMiPublicacionFragment extends Fragment {
     private TextView recompensa;
     private RecyclerView rvPostulantes;
     private List<UsuarioPostulante> postulantes;
+    // para cogerlo en los click
+    private Integer idActividad = null;
 
     public DetalleMiPublicacionFragment() {}
 
@@ -47,7 +49,7 @@ public class DetalleMiPublicacionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detalle_mi_publicacion, container, false);
 
         Bundle bundle = this.getArguments();
-        Integer idActividad = bundle.getInt("id");
+        idActividad = bundle.getInt("id");
 
         mapearViews(view);
 
@@ -149,7 +151,71 @@ public class DetalleMiPublicacionFragment extends Fragment {
 
     private void cargarAdapter()
     {
-        UsuarioPostulanteAdapter adapter = new UsuarioPostulanteAdapter(postulantes);
+        UsuarioPostulanteAdapter adapter = new UsuarioPostulanteAdapter(postulantes, this);
         rvPostulantes.setAdapter(adapter);
+    }
+
+    @Override
+    public void onAceptarClick(int posicion)
+    {
+        String url = ValidSession.IP + "/ws_aceptarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
+                + "&id_actividad=" + idActividad;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+                Fragment detalle = new DetalleMiPublicacionFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", idActividad);
+                detalle.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.containerFragments, detalle).commit();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+    }
+
+    @Override
+    public void onRechazarClick(int posicion)
+    {
+        String url = ValidSession.IP + "/ws_rechazarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
+                + "&id_actividad=" + idActividad;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+                Fragment detalle = new DetalleMiPublicacionFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", idActividad);
+                detalle.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.containerFragments, detalle).commit();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+    }
+
+    @Override
+    public void onPostulanteClick(int posicion)
+    {
+        Integer id = postulantes.get(posicion).getId();
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", id);
+        Fragment perfil = new ProfileFragment();
+        perfil.setArguments(bundle);
+        getFragmentManager().beginTransaction().replace(R.id.containerFragments, perfil).commit();
     }
 }

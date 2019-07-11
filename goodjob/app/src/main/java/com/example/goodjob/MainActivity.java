@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.goodjob.classes.ValidSession;
 
@@ -46,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
         publicarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ValidSession.usuarioLogueado != null)
+                if (ValidSession.usuarioLogueado != null && ValidSession.usuarioLogueado.getId() == 1)
                     startActivity(new Intent(MainActivity.this, PublicarActividadActivity.class));
+                else
+                    Toast.makeText(getApplicationContext(), "No puedes realizar esta acción", Toast.LENGTH_LONG).show();
             }
         });
 

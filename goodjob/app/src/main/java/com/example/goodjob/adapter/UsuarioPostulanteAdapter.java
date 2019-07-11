@@ -15,10 +15,12 @@ import java.util.List;
 public class UsuarioPostulanteAdapter extends RecyclerView.Adapter<UsuarioPostulanteViewHolder> {
 
     private List<UsuarioPostulante> postulantes;
+    private OnUsuarioPostulanteListener onUsuarioPostulanteListener;
 
-    public UsuarioPostulanteAdapter(List<UsuarioPostulante> postulantes)
+    public UsuarioPostulanteAdapter(List<UsuarioPostulante> postulantes, OnUsuarioPostulanteListener onUsuarioPostulanteListener)
     {
         this.postulantes = postulantes;
+        this.onUsuarioPostulanteListener = onUsuarioPostulanteListener;
     }
 
     @NonNull
@@ -28,13 +30,16 @@ public class UsuarioPostulanteAdapter extends RecyclerView.Adapter<UsuarioPostul
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.usuario_postulante_item,
                 viewGroup, false);
 
-        return new UsuarioPostulanteViewHolder(view);
+        return new UsuarioPostulanteViewHolder(view, onUsuarioPostulanteListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UsuarioPostulanteViewHolder uvh, int posicion)
     {
-        uvh.nombre.setText(postulantes.get(posicion).getNombre());
+        String nombre = postulantes.get(posicion).getNombre();
+        if (nombre.length() > 11)
+            nombre = nombre.substring(0, 11);
+        uvh.nombre.setText(nombre);
         uvh.reputacion.setText(String.valueOf(postulantes.get(posicion).getReputacion()));
         uvh.estado.setText(postulantes.get(posicion).getEstado());
     }
