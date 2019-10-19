@@ -1,34 +1,41 @@
+# Goodjob
+Proyecto con el fin de promover un mejor cuidado del medio ambiente
 
+## Contenido
+* [Integrantes](#integrantes)
+* [Historias de Usuario](#historias-de-usuario)
+* [Como colaborar](#instrucciones-para-colaborar)
 
+### Integrantes
+* [Cachi Ayala](https://github.com/Anthonyca18m/)
+* [Castillo Aycachi](https://github.com/carlosjordi/)
+* [Lizarzaburu Mercado](https://github.com/glizarzaburu/)
+* [Pacheco Bada](https://github.com/)
 
-# Buen Trabajo
-Proyecto 'Buen Trabajo' para el curso de android
-
-### LINK DE DATABASE
-LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! LEER IMPORTANTE!!! 
-https://www.db4free.net/phpMyAdmin/db_structure.php?server=1&db=goodjob
-
-* ID: anthonyca18m
-* Clave anthonyca18m
-
--Aqui puedes editar, agregar, mover , lo que tu quieres online para que los demas los tengan a timereal :v
-
-### Prioridades en historias de usuario :
-
-### Alta
+### Historias de Usuario
+#### Cachi Ayala
+* Perfil de usuario	
+* Mantenimiento de usuarios
+* Aceptación/Rechazo de actividad	
+* Aceptación/Rechazo de producto
+#### Castillo Aycachi
+* Registro de productos canjeados
+* Canje de puntos	
+* Solicitud de registro como empresa	
+* Publicar actividad	
+* Reparto de recompensa	
+#### Lizarzaburu Mercado
+* Inicio de sesión	
+* Estado de postulación a actividades	
+* Detalle de actividad aceptada
+* Aplicar a actividad	
+* Puntuación de compañeros 
+#### Pacheco Bada
+* Registro como usuario 
+* Aceptación/Rechazo de aplicantes	
 * Listado de actividades
-* Postular a actividad
-* Publicar actividad
-* Registro de usuario
-
-### Media
-* Perfil de usuario
-* Estado de postulación a actividades
-* Mantenimiento de actividades
-
-### Baja
-* Puntuar compañeros
-* Suscripción
+* Mantenimiento de actividades	
+* Insignias y medallas de perfil
 
 **Importante**: Revisar los TODOs del proyecto
 
@@ -38,9 +45,7 @@ https://www.db4free.net/phpMyAdmin/db_structure.php?server=1&db=goodjob
 
 ## Instrucciones para colaborar
 
-Bueno chicos, debido a que Cachi avanzó el proyecto sin llevar el control de versión decidimos que él sea el master ahora, así que lo que tienen que hacer es lo siguiente.
-
-1. Entran a la url https://github.com/Anthonyca18m/APPGODJOOB y le dan a la opción de la esquina superior derecha que dice 'Fork'
+1. Entran a la url https://github.com/carlosjordi/goodjob y le dan a la opción de la esquina superior derecha que dice 'Fork'
 
 [fork]:https://i.gyazo.com/576cccd2d9c45ada41b72f7f1f9cef05.png "Fork"
 
@@ -54,10 +59,10 @@ Bueno chicos, debido a que Cachi avanzó el proyecto sin llevar el control de ve
 3. Abren la consola de git(de usar windows) o la terminal de linux ubicados en el lugar donde vayan a almacenar el repositorio del proyecto y escriben el siguiente comando:
 
 ```bash
-git clone https://github.com/FeoRosonskiDev/APPGODJOOB.git GoodJobProject
+git clone https://github.com/carlosjordi/goodjob.git GoodJobProject
 ```
 
-Cabe recalcar que donde dice 'FeoRosonskiDev' irá su propio nombre de usuario de git, pero no es necesario que lo escriban a mano, ya que lo tienen copiado en el portapapeles, así que basta con click derecho -> pegar
+Cabe recalcar que donde dice 'carlosjordi' irá su propio nombre de usuario de git, pero no es necesario que lo escriban a mano, ya que lo tienen copiado en el portapapeles, así que basta con click derecho -> pegar
 
 4. El siguiente paso es ubicar la consola en la carpeta que contiene el proyecto:
 
@@ -68,10 +73,10 @@ cd GoodJobProject
 5. Ya ubicados en esa carpeta el siguiente comando es:
 
 ```bash
-git remote add main https://github.com/Anthonyca18m/APPGODJOOB
+git remote add main https://github.com/carlosjordi/goodjob
 ```
 
-**OJO: este comando es tal cual, no deben cambiar el nombre de Anthonyca18m por ningún otro.**
+**OJO: este comando es tal cual, no deben cambiar el nombre de carlosjordi por ningún otro.**
 
 6. Deben crear una rama donde harán sus propios cambios al proyecto, esta rama pueden llamarla como uds. Dentro de esta son libres de ramificar como prefieran, siempre y cuando nunca toquen la rama 'master' todo estará bien.
 
@@ -105,9 +110,9 @@ Nuevamente recalco, donde dice 'castillo' va el nombre de SUS ramas
 
 >![alt text][open_pull_request]
 
-10. Solo debemos asegurarnos que diga **base repository:Anthonyca18m/APPGOODJOB base: master** y al lado derecho debe estar su repositorio junto al nombre de su rama. Terminan con el título y una descripción de lo hecho para que Cachi proceda a revisarlo y aceptarlo.
+10. Solo debemos asegurarnos que diga **base repository:carlosjordi/goodjob base: master** y al lado derecho debe estar su repositorio junto al nombre de su rama. Terminan con el título y una descripción de lo hecho para que proceda a revisarlo y aceptarlo/rechazarlo.
 
-11. Una vez Cachi lo apruebe, uds harán uso de este comando
+11. Una vez sea aprobado, uds harán uso de este comando
 
 ```bash
 git pull main master
