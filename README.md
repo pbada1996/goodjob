@@ -10,7 +10,7 @@ Proyecto con el fin de promover un mejor cuidado del medio ambiente
 * [Cachi Ayala](https://github.com/Anthonyca18m/)
 * [Castillo Aycachi](https://github.com/carlosjordi/)
 * [Lizarzaburu Mercado](https://github.com/glizarzaburu/)
-* [Pacheco Bada](https://github.com/)
+* [Pacheco Bada](https://github.com/pbada1996/)
 
 ### Historias de Usuario
 #### Cachi Ayala
