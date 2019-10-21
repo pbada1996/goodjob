@@ -32,7 +32,7 @@ Proyecto con el fin de promover un mejor cuidado del medio ambiente
 * Puntuación de compañeros 
 #### Pacheco Bada
 * Registro como usuario 
-* Aceptación/Rechazo de aplicantes	
+* Aceptación/Rechazo de aplicantes
 * Listado de actividades
 * Mantenimiento de actividades	
 * Insignias y medallas de perfil
