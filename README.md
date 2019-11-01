@@ -4,6 +4,8 @@ Proyecto con el fin de promover un mejor cuidado del medio ambiente
 ## Contenido
 * [Integrantes](#integrantes)
 * [Historias de Usuario](#historias-de-usuario)
+* [Prerequisitos](#prerequisitos)
+* [Preparando el entorno local](#preparando-el-entorno-local)
 * [Como colaborar](#instrucciones-para-colaborar)
 
 ### Integrantes
@@ -36,12 +38,31 @@ Proyecto con el fin de promover un mejor cuidado del medio ambiente
 * Listado de actividades
 * Mantenimiento de actividades	
 * Insignias y medallas de perfil
+### Prerequisitos
+Para este proyecto solo necesitas:
+* Android studio - descargalo de su [página oficial](https://developer.android.com/studio)
+* Xampp - descargalo de su [página oficial](https://www.apachefriends.org/index.html)
+### Preparando el Entorno Local
+1. Lo primero es tener la base de datos, por lo que necesitas iniciar xampp.
+[starting-xampp]:https://i.ibb.co/7W5n7x9/image.png "Starting XAMPP"
+>![alt text][starting-xampp]
 
-**Importante**: Revisar los TODOs del proyecto
+**Nota:** Si estás en windows debes buscar el panel de xampp e iniciarlo.
+2. Ahora debes entrar a phpMyAdmin atraves del navegador en [localhost/phpmyadmin](localhost/phpmyadmin) y dirigirte a la sección *importar* y seleccionar el archivo sql para finalmente darle continuar
+[importing-xampp]:https://i.ibb.co/XC5BD4R/image.png "Importing XAMPP"
+>![alt text][importing-xampp]
 
-[todo]:https://i.gyazo.com/966baeca67203fdbc7f85319d342a241.png "TODOs en android studio"
+**Nota:** El archivo sql de goodjob se encuentra en la carpeta **DB** con el nombre de *goodjod.sql*
 
-![alt text][todo]
+3. Ahora debemos copiar toda la carpeta **Conexiones** dentro de la carpeta de *htdocs* de XAMPP. 
+[htdocs-xampp]:https://i.ibb.co/WFSLVwX/Screenshot-from-2019-10-31-20-32-14.png "htdocs XAMPP"
+>![alt text][htdocs-xampp]
+
+**Nota:** Si estás en windows la ruta de la carpeta htdocs por defecto es -> C:/xampp/htdocs
+
+4. Genial! el último paso es chekar tu IP local y ubicarla en la variable ValidSession.IP
+[ip]:https://i.ibb.co/nCKHF1g/image.png "IP local"
+>![alt text][ip]
 
 ## Instrucciones para colaborar
 
