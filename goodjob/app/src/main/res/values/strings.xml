@@ -102,5 +102,7 @@
 
     <!-- strings for detalle mi publicacion fragment -->
     <string name="postulantes">Postulantes</string>
+    <string name="buscar">Buscar</string>
+    <string name="perfil">Perfil</string>
 
 </resources>

@@ -38,17 +38,21 @@ Proyecto con el fin de promover un mejor cuidado del medio ambiente
 * Listado de actividades
 * Mantenimiento de actividades	
 * Insignias y medallas de perfil
-### Prerequisitos
+
+## Prerequisitos
+
 Para este proyecto solo necesitas:
 * Android studio - descargalo de su [página oficial](https://developer.android.com/studio)
 * Xampp - descargalo de su [página oficial](https://www.apachefriends.org/index.html)
-### Preparando el Entorno Local
+
+## Preparando el Entorno Local
 1. Lo primero es tener la base de datos, por lo que necesitas iniciar xampp.
 
 [starting-xampp]:https://i.ibb.co/7W5n7x9/image.png "Starting XAMPP"
 >![alt text][starting-xampp]
 
 **Nota:** Si estás en windows debes buscar el panel de xampp e iniciarlo.
+
 2. Ahora debes entrar a phpMyAdmin atraves del navegador en [localhost/phpmyadmin](localhost/phpmyadmin) y dirigirte a la sección *importar* y seleccionar el archivo sql para finalmente darle continuar
 
 [importing-xampp]:https://i.ibb.co/XC5BD4R/image.png "Importing XAMPP"

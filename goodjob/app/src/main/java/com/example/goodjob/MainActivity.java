@@ -9,9 +9,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.goodjob.classes.ValidSession;
@@ -26,19 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView imageView = findViewById(R.id.ImgProfile);
+        setToolbar();
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ValidSession.usuarioLogueado == null) {
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                } else {
-                    navigation.setSelectedItemId(R.id.navigation_profile);
-                }
-            }
-        });
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -57,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         // setting the initial fragment on app start
         Fragment initialFragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments, initialFragment).commit();
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -78,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, SuscriptionActivity.class));
                     return true;
                 case R.id.navigation_estado_mis_actividades:
-                    if (ValidSession.usuarioLogueado == null)
-                    {
+                    if (ValidSession.usuarioLogueado == null) {
                         cuadroDialogo();
                         return true;
                     }
@@ -91,15 +86,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void cuadroDialogo()
-    {
+    private void cuadroDialogo() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.inicio_sesion);
         builder.setMessage(R.string.iniciar_sesion);
         builder.setPositiveButton(R.string.ok_sesion, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
+            public void onClick(DialogInterface dialogInterface, int i) {
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
@@ -109,4 +102,43 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        setMenu(menu);
+        SearchView search = getSearchView(menu);
+        setSearchViewHint(search);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ImgProfile:
+                sendToLoginOrProfile();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+    }
+
+    private SearchView getSearchView(Menu menu) {
+        MenuItem item = menu.findItem(R.id.buscador);
+        return (SearchView) item.getActionView();
+    }
+
+    private void setSearchViewHint(SearchView search) {
+        search.setQueryHint("Buscar...");
+    }
+
+    private void sendToLoginOrProfile(){
+        if (ValidSession.usuarioLogueado == null) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        } else {
+            navigation.setSelectedItemId(R.id.navigation_profile);
+        }
+    }
 }
