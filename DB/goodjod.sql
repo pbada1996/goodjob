@@ -194,7 +194,7 @@ create table actividad
     fecha_fin date, 
     participantes_actuales int, 
     participantes_requeridos int,
-    foto blob default null,
+    foto varchar(255) default null,
     tipo_recompensa int,
     recompensa decimal(10,2),
     estado int,

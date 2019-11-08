@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -29,8 +31,15 @@ import com.android.volley.toolbox.Volley;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.util.DatePickerFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class PublicarActividadActivity extends AppCompatActivity {
@@ -45,6 +54,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
             tilFecha, tilParticipantesRequeridos, tilRecompensa;
     private ImageView imagenActividad;
     private Spinner tipoSeleccion, tipoRecompensa;
+    private Bitmap bitmap;
 
     private final int CAMPO_VACIO = 0;
     final int NOMBRE_ACTIVIDAD_TOPE_LONGITUD = 30;
@@ -60,10 +70,10 @@ public class PublicarActividadActivity extends AppCompatActivity {
         mapearCampos();
         establecerAdaptadorSpinnerSeleccion();
         establecerAdaptadorSpinnerRecompensa();
-        establecerEventosDeChekeoDeCampos();
         asignarEventoDeClickParaLaFecha();
         asignarEventoDeClickParaImagen();
         asignarEventoDeClickEnBotonPublicarActividad();
+        establecerEventosDeChekeoDeCampos();
     }
 
     private void mapearCampos() {
@@ -83,7 +93,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
         tipoRecompensa = findViewById(R.id.spinnerTipoRecompensa);
     }
 
-    private void establecerAdaptadorSpinnerSeleccion(){
+    private void establecerAdaptadorSpinnerSeleccion() {
         ArrayAdapter<CharSequence> adapterSeleccion =
                 ArrayAdapter.createFromResource(this,
                         R.array.tipo_seleccion_array,
@@ -91,7 +101,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
         tipoSeleccion.setAdapter(adapterSeleccion);
     }
 
-    private void establecerAdaptadorSpinnerRecompensa(){
+    private void establecerAdaptadorSpinnerRecompensa() {
         ArrayAdapter<CharSequence> adapterRecompensa =
                 ArrayAdapter.createFromResource(this,
                         R.array.tipo_recompensa_array,
@@ -110,25 +120,37 @@ public class PublicarActividadActivity extends AppCompatActivity {
 
                 String fin = fechaFin.getText().toString();
                 String[] format = fin.split("/");
-                fin = format[2] + "-" + format[1] + "-" + format[0];
+                final String f_fin = format[2] + "-" + format[1] + "-" + format[0];
 
-                String url = ValidSession.IP + "/ws_publicarActividad.php?titulo='" + nombreActividad.getText().toString()
-                        + "'&descripcion='" + descripcionActividad.getText().toString() + "'&id_usuario=" + ValidSession.usuarioLogueado.getId()
-                        + "&fecha_fin='" + fin + "'&participantes_requeridos=" + Integer.valueOf(cantidadParticipantes.getText().toString())
-                        + "&recompensa=" + Double.valueOf(recompensa.getText().toString());
+                String url = ValidSession.IP_ACTIVITIES_IMAGES + "/ws_publicarActividad.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                        System.out.println(response);
                         startActivity(new Intent(PublicarActividadActivity.this, MainActivity.class));
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        System.out.println(error.getMessage());
                     }
-                });
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("foto", imageToString(bitmap));
+                        params.put("titulo", nombreActividad.getText().toString());
+                        params.put("descripcion", descripcionActividad.getText().toString());
+                        params.put("id_usuario", ValidSession.usuarioLogueado.getId().toString());
+                        params.put("fecha_fin", f_fin);
+                        params.put("participantes_requeridos", cantidadParticipantes.getText().toString());
+                        params.put("recompensa", recompensa.getText().toString());
+                        return params;
+                    }
+                };
                 Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
             }
         });
@@ -207,6 +229,22 @@ public class PublicarActividadActivity extends AppCompatActivity {
 
             }
         });
+        fechaFin.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esFechaValida(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     private void asignarEventoDeClickParaLaFecha() {
@@ -266,11 +304,11 @@ public class PublicarActividadActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean esRecompensaValida(String recompensa){
-        if (recompensa.trim().length() == CAMPO_VACIO){
+    private boolean esRecompensaValida(String recompensa) {
+        if (recompensa.trim().length() == CAMPO_VACIO) {
             tilRecompensa.setError("Ingrese recompensa");
             return false;
-        } else if (!recompensa.trim().matches("^[0-9]+$")){
+        } else if (!recompensa.trim().matches("^[0-9]+$")) {
             tilRecompensa.setError("Ingrese una recompensa valida");
             return false;
         }
@@ -313,7 +351,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null){
+        if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null) {
             try {
                 setearImagenSeleccionada(data);
             } catch (FileNotFoundException e) {
@@ -323,9 +361,16 @@ public class PublicarActividadActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void setearImagenSeleccionada(Intent data) throws FileNotFoundException{
+    private void setearImagenSeleccionada(Intent data) throws FileNotFoundException {
         InputStream input = getContentResolver().openInputStream(data.getData());
-        Bitmap bitmap = BitmapFactory.decodeStream(input);
+        bitmap = BitmapFactory.decodeStream(input);
         imagenActividad.setImageBitmap(bitmap);
+    }
+
+    private String imageToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        byte[] imgBytes = baos.toByteArray();
+        return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }
 }
