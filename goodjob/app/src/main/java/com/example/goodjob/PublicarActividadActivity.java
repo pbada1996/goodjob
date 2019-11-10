@@ -31,10 +31,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.util.DatePickerFragment;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -122,7 +118,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
                 String[] format = fin.split("/");
                 final String f_fin = format[2] + "-" + format[1] + "-" + format[0];
 
-                String url = ValidSession.IP_ACTIVITIES_IMAGES + "/ws_publicarActividad.php";
+                String url = ValidSession.IP_IMAGENES_ACTIVIDADES + "/ws_publicarActividad.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
