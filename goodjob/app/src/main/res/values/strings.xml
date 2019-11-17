@@ -115,6 +115,17 @@
     <string name="publicar_actividad_boton_cancel">CANCELAR</string>
     <string name="spinner_tipo_seleccion">Tipo de Selección</string>
     <string name="spinner_tipo_recompensa">Tipo de Recompensa</string>
+    <string name="solicitud_titulo">Solicitud de cuenta Tipo Empresa</string>
+    <string name="empresa_nombre_comercial">Nombre Comercial</string>
+    <string name="empresa_ruc">RUC</string>
+    <string name="empresa_razon_social">Razón Social</string>
+    <string name="empresa_correo">Correo</string>
+    <string name="empresa_telefono">Telefono</string>
+    <string name="empresa_direccion">Dirección</string>
+    <string name="spinner_distrito_empresa">Distrito</string>
+    <string name="empresa_terminos_condiciones">Acepto los terminos y condiciones</string>
+    <string name="empresa_politicas">Acepto las politicas de GoodJob</string>
+    <string name="empresa_solicitud_enviar">Enviar Solicitud</string>
 
     <!-- navigation drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
