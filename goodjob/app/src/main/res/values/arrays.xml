@@ -12,8 +12,9 @@
     </array>
 
     <array name="distritos_array">
-        <item>San Martin de Porres</item>
-        <item>Comas</item>
+        <item>Seleccionar</item>
+        <item>Callao</item>
+        <item>Bellavista</item>
     </array>
 
 </resources>
