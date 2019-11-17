@@ -28,7 +28,7 @@ public class SelectedUserActivity extends AppCompatActivity {
         tvcompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),FormRegisterCompanyActivity.class);
+                Intent intent = new Intent(getApplicationContext(),SolicitudEmpresaActivity.class);
                 startActivity(intent);
             }
         });

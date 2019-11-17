@@ -11,4 +11,9 @@
         <item>Dinero</item>
     </array>
 
+    <array name="distritos_array">
+        <item>San Martin de Porres</item>
+        <item>Comas</item>
+    </array>
+
 </resources>
