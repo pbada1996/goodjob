@@ -1,8 +1,12 @@
 package com.example.goodjob;
 
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -47,7 +50,8 @@ public class SolicitudEmpresaActivity extends AppCompatActivity {
 
         inicializarViews();
         establecerAdapterSpinnerDistritos();
-        asinarEventoClickBotonEnviar();
+        asignarEventoClickBotonEnviar();
+        asignarEventoDeCheckeoDeCampos();
     }
 
     private void inicializarViews() {
@@ -79,7 +83,7 @@ public class SolicitudEmpresaActivity extends AppCompatActivity {
         distritos.setAdapter(adapterDistritos);
     }
 
-    private void asinarEventoClickBotonEnviar() {
+    private void asignarEventoClickBotonEnviar() {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +97,7 @@ public class SolicitudEmpresaActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(SolicitudEmpresaActivity.this, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(SolicitudEmpresaActivity.this, SolicitudEmpresaResultadoActivity.class));
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -223,16 +228,131 @@ public class SolicitudEmpresaActivity extends AppCompatActivity {
     }
 
     private boolean estaCheckeado(CheckBox checkBox, String condicionAAceptar) {
-        if (!checkBox.isChecked()){
+        if (!checkBox.isChecked()) {
             Toast.makeText(this, "Debes aceptar " + condicionAAceptar, Toast.LENGTH_SHORT).show();
         }
         return checkBox.isChecked();
     }
 
     private boolean esDistritoValido(Spinner spinner) {
-        if (spinner.getSelectedItemId() == 0){
+        if (spinner.getSelectedItemId() == 0) {
             Toast.makeText(this, "Selecciona un distrito", Toast.LENGTH_SHORT).show();
         }
         return spinner.getSelectedItemId() != 0;
+    }
+
+    private void asignarEventoDeCheckeoDeCampos() {
+        nombreComercial.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esNombreComercialValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        ruc.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esRucValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        telefono.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esTelefonoValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        direccion.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esDireccionValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        razonSocial.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esRazonSocialValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        correo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esCorreoValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        codigoPostal.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esCodigoPostalValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 }

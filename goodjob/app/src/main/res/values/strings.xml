@@ -142,5 +142,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="empresa_codigo_postal">Codigo Postal</string>
+    <string name="solicitud_empresa_texto_1">Gracias por querer ser parte de Goodjob</string>
+    <string name="solicitud_empresa_texto_2">Nos estaremos comunicando contigo en las próximas 48H atraves del correo que nos brindaste para conocer el resultado de la solicitud</string>
+    <string name="solicitud_empresa_texto_3">Atentamente el equipo de Goodjob</string>
+    <string name="volver_home">Regresar al Listado de Actividades</string>
 
 </resources>
