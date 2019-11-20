@@ -4,85 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-
-    >
+    tools:context=".LoginActivity" >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bgHeader"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:contentDescription="header"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/header" />
+
+    <ImageView
+        android:id="@+id/bgFooter"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="footer"
+        android:scaleType="fitXY"
+        android:elevation="3dp"
+        app:srcCompat="@drawable/footer" />
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/bgHeader"
+        android:textStyle="bold"
+        android:text="Login"
+        android:textSize="40sp"/>
+    <ScrollView
+        android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/fondologin" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#d8000000">
+        android:layout_below="@+id/bgHeader"
+        android:layout_above="@+id/bgFooter"
+        android:layout_marginBottom="-100dp">
 
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            app:srcCompat="@drawable/iconlogin"
-            android:layout_gravity="center"
-            android:layout_marginTop="80dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="-70dp">
 
-        <EditText
-            android:id="@+id/txtUser"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/button_shape"
-            android:ems="10"
-            android:focusable="auto"
-            android:hint="@string/Tvuser"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHint="#FF968E8E" />
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                app:cardCornerRadius="70dp"
+                app:cardElevation="3dp">
 
-        <EditText
-            android:id="@+id/txtPass"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/button_shape"
-            android:ems="10"
-            android:hint="@string/TvPass"
-            android:inputType="textPassword"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHint="#FF968E8E"/>
+                <RelativeLayout
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp">
 
-        <TextView
-            android:id="@+id/TvRegister"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/TvRegister"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:typeface="sans" />
+                <EditText
+                    android:id="@+id/txtUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="30dp"
+                    android:hint="@string/Tvuser"
+                    android:inputType="text"
+                    android:padding="10dp" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="197dp"
-            android:layout_height="wrap_content"
-            android:text="@string/Login"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_shape"
-            android:textStyle="bold"
-            android:textColor="@color/cardview_light_background"
-            />
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#77D8CFCF"
+                    android:layout_below="@+id/txtUser"/>
+
+                    <EditText
+                        android:id="@+id/txtPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:layout_below="@+id/view1"
+                        android:inputType="textPassword"
+                        android:drawableLeft="@drawable/ic_lock_black_24dp"
+                        android:drawablePadding="30dp"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/TvPass"
+                        android:padding="10dp"/>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/cv"
+                android:layout_alignBottom="@+id/cv"
+                android:layout_alignRight="@+id/cv"
+                android:layout_marginRight="-30dp"
+                android:elevation="10dp">
 
 
-    </LinearLayout>
+          <ImageButton
+                android:id="@+id/btnLogin"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_ui"
+                android:text="@string/Login"
+                android:src="@drawable/ic_arrow_forward_black_24dp"/>
+
+</RelativeLayout>
+
+            <TextView
+                android:id="@+id/TvRegister"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cv"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:text="Registrate Aquí"
+                android:lineSpacingExtra="8sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
 
 </RelativeLayout>
