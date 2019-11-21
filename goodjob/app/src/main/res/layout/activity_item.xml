@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +11,6 @@
     >
 
     <!-- this is for each actividad shown in the list(recyclerView) -->
-
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -29,7 +28,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgPhoto"
                 android:layout_width="105dp"
                 android:layout_height="103dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +51,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/imgPhoto"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -66,7 +65,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.222"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/imgPhoto"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
             <TextView
@@ -90,14 +89,14 @@
                 android:textColor="@android:color/background_light"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                app:layout_constraintTop_toBottomOf="@+id/imgPhoto" />
 
             <TextView
                 android:id="@+id/btnMoreInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="11dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="39dp"
                 android:background="#77DD77"
                 android:padding="10dp"
@@ -107,7 +106,8 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tvAuthorName"
@@ -120,7 +120,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/imgPhoto"
                 app:layout_constraintTop_toBottomOf="@+id/tvAuthor" />
 
             <ImageView
@@ -137,4 +137,4 @@
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
