@@ -10,92 +10,92 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="300dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:background="#00FF99"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_cara" />
         </LinearLayout>
 
         <android.support.v7.widget.CardView
-            android:layout_width="360dp"
-            android:layout_height="120dp"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="250dp">
+            android:layout_marginTop="200dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="360dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:weightSum="3">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#CCFFFF "
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvRequired"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
+                        android:paddingTop="1dp"
                         android:text="TextView"
                         android:textColor="#555555"
                         android:textSize="20sp"
-                        android:textStyle="bold"
+                        android:textStyle="normal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#CCFFFF "
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
 
                         android:id="@+id/tvCurrent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
+                        android:paddingTop="1dp"
                         android:text="TextView"
                         android:textColor="#555555"
                         android:textSize="20sp"
-                        android:textStyle="bold"
+                        android:textStyle="normal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvRequired" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#CCFFFF "
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvReward"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
+                        android:paddingTop="1dp"
                         android:text="Recompensa"
                         android:textColor="#555555"
                         android:textSize="20sp"
@@ -119,7 +119,7 @@
 
     <LinearLayout
         android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_height="360dp"
         android:layout_gravity="center"
         android:layout_marginTop="1dp"
         android:orientation="vertical">
@@ -128,7 +128,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="25dp">
+            android:paddingLeft="25dp"
+            android:padding="1dp">
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -139,7 +140,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/title"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -148,9 +149,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="0dp"
             android:orientation="horizontal"
-            android:padding="25dp">
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/tvAuthor"
@@ -177,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:orientation="horizontal"
-            android:padding="25dp">
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/tvCreationDate"
@@ -205,7 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:orientation="horizontal"
-            android:padding="25dp">
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/tvEndDate"
@@ -228,19 +229,19 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="120dp"
             android:layout_marginTop="1dp"
             android:orientation="horizontal"
-            android:paddingLeft="25dp">
+            android:paddingLeft="10dp">
 
             <TextView
                 android:id="@+id/tvDescription"
-                android:layout_width="336dp"
-                android:layout_height="180dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
+                android:layout_width="340dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/short_description"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
@@ -260,7 +261,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
         android:background="@drawable/buttonstyle"
         android:text="Postular Actividad"
         android:textColor="#fff"
