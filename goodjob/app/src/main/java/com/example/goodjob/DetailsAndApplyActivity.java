@@ -109,7 +109,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         endDate.setText(formatDate(actividad.getEndDate()));
         currentParticipants.setText("De momento hay " + actividad.getCurrentParticipants() + " postulantes");
         requiredParticipants.setText("Se necesitan " + actividad.getRequiredParticipants() + " personas");
-        photo.setImageResource(R.drawable.placeholder);
+
         reward.setText(actividad.getRewardType() + " : " + actividad.getReward());
     }
 
