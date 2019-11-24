@@ -40,7 +40,7 @@
     <string name="Form_Profile">Perfil Profesional:</string>
     <string name="Form_btn_Register">Registrarse</string>
     <string name="Form_btn_Noregister">Cancelar</string>
-    <string name="Acept_Ter_Con">Aceptas todos Nuestros Términos y Condiciones.</string>
+    <string name="Acept_Ter_Con">Aceptas Términos y Condiciones.</string>
 
     <!-- strings for fragment formRegisterCompany-->
 
