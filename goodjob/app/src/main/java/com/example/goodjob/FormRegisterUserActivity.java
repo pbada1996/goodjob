@@ -34,12 +34,7 @@ import javax.net.ssl.X509TrustManager;
 
 public class FormRegisterUserActivity extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener{
     private Button btnRegister,btnCancel;
-    private EditText tvnombre ,
-                     tvpaterno,
-                     tvmaterno,
-                     tvdni,
-                     tvcelular,
-                     tvfechanacimiento,
+    private EditText
                      tvcorreo,
                      tvpass,
                      tvpassdos;
@@ -56,13 +51,7 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_register_user);
 
-        tvnombre = (EditText) findViewById(R.id.txtnombreR);
-        tvpaterno = (EditText) findViewById(R.id.txtpaternoR);
-        tvmaterno = (EditText) findViewById(R.id.txtrazonsocialR);
-        tvdni = (EditText) findViewById(R.id.txtdniR);
-        tvcelular = (EditText) findViewById(R.id.txtcelularRC);
-        tvfechanacimiento = (EditText) findViewById(R.id.tvfechanacimientoR);
-        tvcorreo = (EditText) findViewById(R.id.txtcorreoR);
+
         tvpass = (EditText) findViewById(R.id.txtpassR);
         tvpassdos = (EditText) findViewById(R.id.txtpassdosR);
 
@@ -91,17 +80,9 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
 
     private void CargarWebServiceRegistrarUser()
     {
-        String fecha = tvfechanacimiento.getText().toString();
-        String [] fec = fecha.split("/");
-        fecha = fec[2] + "-" + fec[1] + "-" + fec[0];
 
-        String url = ValidSession.IP + "/WS_RegistrarUsuario.php?Unombre="+tvnombre.getText().toString()+"&"+
-                "UPaterno="+tvpaterno.getText().toString()+"&"+
-                "UMaterno="+tvmaterno.getText().toString()+"&"+
-                "Udni="+tvdni.getText().toString()+"&"+
-                "UfechaNacimiento="+fecha+"&"+
-                "Ucelular="+tvcelular.getText().toString()+"&"+
-                "Ucorreo="+tvcorreo.getText().toString()+"&"+
+
+        String url = ValidSession.IP + "/WS_RegistrarUsuario.php?Unombre="+tvcorreo.getText().toString()+"&"+
                 "Upass="+tvpass.getText().toString()+"&"+
                 "UfechaRegistro="+fecharegistro+"&"+
                 "Uestado=1";
