@@ -103,21 +103,25 @@ INSERT INTO `distrito` (`idDistrito`, `DNombre`) VALUES
 --
 
 CREATE TABLE `empresa` (
-  `Eid` int(11) NOT NULL,
-  `ErazonSocial` varchar(100) NOT NULL,
-  `Eruc` varchar(12) NOT NULL,
-  `Ecelular` varchar(9) NOT NULL,
-  `idDistrito` int(11) DEFAULT NULL,
-  `Edireccion` varchar(150) DEFAULT NULL,
+  `idEmpresa` int(11) NOT NULL,
+  `ErazonSocial` varchar(120) NOT NULL,
+  `Eruc` varchar(11) NOT NULL,
+  `Ececular` varchar(11) NOT NULL,
+  `Edireccion` varchar(150) NOT NULL,
   `EfechaRegistro` date NOT NULL,
-  `EcodigoPostal` int(11) DEFAULT NULL,
-  `Epass` varchar(50) NOT NULL,
-  `Eestado` int(1) NOT NULL
+  `EcodigoPostal` varchar(10) NOT NULL,
+  `estado` int(11) DEFAULT 0, -- 0: en espera | 1: activo/aceptado | 2: rechazado
+  `EnombreComercial` varchar(120) NOT NULL,
+  `EnumeroActividades` int(11) DEFAULT 0,
+  `idDistrito` int(11) NOT NULL,
+  `ecorreo` varchar(50) NOT NULL,
+  `password` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `empresa` (`Eid`, `ErazonSocial`, `Eruc`, `Ecelular`, `idDistrito`, `Edireccion`, `EfechaRegistro`, `EcodigoPostal`, `Epass`, `Eestado`) VALUES
-(1, 'probando', '123456789789', '987987987', NULL, NULL, '2109-05-01', NULL, 'admincompanu', 1),
-(2, 'Facebook', '978787878787', '963654852', NULL, NULL, '2019-07-09', NULL, 'admin', 1);
+INSERT INTO `empresa` (`idEmpresa`, `ErazonSocial`, `Eruc`, `Ececular`, `Edireccion`, `EfechaRegistro`, 
+`EcodigoPostal`, `estado`, `EnombreComercial`, `EnumeroActividades`, `idDistrito`, `ecorreo`, `password`) 
+VALUES (1, 'GOODJOB SAC', '20345678912', '987987789', 'Los de tomas valle mas naki', '2019-11-10', 
+'15103', 1, '¡Buen Trabajo!', 0, 42, 'goodjob@gmail.com', 'goodjob');
 
 --
 --
@@ -194,7 +198,7 @@ create table actividad
     fecha_fin date, 
     participantes_actuales int, 
     participantes_requeridos int,
-    foto blob default null,
+    foto varchar(255) default null,
     tipo_recompensa int,
     recompensa decimal(10,2),
     estado int,
@@ -237,7 +241,7 @@ ALTER TABLE `distrito`
 -- Indices de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  ADD PRIMARY KEY (`Eid`),
+  ADD PRIMARY KEY (`idEmpresa`),
   ADD KEY `idDistrito` (`idDistrito`);
 
 
@@ -277,7 +281,7 @@ ALTER TABLE `distrito`
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `Eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 
 --

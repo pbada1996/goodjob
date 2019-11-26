@@ -2,10 +2,19 @@
 <resources>
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#388E3C</color>
-    <color name="colorAccent">#FF0</color>
+    <color name="colorAccent">#FFAB40</color>
     <color name="rojo">#dd2244</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="verde">#7d7</color>
     <color name="inconita">#11000000</color>
     <color name="darkGustavo">#248e50</color>
+    <color name="colorBlue">#28A2CF</color>
+    <color name="colorGreen">#55E96A</color>
+
+    <style name="AppTheme.FullScreem">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

@@ -32,12 +32,9 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-public class FormRegisterUserActivity extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener{
-    private Button btnRegister,btnCancel;
-    private EditText
-                     tvcorreo,
-                     tvpass,
-                     tvpassdos;
+public class FormRegisterUserActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
+    private Button btnRegister, btnCancel;
+    private EditText tvcorreo, tvpass, tvpassdos;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
     Date date = new Date();
@@ -52,12 +49,12 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
         setContentView(R.layout.activity_form_register_user);
 
 
-        tvpass = (EditText) findViewById(R.id.txtpassR);
-        tvpassdos = (EditText) findViewById(R.id.txtpassdosR);
+        tvpass = findViewById(R.id.txtpassR);
+        tvpassdos = findViewById(R.id.txtpassdosR);
 
 
-        btnRegister = (Button) findViewById(R.id.btnRegister);
-        btnCancel   =  (Button) findViewById(R.id.btn_Cancel);
+        btnRegister = findViewById(R.id.btnRegister);
+        btnCancel = findViewById(R.id.btn_Cancel);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -71,20 +68,19 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SelectedUserActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SelectedUserActivity.class);
                 startActivity(intent);
             }
         });
         handleSSLHandshake();
     }
 
-    private void CargarWebServiceRegistrarUser()
-    {
+    private void CargarWebServiceRegistrarUser() {
 
 
-        String url = ValidSession.IP + "/WS_RegistrarUsuario.php?Unombre="+tvcorreo.getText().toString()+"&"+
-                "Upass="+tvpass.getText().toString()+"&"+
-                "UfechaRegistro="+fecharegistro+"&"+
+        String url = ValidSession.IP + "/WS_RegistrarUsuario.php?Unombre=" + tvcorreo.getText().toString() + "&" +
+                "Upass=" + tvpass.getText().toString() + "&" +
+                "UfechaRegistro=" + fecharegistro + "&" +
                 "Uestado=1";
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
@@ -92,15 +88,14 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
     }
 
     @Override
-    public void onErrorResponse(VolleyError error)
-    {
-        Toast.makeText(getApplicationContext(),"Oh! será el fin del hombre araña?"+ error.toString(),Toast.LENGTH_SHORT).show();
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getApplicationContext(), "Oh! será el fin del hombre araña?" + error.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(getApplicationContext(),"Te has Registrado con Exito",Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        Toast.makeText(getApplicationContext(), "Te has Registrado con Exito", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 
     //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!

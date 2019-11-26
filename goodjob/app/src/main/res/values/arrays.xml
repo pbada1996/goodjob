@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="tipo_seleccion_array">
+        <item>Manual</item>
+        <item>Automatica</item>
+    </array>
+
+    <array name="tipo_recompensa_array">
+        <item>Puntos</item>
+        <item>Dinero</item>
+    </array>
+
+    <array name="distritos_array">
+        <item>Seleccionar</item>
+        <item>Callao</item>
+        <item>Bellavista</item>
+    </array>
+
+</resources>
