@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/gradient"
-    tools:context=".FormRegisterUserActivity"
-    android:gravity="center">
-
+    android:gravity="center_horizontal"
+    android:paddingTop="16dp"
+    android:orientation="vertical"
+    tools:context=".FormRegisterUserActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -19,67 +18,60 @@
         android:id="@+id/txtnombreR"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:drawableLeft="@drawable/ic_action_persona"
-        android:hint="Ingrese su nombre"
         android:layout_marginBottom="10dp"
-        />
+        android:drawableStart="@drawable/ic_action_persona"
+        android:ems="10"
+        android:hint="Nombres"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/txtpaternoR"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:drawableStart="@drawable/ic_action_completar"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:drawableLeft="@drawable/ic_action_completar"
         android:hint="Ingrese tu apellido paterno"
-        android:layout_marginBottom="10dp"/>
+        android:inputType="textPersonName" />
+
     <EditText
         android:id="@+id/txtrazonsocialR"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:drawableStart="@drawable/ic_action_completar"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:drawableLeft="@drawable/ic_action_completar"
         android:hint="Ingrese su apellido materno"
-        android:layout_marginBottom="10dp"/>
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/txtcorreoR"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_action_correo"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:drawableLeft="@drawable/ic_action_correo"
-        android:hint="Ingresa tu correo electronico" />
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
+        android:hint="Ingresa tu correo electronico"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/txtpassR"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:drawableStart="@drawable/ic_action_claves"
         android:ems="10"
-        android:inputType="textPassword"
-        android:drawableLeft="@drawable/ic_action_claves"
         android:hint="Ingrese su contraseña"
-        android:layout_marginBottom="10dp"/>
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/txtpassdosR"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:drawableLeft="@drawable/ic_action_claves"
-        android:inputType="textPassword"
         android:layout_marginTop="10dp"
-        android:hint="Confirmar contraseña"/>
-
-    </android.support.design.widget.TextInputLayout>
+        android:drawableStart="@drawable/ic_action_claves"
+        android:ems="10"
+        android:hint="Confirmar contraseña"
+        android:inputType="textPassword" />
 
     <CheckBox
         android:id="@+id/cbterminosR"
@@ -87,17 +79,16 @@
         android:layout_height="wrap_content"
         android:text="@string/Acept_Ter_Con" />
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:text="@string/Form_btn_Register" />
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Form_btn_Register" />
 
     <Button
         android:id="@+id/btn_Cancel"
         android:layout_width="277dp"
         android:layout_height="wrap_content"
         android:text="@string/Form_btn_Noregister" />
-
 
 </LinearLayout>
