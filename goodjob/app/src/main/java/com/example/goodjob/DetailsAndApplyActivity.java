@@ -4,6 +4,7 @@ package com.example.goodjob;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.goodjob.classes.Actividad;
@@ -74,13 +76,11 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (validateStartedSession())
-                {
-                    if (validateAvailableActivities())
-                    {
+                if (validateStartedSession()) {
+                    if (validateAvailableActivities()) {
                         realizarPostulacion(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
                         cambioDeEstadoBoton();
-                        incrementarParticipantes(selectedActivity.getCurrentParticipants() + 1 , selectedActivity.getId());
+                        incrementarParticipantes(selectedActivity.getCurrentParticipants() + 1, selectedActivity.getId());
                         reducirParticipacionesDeUsuario(ValidSession.usuarioLogueado.getId(), ValidSession.usuarioLogueado.getAvailableActivities() - 1);
                         startActivity(new Intent(DetailsAndApplyActivity.this, MainActivity.class));
                         return;
@@ -100,8 +100,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         handleSSLHandshake();
     }
 
-    private void loadData(Actividad actividad)
-    {
+    private void loadData(Actividad actividad) {
         title.setText(actividad.getTitle());
         description.setText(actividad.getDescription());
         author.setText(actividad.getAuthor());
@@ -109,29 +108,36 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         endDate.setText(formatDate(actividad.getEndDate()));
         currentParticipants.setText("De momento hay " + actividad.getCurrentParticipants() + " postulantes");
         requiredParticipants.setText("Se necesitan " + actividad.getRequiredParticipants() + " personas");
-
         reward.setText(actividad.getRewardType() + " : " + actividad.getReward());
+        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES_GUARDADAS + actividad.getPhoto() + ".jpg", new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                photo.setImageBitmap(response);
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetailsAndApplyActivity.this, "No se pudo cargar la imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Volley.newRequestQueue(getApplicationContext()).add(request);
     }
 
-    private boolean validateStartedSession()
-    {
+    private boolean validateStartedSession() {
         return ValidSession.usuarioLogueado != null;
     }
 
-    private boolean validateAvailableActivities()
-    {
+    private boolean validateAvailableActivities() {
         return ValidSession.usuarioLogueado.getAvailableActivities() > 0;
     }
 
-    private void dialogMessage(String title, Integer message, String positivo, final Class<?> next)
-    {
+    private void dialogMessage(String title, Integer message, String positivo, final Class<?> next) {
         AlertDialog.Builder builder = new AlertDialog.Builder(DetailsAndApplyActivity.this);
         builder.setTitle(title);
         builder.setMessage(message);
         builder.setPositiveButton(positivo, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
+            public void onClick(DialogInterface dialogInterface, int i) {
                 startActivity(new Intent(DetailsAndApplyActivity.this, next));
             }
         });
@@ -141,108 +147,92 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private String formatDate(String date)
-    {
-        String [] fechaEnPartes = date.split("-");
+    private String formatDate(String date) {
+        String[] fechaEnPartes = date.split("-");
         return fechaEnPartes[2] + "/" + fechaEnPartes[1] + "/" + fechaEnPartes[0];
     }
 
-    private void consultarSiYaPostulo(Integer idUsuario, Integer idActividad)
-    {
+    private void consultarSiYaPostulo(Integer idUsuario, Integer idActividad) {
         String url = ValidSession.IP + "/ws_consultarPostulacionUsuario.php?id_usuario=" + idUsuario + "&id_actividad=" + idActividad;
-        
+
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
-                    for (int i = 0; i < jsonArray.length(); i++)
-                    {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         Integer id = jsonObject.optInt("id");
 
                         if (id != null)
                             cambioDeEstadoBoton();
                     }
-                } catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(stringRequest);
     }
 
-    private void realizarPostulacion(Integer idUsuario, Integer idActividad)
-    {
+    private void realizarPostulacion(Integer idUsuario, Integer idActividad) {
         String url = ValidSession.IP + "/ws_postulacionActividad.php?id_usuario=" + idUsuario + "&id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
     }
 
-    private void cambioDeEstadoBoton()
-    {
+    private void cambioDeEstadoBoton() {
         moreInfo.setText(R.string.already_in);
         moreInfo.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.rojo));
         moreInfo.setEnabled(false);
     }
 
-    private void incrementarParticipantes(final Integer cantidad, Integer idActividad)
-    {
+    private void incrementarParticipantes(final Integer cantidad, Integer idActividad) {
         String url = ValidSession.IP + "/ws_incrementarParticipantesPostulacion.php?cantidad=" + cantidad + "&id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 currentParticipants.setText("De momento hay " + cantidad + " postulantes");
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
     }
 
-    private void reducirParticipacionesDeUsuario(Integer idUsuario, Integer cantidad)
-    {
+    private void reducirParticipacionesDeUsuario(Integer idUsuario, Integer cantidad) {
         String url = ValidSession.IP + "/ws_reducirParticipaciones.php?id_usuario=" + idUsuario + "&cantidad=" + cantidad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 ValidSession.usuarioLogueado.setAvailableActivities(
                         ValidSession.usuarioLogueado.getAvailableActivities() - 1);
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
