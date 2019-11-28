@@ -34,7 +34,7 @@ import javax.net.ssl.X509TrustManager;
 
 public class FormRegisterUserActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
     private Button btnRegister, btnCancel;
-    private EditText tvcorreo, tvpass, tvpassdos;
+    private EditText tvcorreo, tvpass, tvpassdos, tvnombre, tvapaterno, tvamaterno;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
     Date date = new Date();
@@ -49,6 +49,10 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
         setContentView(R.layout.activity_form_register_user);
 
 
+        tvnombre = findViewById(R.id.txtnombreR);
+        tvapaterno = findViewById(R.id.txtpaternoR);
+        tvamaterno = findViewById(R.id.txtrazonsocialR);
+        tvcorreo = findViewById(R.id.txtcorreoR);
         tvpass = findViewById(R.id.txtpassR);
         tvpassdos = findViewById(R.id.txtpassdosR);
 
@@ -79,8 +83,10 @@ public class FormRegisterUserActivity extends AppCompatActivity implements Respo
 
 
         String url = ValidSession.IP + "/WS_RegistrarUsuario.php?Unombre=" + tvcorreo.getText().toString() + "&" +
+                "Unombre" + tvnombre.getText().toString()+ "&"+
+                "Uapaterno" + tvapaterno.getText().toString()+ "&"+
+                "Uamaterno" + tvamaterno.getText().toString()+ "&"+
                 "Upass=" + tvpass.getText().toString() + "&" +
-                "UfechaRegistro=" + fecharegistro + "&" +
                 "Uestado=1";
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
