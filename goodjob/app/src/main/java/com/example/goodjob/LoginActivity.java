@@ -37,38 +37,38 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-public class LoginActivity extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener{
+public class LoginActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     RequestQueue requestQueue;
     JsonRequest jsonRequest;
 
     private ImageButton btnIngresar;
     private TextView tvregister;
-    private EditText txtUser,txtPass;
+    private EditText txtUser, txtPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        txtUser =       findViewById(R.id.txtUser);
-        txtPass =       findViewById(R.id.txtPass);
-        tvregister =    findViewById(R.id.TvRegister);
-        btnIngresar =   findViewById(R.id.btnLogin);
+        txtUser = findViewById(R.id.txtUser);
+        txtPass = findViewById(R.id.txtPass);
+        tvregister = findViewById(R.id.TvRegister);
+        btnIngresar = findViewById(R.id.btnLogin);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         tvregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SelectedUserActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SelectedUserActivity.class);
                 startActivity(intent);
             }
         });
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 iniciarSesion();
             }
         });
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
         String url;
         if (txtUser.getText().toString().contains("@")) {
-            url = ValidSession.IP + "/WS_Login.php?Ucorreo="+txtUser.getText().toString()+"&Upass="+txtPass.getText().toString();
+            url = ValidSession.IP + "/WS_Login.php?Ucorreo=" + txtUser.getText().toString() + "&Upass=" + txtPass.getText().toString();
             jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
             requestQueue.add(jsonRequest);
         } else {
@@ -90,6 +90,10 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
                 public void onResponse(String response) {
                     try {
                         JSONArray array = new JSONArray(response);
+                        if (array.getJSONObject(0) == null) {
+                            Toast.makeText(LoginActivity.this, "RUC y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         JSONObject data = array.getJSONObject(0);
                         ValidSession.empresaLogueada = Empresa.cargarDatosDesdeJson(data);
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -108,34 +112,28 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
     }
 
     @Override
-    public void onErrorResponse(VolleyError error)
-    {
+    public void onErrorResponse(VolleyError error) {
         Toast.makeText(getApplicationContext(), R.string.incorrect_user, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onResponse(JSONObject response)
-    {
+    public void onResponse(JSONObject response) {
         JSONArray jsonArray = response.optJSONArray("datos");
 
         try {
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             loadUserDataFromDatabase(jsonObject);
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        }
-        catch (JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    private void loadUserDataFromDatabase(JSONObject data)
-    {
+    private void loadUserDataFromDatabase(JSONObject data) {
         ValidSession.usuarioLogueado = new User();
         ValidSession.usuarioLogueado.loadUserDataFromJsonObject(data);
     }
 
-    //ESTE CODIGO ES UNICO Y EXCLUSIVAMENTE PARA LAS CERTIFICACIONES DE CONEXION VOLLEY PLEASE NO TOCAR!!!
     @SuppressLint("TrulyRandom")
     public static void handleSSLHandshake() {
         try {

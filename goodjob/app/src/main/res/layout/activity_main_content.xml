@@ -26,6 +26,7 @@
             android:layout_margin="16dp"
             android:clickable="true"
             android:focusable="true"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_add_to_activity_black_24dp" />
 
     </FrameLayout>
@@ -37,5 +38,4 @@
         android:layout_alignParentBottom="true"
         android:background="#ccc"
         app:menu="@menu/navigation" />
-
 </RelativeLayout>

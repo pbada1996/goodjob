@@ -38,17 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        // boton flotante
         publicarActividad = findViewById(R.id.fabPublicarActividad);
-        publicarActividad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ValidSession.usuarioLogueado != null && ValidSession.usuarioLogueado.getId() == 1)
-                    startActivity(new Intent(MainActivity.this, PublicarActividadActivity.class));
-                else
-                    Toast.makeText(getApplicationContext(), "No puedes realizar esta acción", Toast.LENGTH_LONG).show();
-            }
-        });
 
         // setting the initial fragment on app start
         Fragment initialFragment = new HomeFragment();
@@ -64,9 +54,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mostrarBotonPublicar();
+        publicarActividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ValidSession.empresaLogueada != null)
+                    startActivity(new Intent(MainActivity.this, PublicarActividadActivity.class));
+                else
+                    Toast.makeText(getApplicationContext(), "No puedes realizar esta acción", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     private void setToolbar() {
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    private void mostrarBotonPublicar() {
+        if (ValidSession.empresaLogueada != null)
+            publicarActividad.setVisibility(View.VISIBLE);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -147,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         search.setQueryHint("Buscar...");
     }
 
-    private void sendToLoginOrProfile(){
+    private void sendToLoginOrProfile() {
         if (ValidSession.usuarioLogueado == null) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
