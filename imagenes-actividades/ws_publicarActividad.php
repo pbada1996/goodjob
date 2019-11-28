@@ -14,17 +14,20 @@
 	
 	$titulo = $_POST['titulo'];
 	$descripcion = $_POST['descripcion'];
-	$id_usuario = $_POST['id_usuario'];
+	$id_empresa = $_POST['id_empresa'];
 	$fecha_fin = $_POST['fecha_fin'];
 	$participantes_requeridos = $_POST['participantes_requeridos'];
 	$recompensa = $_POST['recompensa'];
 	$foto = $_POST['foto'];
-	$url_foto = $id_usuario.$titulo;
+	$distrito = $_POST['distrito'];
+	$tipo_seleccion = $_POST['tipo_seleccion'];
+	$tipo_recompensa = $_POST['tipo_recompensa'];
+	$url_foto = $id_empresa.$titulo;
 	
-	$consulta_string = "insert into actividad (id, titulo, descripcion, id_usuario, fecha_creacion, fecha_fin, 
-	participantes_actuales, participantes_requeridos, foto, tipo_recompensa, recompensa, estado)  
-	values(null, '{$titulo}', '{$descripcion}', {$id_usuario}, CURDATE(), '{$fecha_fin}', 0, {$participantes_requeridos}, 
-	'{$url_foto}', 1, {$recompensa}, 1);";
+	$consulta_string = "insert into actividad (id, titulo, descripcion, empresa, fecha_creacion, fecha_fin, 
+	participantes_actuales, participantes_requeridos, foto, tipo_recompensa, recompensa, distrito, tipo_seleccion, estado)  
+	values(null, '{$titulo}', '{$descripcion}', $id_empresa, CURDATE(), '{$fecha_fin}', 0, {$participantes_requeridos}, 
+	'{$url_foto}', $tipo_recompensa, {$recompensa}, $distrito, $tipo_seleccion, 0);";
 
 	$ruta_subida = "imagenes-subidas/{$url_foto}.jpg";
 	

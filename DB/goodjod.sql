@@ -17,7 +17,7 @@ use goodjod;
 --
 
 CREATE TABLE `carreras` (
-  `idPerfilProfesional` int(11) NOT NULL,
+  `idPerfilProfesional` int NOT NULL,
   `PPNombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -39,12 +39,12 @@ INSERT INTO `carreras` (`idPerfilProfesional`, `PPNombre`) VALUES
 -- Estructura de tabla para la tabla `distrito`
 --
 
-CREATE TABLE `distrito` (
-  `idDistrito` int(11) NOT NULL,
-  `DNombre` varchar(150) NOT NULL
+CREATE TABLE distrito (
+  idDistrito int(11) NOT NULL primary key auto_increment,
+  DNombre varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `distrito` (`idDistrito`, `DNombre`) VALUES
+INSERT INTO distrito (`idDistrito`, `DNombre`) VALUES
 (1, 'Callao'),
 (2, 'Bellavista'),
 (3, 'Carmen de La Legua'),
@@ -102,8 +102,8 @@ INSERT INTO `distrito` (`idDistrito`, `DNombre`) VALUES
 -- Estructura de tabla para la tabla `empresa`
 --
 
-CREATE TABLE `empresa` (
-  `idEmpresa` int(11) NOT NULL,
+CREATE TABLE empresa (
+  idEmpresa int(11) NOT NULL primary key auto_increment,
   `ErazonSocial` varchar(120) NOT NULL,
   `Eruc` varchar(11) NOT NULL,
   `Ececular` varchar(11) NOT NULL,
@@ -120,8 +120,8 @@ CREATE TABLE `empresa` (
 
 INSERT INTO `empresa` (`idEmpresa`, `ErazonSocial`, `Eruc`, `Ececular`, `Edireccion`, `EfechaRegistro`, 
 `EcodigoPostal`, `estado`, `EnombreComercial`, `EnumeroActividades`, `idDistrito`, `ecorreo`, `password`) 
-VALUES (1, 'GOODJOB SAC', '20345678912', '987987789', 'Los de tomas valle mas naki', '2019-11-10', 
-'15103', 1, '¡Buen Trabajo!', 0, 42, 'goodjob@gmail.com', 'goodjob');
+VALUES (1, 'GOODJOB SAC PERU', '20345678912', '987987789', 'Los de tomas valle mas naki', '2019-11-10', 
+'15103', 1, 'GoodJob', 0, 42, 'goodjob@gmail.com', 'goodjob');
 
 --
 --
@@ -190,25 +190,33 @@ insert into tipo_recompensa values(null, 'Dinero');
 
 create table actividad
 (
-	id int auto_increment primary key,
-    titulo varchar(30),
-    descripcion varchar(140),
-    id_usuario int,
-    fecha_creacion date,
-    fecha_fin date, 
-    participantes_actuales int, 
-    participantes_requeridos int,
+	id int(11) auto_increment primary key,
+    titulo varchar(30) not null,
+    descripcion varchar(140) not null,
+    empresa int not null,
+    fecha_creacion date not null,
+    fecha_fin date not null, 
+    participantes_actuales int default 0,
+    participantes_requeridos int not null,
     foto varchar(255) default null,
-    tipo_recompensa int,
-    recompensa decimal(10,2),
-    estado int,
-    foreign key(tipo_recompensa) references tipo_recompensa(id),
-    foreign key(id_usuario) references usuario(idUsuario)
+    tipo_recompensa int not null,
+    recompensa decimal(10,2) not null,
+    distrito int not null,
+    tipo_seleccion int not null,
+    mensaje varchar(250) default null,
+    estado int default 0, -- 0: en espera | 1: aceptado | 2: rechazado
+    foreign key (tipo_recompensa) references tipo_recompensa(id),
+    FOREIGN KEY (empresa) references empresa (idEmpresa),
+    FOREIGN KEY (distrito) references distrito (idDistrito)
 );
 
-insert into actividad values (null, 'La playita bonita', 'Playa bastante contaminada, muchas personas acuden a esta, pero nadie se toma la molestia de recoger la basura', 1, '2019-07-08', '2019-07-13', 0, 5, null, 1, 100, 1);
-insert into actividad values (null, 'Parque Huaqueno', 'Ubicado en el cruce de Av. universitaria con antunez de mayolo. Referencia frente a la botica', 1, '2019-07-09', '2019-07-12', 0, 2, null, 1, 50, 1);
-insert into actividad values (null, 'Jr. La Camita', 'Ya no se me ocurrio que mas escribir aca, asi que esto solo es para hacer bulto', 1, '2019-07-09', '2019-07-11', 0, 3, null, 1, 70, 1);
+insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
+recompensa, distrito, tipo_seleccion, estado) values ('GoodJob Opening', 'Apertura de la plataforma GoodJob', 1, curdate(), '2019-12-17',
+10, '1GoodJob Opening', 1, 3000, 1, 1, 1);
+
+insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
+recompensa, distrito, tipo_seleccion, estado) values ('GoodJob Afterparty', 'Celebreishon GoodJob', 1, curdate(), '2019-12-17',
+20, '1GoodJob Afterparty', 1, 5000, 1, 1, 1);
 
 create table postulacion_actividad
 (
@@ -232,18 +240,10 @@ ALTER TABLE `carreras`
   ADD PRIMARY KEY (`idPerfilProfesional`);
 
 --
--- Indices de la tabla `distrito`
---
-ALTER TABLE `distrito`
-  ADD PRIMARY KEY (`idDistrito`);
-
---
 -- Indices de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  ADD PRIMARY KEY (`idEmpresa`),
   ADD KEY `idDistrito` (`idDistrito`);
-
 
 --
 -- Indices de la tabla `tipopremiun`
@@ -270,19 +270,6 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `carreras`
   MODIFY `idPerfilProfesional` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `distrito`
---
-ALTER TABLE `distrito`
-  MODIFY `idDistrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
-
---
--- AUTO_INCREMENT de la tabla `empresa`
---
-ALTER TABLE `empresa`
-  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 
 --
 -- AUTO_INCREMENT de la tabla `tipopremiun`

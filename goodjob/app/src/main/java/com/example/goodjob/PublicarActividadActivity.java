@@ -49,7 +49,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
     private TextInputLayout tilNombreActividad, tilDescripcionActividad,
             tilFecha, tilParticipantesRequeridos, tilRecompensa;
     private ImageView imagenActividad;
-    private Spinner tipoSeleccion, tipoRecompensa;
+    private Spinner tipoSeleccion, tipoRecompensa, distritos;
     private Bitmap bitmap;
 
     private final int CAMPO_VACIO = 0;
@@ -66,6 +66,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
         mapearCampos();
         establecerAdaptadorSpinnerSeleccion();
         establecerAdaptadorSpinnerRecompensa();
+        establecerAdaptadorSpinnerDistrito();
         asignarEventoDeClickParaLaFecha();
         asignarEventoDeClickParaImagen();
         asignarEventoDeClickEnBotonPublicarActividad();
@@ -87,6 +88,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
         tilRecompensa = findViewById(R.id.tilRecompensa);
         tipoSeleccion = findViewById(R.id.spinnerTipoSeleccion);
         tipoRecompensa = findViewById(R.id.spinnerTipoRecompensa);
+        distritos = findViewById(R.id.spinnerDistrito);
     }
 
     private void establecerAdaptadorSpinnerSeleccion() {
@@ -103,6 +105,14 @@ public class PublicarActividadActivity extends AppCompatActivity {
                         R.array.tipo_recompensa_array,
                         R.layout.item_spinner_publicar_actividad);
         tipoRecompensa.setAdapter(adapterRecompensa);
+    }
+
+    private void establecerAdaptadorSpinnerDistrito() {
+        ArrayAdapter<CharSequence> adapterDistrito =
+                ArrayAdapter.createFromResource(this,
+                        R.array.distritos_array,
+                        R.layout.item_spinner_publicar_actividad);
+        distritos.setAdapter(adapterDistrito);
     }
 
     private void asignarEventoDeClickEnBotonPublicarActividad() {
@@ -133,15 +143,18 @@ public class PublicarActividadActivity extends AppCompatActivity {
                     }
                 }) {
                     @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
+                    protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<>();
                         params.put("foto", imageToString(bitmap));
                         params.put("titulo", nombreActividad.getText().toString());
                         params.put("descripcion", descripcionActividad.getText().toString());
-                        params.put("id_usuario", ValidSession.usuarioLogueado.getId().toString());
+                        params.put("id_empresa", ValidSession.empresaLogueada.getId().toString());
                         params.put("fecha_fin", f_fin);
                         params.put("participantes_requeridos", cantidadParticipantes.getText().toString());
                         params.put("recompensa", recompensa.getText().toString());
+                        params.put("distrito", String.valueOf(distritos.getSelectedItemId()));
+                        params.put("tipo_seleccion", String.valueOf(tipoSeleccion.getSelectedItemId()));
+                        params.put("tipo_recompensa", String.valueOf(tipoRecompensa.getSelectedItemId()));
                         return params;
                     }
                 };

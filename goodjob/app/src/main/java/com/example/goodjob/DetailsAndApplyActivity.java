@@ -104,7 +104,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     {
         title.setText(actividad.getTitle());
         description.setText(actividad.getDescription());
-        author.setText(actividad.getAuthor().substring(0, 20));
+        author.setText(actividad.getAuthor());
         creationDate.setText(formatDate(actividad.getCreationDate()));
         endDate.setText(formatDate(actividad.getEndDate()));
         currentParticipants.setText("De momento hay " + actividad.getCurrentParticipants() + " postulantes");

@@ -64,54 +64,46 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
         return view;
     }
 
-    private void loadData()
-    {
+    private void loadData() {
         activities = new ArrayList<>();
         String url = ValidSession.IP + "/ws_listarActividades2.php";
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
-                try{
+            public void onResponse(String response) {
+                try {
                     JSONArray jsonArray = new JSONArray(response);
-                    for (int i = 0; i < jsonArray.length(); i++)
-                    {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         Actividad actividad = loadActivityDataFromDatabase(jsonObject);
                         activities.add(actividad);
                     }
                     loadAdapter();
-
-                }catch (JSONException e) {
+                } catch (JSONException e) {
                     Logger.getLogger(e.getMessage());
                 }
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(jsonRequest);
     }
 
-    private Actividad loadActivityDataFromDatabase(JSONObject jsonObject)
-    {
+    private Actividad loadActivityDataFromDatabase(JSONObject jsonObject) {
         return Actividad.loadActivityDataFromJsonObject(jsonObject);
     }
 
-    private void loadAdapter()
-    {
+    private void loadAdapter() {
         ActivityAdapter adapter = new ActivityAdapter(activities, getContext(), this);
         activitiesRecycler.setAdapter(adapter);
     }
 
     @Override
-    public void onActivityClick(int position)
-    {
+    public void onActivityClick(int position) {
         Actividad selectedActivity = activities.get(position);
         Intent details = new Intent(getContext(), DetailsAndApplyActivity.class);
         details.putExtra("selectedActivity", selectedActivity);
