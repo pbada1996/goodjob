@@ -12,13 +12,13 @@
 		die('Unable to connect to database' . mysqli_connect_error());
     }
     
-    $ruc = $_POST['ruc'];
-    $pass = $_POST['pass'];
+    $ruc = $_GET['ruc'];
+    $pass = $_GET['pass'];
 	
-    $consulta = $con->prepare("SELECT idEmpresa, ErazonSocial, Eruc, Ecelular, Edireccion, EfechaRegistro,
+    $consulta = $con->prepare("SELECT idEmpresa, ErazonSocial, Eruc, Ececular, Edireccion, EfechaRegistro,
     EcodigoPostal, ecorreo, EnombreComercial, EnumeroActividades, DNombre, estado from empresa e 
     INNER JOIN distrito d ON e.idDistrito = d.idDistrito WHERE 
-    Eruc = '$ruc' AND password = '$pass'");
+    Eruc = '$ruc' AND e.password = '$pass'");
 		
 	$consulta->execute();
 	
