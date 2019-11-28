@@ -19,8 +19,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
     private Context context;
     private OnActivityListener onActivityListener;
 
-    public ActivityAdapter(List<Actividad> activities, Context context, OnActivityListener onActivityListener)
-    {
+    public ActivityAdapter(List<Actividad> activities, Context context, OnActivityListener onActivityListener) {
         this.activities = activities;
         this.context = context;
         this.onActivityListener = onActivityListener;
@@ -28,8 +27,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
 
     @NonNull
     @Override
-    public ActivityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
-    {
+    public ActivityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_item,
                 viewGroup, false);
 
@@ -37,17 +35,16 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ActivityViewHolder avh, int index)
-    {
+    public void onBindViewHolder(@NonNull ActivityViewHolder avh, int index) {
         avh.title.setText(activities.get(index).getTitle());
         avh.authorName.setText(activities.get(index).getAuthor());
         if (activities.get(index).getAuthor().length() > 20)
             avh.authorName.setText(activities.get(index).getAuthor().substring(0, 20));
         avh.description.setText(activities.get(index).getDescription());
+        if (activities.get(index).getDescription().length() > 50)
+            avh.description.setText(activities.get(index).getDescription().substring(0, 50).concat("..."));
         avh.participantsCounter.setText(activities.get(index).getCurrentParticipants()
                 + " / " + activities.get(index).getRequiredParticipants());
-        avh.photo.setImageResource(R.drawable.placeholder);
-        // TODO: cambiar foto
     }
 
     @Override
@@ -56,8 +53,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
     }
 
     // creando interface para hacer click en las activities
-    public interface OnActivityListener
-    {
+    public interface OnActivityListener {
         void onActivityClick(int position);
     }
 }
