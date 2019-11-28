@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,7 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.classes.Empresa;
 import com.example.goodjob.classes.User;
 import com.example.goodjob.classes.ValidSession;
 
@@ -30,6 +33,8 @@ import org.json.JSONObject;
 
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -77,9 +82,42 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
     }
 
     private void iniciarSesion() {
-        String url= ValidSession.IP + "/WS_Login.php?Ucorreo="+txtUser.getText().toString()+"&Upass="+txtPass.getText().toString();
-        jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-        requestQueue.add(jsonRequest);
+
+        String url;
+        if (txtUser.getText().toString().contains("@")) {
+            url = ValidSession.IP + "/WS_Login.php?Ucorreo="+txtUser.getText().toString()+"&Upass="+txtPass.getText().toString();
+            jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+            requestQueue.add(jsonRequest);
+        } else {
+            url = ValidSession.IP + "/ws_loginEmpresa.php";
+            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        JSONObject data = array.getJSONObject(0);
+                        ValidSession.empresaLogueada = Empresa.cargarDatosDesdeJson(data);
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("ruc", txtUser.getText().toString().trim());
+                    map.put("pass", txtPass.getText().toString().trim());
+                    return map;
+                }
+            };
+            Volley.newRequestQueue(getApplicationContext()).add(request);
+        }
     }
 
     @Override

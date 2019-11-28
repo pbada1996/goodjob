@@ -18,11 +18,21 @@ public class Empresa {
     private Integer numeroActividades; // publicadas me imagino, right ?
     private Integer estado;
 
-    public static Empresa cargarDatosDesdeObjetoJson(JSONObject data) {
+    public static Empresa cargarDatosDesdeJson(JSONObject data) {
 
         Empresa empresa = new Empresa();
         empresa.setId(data.optInt("id"));
-
+        empresa.setRazonSocial(data.optString("razon_social"));
+        empresa.setNombreComercial(data.optString("nombre_comercial"));
+        empresa.setRuc(data.optString("ruc"));
+        empresa.setTelefono(data.optString("telefono"));
+        empresa.setCorreo(data.optString("correo"));
+        empresa.setDireccion(data.optString("direccion"));
+        empresa.setFechaRegistro(data.optString("fecha_registro"));
+        empresa.setCodigoPostal(data.optString("codigo_postal"));
+        empresa.setDistrito(data.optString("distrito"));
+        empresa.setNumeroActividades(data.optInt("numero_actividades"));
+        empresa.setEstado(data.optInt("estado"));
         return empresa;
     }
 
