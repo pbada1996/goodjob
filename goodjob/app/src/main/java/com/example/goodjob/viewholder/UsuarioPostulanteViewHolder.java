@@ -18,8 +18,7 @@ public class UsuarioPostulanteViewHolder extends RecyclerView.ViewHolder impleme
     public ImageView rechazar;
     private UsuarioPostulanteAdapter.OnUsuarioPostulanteListener onUsuarioPostulanteListener;
 
-    public UsuarioPostulanteViewHolder(@NonNull View itemView, final UsuarioPostulanteAdapter.OnUsuarioPostulanteListener onUsuarioPostulanteListener)
-    {
+    public UsuarioPostulanteViewHolder(@NonNull View itemView, final UsuarioPostulanteAdapter.OnUsuarioPostulanteListener onUsuarioPostulanteListener) {
         super(itemView);
 
         nombre = itemView.findViewById(R.id.tvNombrePostulante);
@@ -46,8 +45,7 @@ public class UsuarioPostulanteViewHolder extends RecyclerView.ViewHolder impleme
     }
 
     @Override
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
         onUsuarioPostulanteListener.onPostulanteClick(getAdapterPosition());
     }
 }

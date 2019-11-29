@@ -9,8 +9,7 @@ public class PerfilUsuario {
     private Integer puntaje;
     private Double reputacion;
 
-    public static PerfilUsuario cargarDataDesdeJsonObject(JSONObject data)
-    {
+    public static PerfilUsuario cargarDataDesdeJsonObject(JSONObject data) {
         PerfilUsuario perfilUsuario = new PerfilUsuario();
 
         perfilUsuario.id = data.optInt("id");

@@ -38,7 +38,8 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
     private RecyclerView rvUsuariosParticipantes;
     private List<UsuarioParticipante> usuariosParticipantes;
 
-    public ActividadAceptadaFragment() { }
+    public ActividadAceptadaFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,37 +66,32 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
         return view;
     }
 
-    private void cargarDatosActividad(final Integer idActividad)
-    {
+    private void cargarDatosActividad(final Integer idActividad) {
         String url = ValidSession.IP + "/ws_consultarActividadAceptada.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     ActividadAceptada actividadAceptada = ActividadAceptada.cargarDatosDesdeJsonObject(jsonObject);
                     setearCamposActividadAceptada(actividadAceptada);
                     cargarUsuariosParticipantes(idActividad);
-                } catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-    private void setearCamposActividadAceptada(ActividadAceptada actividadAceptada)
-    {
+    private void setearCamposActividadAceptada(ActividadAceptada actividadAceptada) {
         tituloActividad.setText(actividadAceptada.getTitulo());
         nombreAutor.setText(actividadAceptada.getNombreAutor());
         fechaFin.setText(actividadAceptada.getFechaFin());
@@ -103,48 +99,41 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
         recompensa.setText(actividadAceptada.getRecompensa());
     }
 
-    private void cargarUsuariosParticipantes(Integer idActividad)
-    {
+    private void cargarUsuariosParticipantes(Integer idActividad) {
         String url = ValidSession.IP + "/ws_listarUsuariosParticipantes.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
-                    for (int i = 0; i < jsonArray.length(); i++)
-                    {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         UsuarioParticipante participante = UsuarioParticipante.cargarDataDesdeJsonObject(jsonObject);
                         usuariosParticipantes.add(participante);
                     }
                     cargarAdaptador();
 
-                } catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-    private void cargarAdaptador()
-    {
+    private void cargarAdaptador() {
         UsuarioParticipanteAdapter adapter = new UsuarioParticipanteAdapter(usuariosParticipantes, this);
         rvUsuariosParticipantes.setAdapter(adapter);
     }
 
     @Override
-    public void onUsuarioParticipanteClick(int posicion)
-    {
+    public void onUsuarioParticipanteClick(int posicion) {
         UsuarioParticipante usuarioSeleccionado = usuariosParticipantes.get(posicion);
 
         Bundle bundle = new Bundle();

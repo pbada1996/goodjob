@@ -17,16 +17,14 @@ public class UsuarioParticipanteAdapter extends RecyclerView.Adapter<UsuarioPart
     private List<UsuarioParticipante> usuariosParticipantes;
     private OnUsuarioParticipanteListener onUsuarioParticipanteListener;
 
-    public UsuarioParticipanteAdapter(List<UsuarioParticipante> usuariosParticipantes, OnUsuarioParticipanteListener onUsuarioParticipanteListener)
-    {
+    public UsuarioParticipanteAdapter(List<UsuarioParticipante> usuariosParticipantes, OnUsuarioParticipanteListener onUsuarioParticipanteListener) {
         this.usuariosParticipantes = usuariosParticipantes;
         this.onUsuarioParticipanteListener = onUsuarioParticipanteListener;
     }
 
     @NonNull
     @Override
-    public UsuarioParticipanteViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
-    {
+    public UsuarioParticipanteViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.usuario_participante_item,
                 viewGroup, false);
 
@@ -34,8 +32,7 @@ public class UsuarioParticipanteAdapter extends RecyclerView.Adapter<UsuarioPart
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UsuarioParticipanteViewHolder upvh, int posicion)
-    {
+    public void onBindViewHolder(@NonNull UsuarioParticipanteViewHolder upvh, int posicion) {
         upvh.nombreUsuarioParticipante.setText(usuariosParticipantes.get(posicion).getNombre());
         upvh.reputacionPromedio.setText(String.valueOf(usuariosParticipantes.get(posicion).getReputacionPromedio()));
     }
@@ -45,8 +42,7 @@ public class UsuarioParticipanteAdapter extends RecyclerView.Adapter<UsuarioPart
         return usuariosParticipantes.size();
     }
 
-    public interface OnUsuarioParticipanteListener
-    {
+    public interface OnUsuarioParticipanteListener {
         void onUsuarioParticipanteClick(int posicion);
     }
 }

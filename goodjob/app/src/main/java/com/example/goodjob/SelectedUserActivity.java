@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class SelectedUserActivity extends AppCompatActivity {
-    private TextView tvuser,tvcompany;
+    private TextView tvuser, tvcompany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class SelectedUserActivity extends AppCompatActivity {
         tvuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),FormRegisterUserActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FormRegisterUserActivity.class);
                 startActivity(intent);
             }
         });
@@ -28,7 +28,7 @@ public class SelectedUserActivity extends AppCompatActivity {
         tvcompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SolicitudEmpresaActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SolicitudEmpresaActivity.class);
                 startActivity(intent);
             }
         });

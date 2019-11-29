@@ -23,8 +23,7 @@ public class Actividad implements Parcelable {
     private String mensaje;
     private Integer status;
 
-    public static Actividad loadActivityDataFromJsonObject(JSONObject jsonObject)
-    {
+    public static Actividad loadActivityDataFromJsonObject(JSONObject jsonObject) {
         Actividad actividad = new Actividad();
 
         actividad.id = jsonObject.optInt("id");
@@ -166,7 +165,8 @@ public class Actividad implements Parcelable {
         this.status = status;
     }
 
-    public Actividad(){}
+    public Actividad() {
+    }
 
     protected Actividad(Parcel in) {
         if (in.readByte() == 0) {

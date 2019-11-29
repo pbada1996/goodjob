@@ -26,7 +26,8 @@ public class ProfileFragment extends Fragment {
     private TextView reputacion;
     private TextView puntaje;
 
-    public ProfileFragment() {}
+    public ProfileFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,47 +54,40 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    private void mapearCampos(View view)
-    {
+    private void mapearCampos(View view) {
         nombreCompleto = view.findViewById(R.id.tvNombreCompletoPerfil);
         reputacion = view.findViewById(R.id.tvReputacionPerfil);
         puntaje = view.findViewById(R.id.tvPuntajePerfil);
     }
 
-    private void consultarPerfilUsuario(Integer idUsuario)
-    {
+    private void consultarPerfilUsuario(Integer idUsuario) {
         String url = ValidSession.IP + "/ws_consultarPerfilUsuario.php?id_usuario=" + idUsuario;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     PerfilUsuario perfilUsuario = PerfilUsuario.cargarDataDesdeJsonObject(jsonObject);
                     setearCamposEnPantalla(perfilUsuario);
 
-                } catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-    private void setearCamposEnPantalla(PerfilUsuario perfilUsuario)
-    {
+    private void setearCamposEnPantalla(PerfilUsuario perfilUsuario) {
         nombreCompleto.setText(perfilUsuario.getNombre());
         reputacion.setText(String.valueOf(perfilUsuario.getReputacion()));
         puntaje.setText(String.valueOf(perfilUsuario.getPuntaje()));
     }
-
 }

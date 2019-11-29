@@ -40,7 +40,8 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
     // para cogerlo en los click
     private Integer idActividad = null;
 
-    public DetalleMiPublicacionFragment() {}
+    public DetalleMiPublicacionFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,8 +63,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
         return view;
     }
 
-    private void mapearViews(View view)
-    {
+    private void mapearViews(View view) {
         titulo = view.findViewById(R.id.tvTituloMiPublicacion);
         autor = view.findViewById(R.id.tvNombreAutorMiPublicacion);
         fecha = view.findViewById(R.id.tvFechaFinMiPublicacion);
@@ -73,37 +73,32 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
         postulantes = new ArrayList<>();
     }
 
-    private void consultarActividad(final Integer idActividad)
-    {
+    private void consultarActividad(final Integer idActividad) {
         String url = ValidSession.IP + "/ws_consultarActividadAceptada.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     ActividadAceptada actividadAceptada = ActividadAceptada.cargarDatosDesdeJsonObject(jsonObject);
                     setearCamposActividadAceptada(actividadAceptada);
                     cargarUsuariosPostulantes(idActividad);
-                } catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-    private void setearCamposActividadAceptada(ActividadAceptada aceptada)
-    {
+    private void setearCamposActividadAceptada(ActividadAceptada aceptada) {
         titulo.setText(aceptada.getTitulo());
         autor.setText(aceptada.getNombreAutor());
         fecha.setText(dateFormat(aceptada.getFechaFin()));
@@ -111,24 +106,20 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
         recompensa.setText(aceptada.getRecompensa());
     }
 
-    private String dateFormat(String fecha)
-    {
-        String [] f = fecha.split("-");
+    private String dateFormat(String fecha) {
+        String[] f = fecha.split("-");
         return f[2] + "/" + f[1] + "/" + f[0];
     }
 
-    private void cargarUsuariosPostulantes(Integer idActividad)
-    {
+    private void cargarUsuariosPostulantes(Integer idActividad) {
         String url = ValidSession.IP + "/ws_listarPostulantes.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
-                    for (int i = 0; i < jsonArray.length(); i++)
-                    {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         UsuarioPostulante postulante = UsuarioPostulante.cargarDesdeJsonObject(jsonObject);
                         postulantes.add(postulante);
@@ -141,30 +132,26 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-    private void cargarAdapter()
-    {
+    private void cargarAdapter() {
         UsuarioPostulanteAdapter adapter = new UsuarioPostulanteAdapter(postulantes, this);
         rvPostulantes.setAdapter(adapter);
     }
 
     @Override
-    public void onAceptarClick(int posicion)
-    {
+    public void onAceptarClick(int posicion) {
         String url = ValidSession.IP + "/ws_aceptarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
                 + "&id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 Fragment detalle = new DetalleMiPublicacionFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("id", idActividad);
@@ -173,8 +160,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
@@ -182,15 +168,13 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
     }
 
     @Override
-    public void onRechazarClick(int posicion)
-    {
+    public void onRechazarClick(int posicion) {
         String url = ValidSession.IP + "/ws_rechazarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
                 + "&id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 Fragment detalle = new DetalleMiPublicacionFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("id", idActividad);
@@ -199,8 +183,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
@@ -208,8 +191,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
     }
 
     @Override
-    public void onPostulanteClick(int posicion)
-    {
+    public void onPostulanteClick(int posicion) {
         Integer id = postulantes.get(posicion).getId();
 
         Bundle bundle = new Bundle();

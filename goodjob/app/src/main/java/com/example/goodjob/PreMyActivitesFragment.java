@@ -16,7 +16,8 @@ public class PreMyActivitesFragment extends Fragment {
     private Button misPostulaciones;
     private Button misPublicaciones;
 
-    public PreMyActivitesFragment() {}
+    public PreMyActivitesFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,16 +29,14 @@ public class PreMyActivitesFragment extends Fragment {
 
         misPostulaciones.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.containerFragments, new EstadoMisActividadesFragment()).commit();
             }
         });
 
         misPublicaciones.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 if (ValidSession.usuarioLogueado.getId() == 1)
                     getFragmentManager().beginTransaction().replace(R.id.containerFragments, new EstadoMisPublicacionesFragment()).commit();
                 else
@@ -48,8 +47,7 @@ public class PreMyActivitesFragment extends Fragment {
         return view;
     }
 
-    private void mapearCampos(View view)
-    {
+    private void mapearCampos(View view) {
         misPostulaciones = view.findViewById(R.id.btnMisPostulaciones);
         misPublicaciones = view.findViewById(R.id.btnMisPublicaciones);
     }

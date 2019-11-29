@@ -35,7 +35,8 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
     private RecyclerView activitiesRecycler;
     private List<Actividad> activities;
 
-    public HomeFragment() {}
+    public HomeFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

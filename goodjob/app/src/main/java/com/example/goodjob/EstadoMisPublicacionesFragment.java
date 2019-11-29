@@ -31,7 +31,8 @@ public class EstadoMisPublicacionesFragment extends Fragment implements EstadoMi
     private RecyclerView rvMisPublicaciones;
     private List<EstadoMisPublicacionesResponse> publicaciones;
 
-    public EstadoMisPublicacionesFragment() { }
+    public EstadoMisPublicacionesFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,25 +51,20 @@ public class EstadoMisPublicacionesFragment extends Fragment implements EstadoMi
         return view;
     }
 
-    private void mapearViews(View view)
-    {
+    private void mapearViews(View view) {
         rvMisPublicaciones = view.findViewById(R.id.rvMisPublicaciones);
         publicaciones = new ArrayList<>();
     }
 
-    private void cargarData()
-    {
+    private void cargarData() {
         String url = ValidSession.IP + "/ws_listarMisPublicaciones.php?id_usuario=" + ValidSession.usuarioLogueado.getId();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
-                try
-                {
+            public void onResponse(String response) {
+                try {
                     JSONArray jsonArray = new JSONArray(response);
-                    for (int i = 0; i < jsonArray.length(); i++)
-                    {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         EstadoMisPublicacionesResponse publicacion = EstadoMisPublicacionesResponse.cargarDesdeJsonObject(jsonObject);
                         publicaciones.add(publicacion);
@@ -81,23 +77,20 @@ public class EstadoMisPublicacionesFragment extends Fragment implements EstadoMi
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-    private void cargarAdapter()
-    {
+    private void cargarAdapter() {
         EstadoMisPublicacionesAdapter adapter = new EstadoMisPublicacionesAdapter(publicaciones, this);
         rvMisPublicaciones.setAdapter(adapter);
     }
 
     @Override
-    public void onMisPublicacionesClick(int posicion)
-    {
+    public void onMisPublicacionesClick(int posicion) {
         Integer id = publicaciones.get(posicion).getId();
         Bundle bundle = new Bundle();
         bundle.putInt("id", id);

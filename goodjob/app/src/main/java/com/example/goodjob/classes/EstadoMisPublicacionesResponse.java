@@ -10,8 +10,7 @@ public class EstadoMisPublicacionesResponse {
     private Integer postulantes;
     private Integer estado;
 
-    public static EstadoMisPublicacionesResponse cargarDesdeJsonObject(JSONObject data)
-    {
+    public static EstadoMisPublicacionesResponse cargarDesdeJsonObject(JSONObject data) {
         EstadoMisPublicacionesResponse response = new EstadoMisPublicacionesResponse();
 
         response.id = data.optInt("id");
