@@ -80,6 +80,9 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
 
         if (ValidSession.usuarioLogueado != null)
             consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
+        else if (ValidSession.empresaLogueada != null)
+            empresasNoPostulan();
+
         Certificado.handleSSLHandshake();
     }
 
@@ -179,6 +182,12 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private void cambioDeEstadoBoton() {
         postular.setText(R.string.already_in);
         postular.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.rojo));
+        postular.setEnabled(false);
+    }
+
+    private void empresasNoPostulan() {
+        postular.setText(R.string.empresas_no_postulan);
+        postular.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.colorAccent));
         postular.setEnabled(false);
     }
 

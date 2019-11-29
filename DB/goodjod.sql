@@ -179,6 +179,14 @@ insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, 
 recompensa, distrito, tipo_seleccion, estado) values ('GoodJob Afterparty', 'Celebreishon GoodJob', 1, curdate(), '2019-12-17',
 20, '1GoodJob Afterparty', 1, 5000, 1, 1, 1);
 
+insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
+recompensa, distrito, tipo_seleccion, estado) values ('Navidad con GoodJob', 'Celebremos la navidad junto a los integrantes de GoodJob', 1, curdate(), '2019-12-25',
+7, '1Navidad con Goodjob', 1, 2000, 1, 1, 1);
+
+insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
+recompensa, distrito, tipo_seleccion, estado) values ('Serruchando a Cachi', 'De la mano del gran Bratzon, veamos como se serrucha el piso como nunca antes', 1, 
+curdate(), '2019-12-03', 3, '1Serruchando a Cachi', 2, 300, 1, 1, 1);
+
 
 create table postulacion_actividad
 (
