@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.fragments;
 
 
 import android.content.Intent;
@@ -17,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.activities.DetailsAndApplyActivity;
+import com.example.goodjob.R;
 import com.example.goodjob.adapter.ActivityAdapter;
 import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.classes.ValidSession;

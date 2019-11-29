@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.R;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.util.Certificado;
 
@@ -23,12 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class FormRegisterCompanyActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
-
-    private Button btnRegistrar, btnCancelar;
-    private EditText tvrazonsocial,
-            tvruc, tvcelularC,
-            tvpasS, tvpassdos;
+public class FormRegisterUserActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
+    private Button btnRegister, btnCancel;
+    private EditText tvcorreo, tvpass, tvpassdos;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
     Date date = new Date();
@@ -40,27 +38,26 @@ public class FormRegisterCompanyActivity extends AppCompatActivity implements Re
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_register_company);
+        setContentView(R.layout.activity_form_register_user);
 
-        tvrazonsocial = findViewById(R.id.txtrazonsocialR);
-        tvruc = findViewById(R.id.txtrucR);
-        tvcelularC = findViewById(R.id.txtcelularRC);
-        tvpasS = findViewById(R.id.txtpassRC);
-        tvpassdos = findViewById(R.id.txtpassRCdos);
 
-        btnRegistrar = findViewById(R.id.btnRegistrar);
-        btnCancelar = findViewById(R.id.btnCancelar);
+        tvpass = findViewById(R.id.txtpassR);
+        tvpassdos = findViewById(R.id.txtpassdosR);
+
+
+        btnRegister = findViewById(R.id.btnRegister);
+        btnCancel = findViewById(R.id.btn_Cancel);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CargarWebServiceRegistrarCompany();
+                CargarWebServiceRegistrarUser();
             }
         });
 
-        btnCancelar.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SelectedUserActivity.class);
@@ -70,13 +67,13 @@ public class FormRegisterCompanyActivity extends AppCompatActivity implements Re
         Certificado.handleSSLHandshake();
     }
 
-    private void CargarWebServiceRegistrarCompany() {
-        String url = ValidSession.IP + "/WS_RegistrarEmpresa.php?ErazonSocial=" + tvrazonsocial.getText().toString() + "&" +
-                "Eruc=" + tvruc.getText().toString() + "&" +
-                "Ecelular=" + tvcelularC.getText().toString() + "&" +
-                "Epass=" + tvpasS.getText().toString() + "&" +
-                "EfechaRegistro=" + fecharegistro + "&" +
-                "Eestado=1";
+    private void CargarWebServiceRegistrarUser() {
+
+
+        String url = ValidSession.IP + "/WS_RegistrarUsuario.php?Unombre=" + tvcorreo.getText().toString() + "&" +
+                "Upass=" + tvpass.getText().toString() + "&" +
+                "UfechaRegistro=" + fecharegistro + "&" +
+                "Uestado=1";
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         requestQueue.add(jsonObjectRequest);
@@ -85,7 +82,6 @@ public class FormRegisterCompanyActivity extends AppCompatActivity implements Re
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getApplicationContext(), "Oh! será el fin del hombre araña?" + error.toString(), Toast.LENGTH_SHORT).show();
-
     }
 
     @Override

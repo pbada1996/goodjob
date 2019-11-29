@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.activities;
 
 
 import android.content.Intent;
@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.R;
 import com.example.goodjob.classes.Empresa;
 import com.example.goodjob.classes.User;
 import com.example.goodjob.classes.ValidSession;

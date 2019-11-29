@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.fragments;
 
 
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.goodjob.R;
 import com.example.goodjob.classes.ValidSession;
 
 public class PreMyActivitesFragment extends Fragment {

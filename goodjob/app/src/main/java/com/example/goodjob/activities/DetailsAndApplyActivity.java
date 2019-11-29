@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.activities;
 
 
 import android.content.DialogInterface;
@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.R;
 import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.util.Certificado;
