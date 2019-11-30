@@ -114,7 +114,14 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         try {
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             loadUserDataFromDatabase(jsonObject);
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            int idActividad = getIntent().getIntExtra("idActividad", 0);
+            if (idActividad != 0){ // iniciando sesion desde detalle actividad
+                Intent intent = new Intent(getApplicationContext(), DetailsAndApplyActivity.class);
+                intent.putExtra("idActividad", idActividad);
+                startActivity(intent);
+            } else { // iniciando sesion de manera normal
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

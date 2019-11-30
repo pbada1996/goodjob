@@ -1,6 +1,7 @@
 package com.example.goodjob.activities;
 
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -42,6 +43,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private Button postular;
     private TextView reward;
     private Actividad selectedActivity;
+    Actividad actividad = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +62,50 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         reward = findViewById(R.id.tvReward);
 
         selectedActivity = getIntent().getExtras().getParcelable("selectedActivity");
-        loadData(selectedActivity);
+        if (selectedActivity != null){
+            loadData(selectedActivity);
+        }
+
+        final int idActividad = getIntent().getIntExtra("idActividad", 0);
+        if (idActividad != 0) {
+            String url = ValidSession.IP + "/ws_listarActividadSeleccionadaPorLogin.php?id_actividad=" + idActividad;
+            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        JSONObject jsonObject = array.getJSONObject(0);
+                        actividad = Actividad.loadActivityDataFromJsonObject(jsonObject);
+                        loadData(actividad);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            Volley.newRequestQueue(getApplicationContext()).add(request);
+        }
 
         postular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (validateStartedSession()) {
-                    realizarPostulacion(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
-                    cambioDeEstadoBoton();
-                    incrementarParticipantes(selectedActivity.getCurrentParticipants() + 1, selectedActivity.getId());
+                    if (selectedActivity!=null)
+                    {
+                        realizarPostulacion(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
+                        cambioDeEstadoBoton();
+                        incrementarParticipantes(selectedActivity.getCurrentParticipants() + 1, selectedActivity.getId());
+
+                    }else {
+                        realizarPostulacion(ValidSession.usuarioLogueado.getId(), idActividad);
+                        cambioDeEstadoBoton();
+                        incrementarParticipantes(actividad.getCurrentParticipants() + 1, idActividad);
+                    }
                     startActivity(new Intent(DetailsAndApplyActivity.this, MainActivity.class));
                     return;
                 }
@@ -79,7 +115,11 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         });
 
         if (ValidSession.usuarioLogueado != null)
-            consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
+            if (selectedActivity != null){
+                consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
+            } else{
+                consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), idActividad);
+            }
         else if (ValidSession.empresaLogueada != null)
             empresasNoPostulan();
 
@@ -120,7 +160,9 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
                 .setPositiveButton(positivo, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(DetailsAndApplyActivity.this, next));
+                        Intent intent = new Intent(DetailsAndApplyActivity.this, next);
+                        intent.putExtra("idActividad", selectedActivity.getId());
+                        startActivity(intent);
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert);
