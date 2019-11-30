@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -22,12 +22,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.R;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.util.DatePickerFragment;
 

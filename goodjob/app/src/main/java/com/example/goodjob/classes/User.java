@@ -4,74 +4,30 @@ import org.json.JSONObject;
 
 public class User {
 
-    /* TODO: estoy mapeando al usuario, al igual que en la clase de actividad,
-     *  si es que me estoy olvidado de algún campo, sientanse libre de agregarlo.
-     */
-
     private Integer id;
-    private String name;
-    private String surname;
-    private String maternalFamilyName;
+    private String url_foto;
+    private String nombres;
+    private String paterno;
+    private String materno;
     private String dni;
-    private String passport;
-    private String birthDate;
-    private String cellphone;
-    private Integer professionalProfile; // este puede ser el id de otra clase/tabla :thinking:
-    private String email;
-    private Integer idDistrito;
-    private String address;
+    private String fechaNacimiento;
+    private String celular;
+    private String correo;
+    private String direccion;
     private String password;
-    private Integer score;
-    private String accountCreationDate;
-    private Integer availableActivities; // por defecto cada usuario tendrá 1 actividad disponible
-    // para poder aplicar a las diferentes actividades.
-    private Integer availablePosts; // la cantidad de actividades que se pueden publicar
-    private Double reputacionPuntos;
+    private String fechaRegistro;
+    private double reputacionPuntos;
     private Integer cantidadVotos;
-    private boolean premium;
-    private Integer status;
-
-    public User() {}
-
-    public String getPassport() {
-        return passport;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getIdDistrito() {
-        return idDistrito;
-    }
-
-    public void setIdDistrito(Integer idDistrito) {
-        this.idDistrito = idDistrito;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAccountCreationDate() {
-        return accountCreationDate;
-    }
-
-    public void setAccountCreationDate(String accountCreationDate) {
-        this.accountCreationDate = accountCreationDate;
-    }
+    private Integer estado;
+    private String numeroTarjeta;
+    private String genero;
+    private String estadoCivil;
+    private String cv;
+    private String distrito;
+    private String linkFb;
+    private String linkLd;
+    private String tipoUsuario;
+    private Integer puntaje;
 
     public Integer getId() {
         return id;
@@ -81,28 +37,36 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUrl_foto() {
+        return url_foto;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUrl_foto(String url_foto) {
+        this.url_foto = url_foto;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getMaternalFamilyName() {
-        return maternalFamilyName;
+    public String getPaterno() {
+        return paterno;
     }
 
-    public void setMaternalFamilyName(String maternalFamilyName) {
-        this.maternalFamilyName = maternalFamilyName;
+    public void setPaterno(String paterno) {
+        this.paterno = paterno;
+    }
+
+    public String getMaterno() {
+        return materno;
+    }
+
+    public void setMaterno(String materno) {
+        this.materno = materno;
     }
 
     public String getDni() {
@@ -113,20 +77,36 @@ public class User {
         this.dni = dni;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getCellphone() {
-        return cellphone;
+    public String getCelular() {
+        return celular;
     }
 
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getPassword() {
@@ -137,43 +117,19 @@ public class User {
         this.password = password;
     }
 
-    public Integer getScore() {
-        return score;
+    public String getFechaRegistro() {
+        return fechaRegistro;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
-    public Integer getProfessionalProfile() {
-        return professionalProfile;
-    }
-
-    public void setProfessionalProfile(Integer professionalProfile) {
-        this.professionalProfile = professionalProfile;
-    }
-
-    public Integer getAvailableActivities() {
-        return availableActivities;
-    }
-
-    public void setAvailableActivities(Integer availableActivities) {
-        this.availableActivities = availableActivities;
-    }
-
-    public Integer getAvailablePosts() {
-        return availablePosts;
-    }
-
-    public void setAvailablePosts(Integer availablePosts) {
-        this.availablePosts = availablePosts;
-    }
-
-    public Double getReputacionPuntos() {
+    public double getReputacionPuntos() {
         return reputacionPuntos;
     }
 
-    public void setReputacionPuntos(Double reputacionPuntos) {
+    public void setReputacionPuntos(double reputacionPuntos) {
         this.reputacionPuntos = reputacionPuntos;
     }
 
@@ -185,45 +141,109 @@ public class User {
         this.cantidadVotos = cantidadVotos;
     }
 
-    public boolean isPremium() {
-        return premium;
+    public Integer getEstado() {
+        return estado;
     }
 
-    public void setPremium(boolean premium) {
-        this.premium = premium;
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
-    public Integer getStatus() {
-        return status;
+    public String getNumeroTarjeta() {
+        return numeroTarjeta;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setNumeroTarjeta(String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
     }
 
-    public void loadUserDataFromJsonObject(JSONObject jsonObject)
-    {
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getCv() {
+        return cv;
+    }
+
+    public void setCv(String cv) {
+        this.cv = cv;
+    }
+
+    public String getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
+
+    public String getLinkFb() {
+        return linkFb;
+    }
+
+    public void setLinkFb(String linkFb) {
+        this.linkFb = linkFb;
+    }
+
+    public String getLinkLd() {
+        return linkLd;
+    }
+
+    public void setLinkLd(String linkLd) {
+        this.linkLd = linkLd;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public Integer getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(Integer puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public void loadUserDataFromJsonObject(JSONObject jsonObject) {
         this.id = jsonObject.optInt("idUsuario");
-        this.name = jsonObject.optString("Unombre");
-        this.surname = jsonObject.optString("UPaterno");
-        this.maternalFamilyName = jsonObject.optString("UMaterno");
+        this.url_foto = jsonObject.optString("UFoto");
+        this.nombres = jsonObject.optString("Unombre");
+        this.paterno = jsonObject.optString("UPaterno");
+        this.materno = jsonObject.optString("UMaterno");
         this.dni = jsonObject.optString("Udni");
-        this.passport = jsonObject.optString("Upasaporte");
-        this.birthDate = jsonObject.optString("UfechaNacimiento");
-        this.cellphone = jsonObject.optString("Ucelular");
-        this.password = jsonObject.optString("Upass");
-        this.professionalProfile = jsonObject.optInt("idPerfilP");
-        this.email = jsonObject.optString("Ucorreo");
-        this.idDistrito = jsonObject.optInt("idDistrito");
-        this.address = jsonObject.optString("Udireccion");
-        this.score = jsonObject.optInt("puntaje");
-        this.accountCreationDate = jsonObject.optString("UfechaRegistro");
-        this.availableActivities = jsonObject.optInt("actividades_disponibles");
-        this.availablePosts = jsonObject.optInt("publicaciones_disponibles");
+        this.fechaNacimiento = jsonObject.optString("UfechaNacimiento");
+        this.celular = jsonObject.optString("Ucelular");
+        this.correo = jsonObject.optString("Ucorreo");
+        this.direccion = jsonObject.optString("Udireccion");
+        this.fechaRegistro = jsonObject.optString("UfechaRegistro");
         this.reputacionPuntos = jsonObject.optDouble("reputacion_ptos");
         this.cantidadVotos = jsonObject.optInt("cantidad_votos");
-        Integer checkingPremiun = jsonObject.optInt("idTipoPremiun");
-        this.premium = checkingPremiun != null; // pay attention here, might a bug occur
-        this.status = jsonObject.optInt("Uestado");
+        this.estado = jsonObject.optInt("Uestado");
+        this.numeroTarjeta = jsonObject.optString("UnumeroCuentaTarjeta");
+        this.genero = jsonObject.optString("Ugenero");
+        this.estadoCivil = jsonObject.optString("UestadoCivil");
+        this.cv = jsonObject.optString("Ucv");
+        this.distrito = jsonObject.optString("distrito");
+        this.linkFb = jsonObject.optString("UlinkFacebook");
+        this.linkLd = jsonObject.optString("UlinkLinkedin");
+        this.tipoUsuario = jsonObject.optString("UlinkLinkedin");
+        this.puntaje = jsonObject.optInt("puntaje");
     }
 }

@@ -26,8 +26,7 @@ public class EstadoMisPublicacionesViewHolder extends RecyclerView.ViewHolder im
     }
 
     @Override
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
         onEstadoMisPublicacionesListener.onMisPublicacionesClick(getAdapterPosition());
     }
 }

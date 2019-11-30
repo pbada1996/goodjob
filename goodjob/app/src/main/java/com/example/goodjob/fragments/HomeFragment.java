@@ -1,7 +1,6 @@
-package com.example.goodjob;
+package com.example.goodjob.fragments;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,33 +17,28 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.activities.DetailsAndApplyActivity;
+import com.example.goodjob.R;
 import com.example.goodjob.adapter.ActivityAdapter;
 import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.classes.ValidSession;
+import com.example.goodjob.util.Certificado;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 public class HomeFragment extends Fragment implements ActivityAdapter.OnActivityListener {
 
     private RecyclerView activitiesRecycler;
     private List<Actividad> activities;
 
-    public HomeFragment() {}
+    public HomeFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,9 +52,8 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
         activitiesRecycler.setLayoutManager(lm);
         activitiesRecycler.setHasFixedSize(true);
 
+        Certificado.handleSSLHandshake();
         loadData();
-        handleSSLHandshake();
-
         return view;
     }
 
@@ -108,35 +101,5 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
         Intent details = new Intent(getContext(), DetailsAndApplyActivity.class);
         details.putExtra("selectedActivity", selectedActivity);
         startActivity(details);
-    }
-
-    @SuppressLint("TrulyRandom")
-    public static void handleSSLHandshake() {
-        try {
-            TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
-                public X509Certificate[] getAcceptedIssuers() {
-                    return new X509Certificate[0];
-                }
-
-                @Override
-                public void checkClientTrusted(X509Certificate[] certs, String authType) {
-                }
-
-                @Override
-                public void checkServerTrusted(X509Certificate[] certs, String authType) {
-                }
-            }};
-
-            SSLContext sc = SSLContext.getInstance("SSL");
-            sc.init(null, trustAllCerts, new SecureRandom());
-            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-            HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String arg0, SSLSession arg1) {
-                    return true;
-                }
-            });
-        } catch (Exception ignored) {
-        }
     }
 }

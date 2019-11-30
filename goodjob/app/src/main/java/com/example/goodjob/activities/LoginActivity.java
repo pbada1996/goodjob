@@ -1,7 +1,6 @@
-package com.example.goodjob;
+package com.example.goodjob.activities;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,23 +18,15 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.R;
 import com.example.goodjob.classes.Empresa;
 import com.example.goodjob.classes.User;
 import com.example.goodjob.classes.ValidSession;
+import com.example.goodjob.util.Certificado;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 public class LoginActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
 
@@ -72,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
                 iniciarSesion();
             }
         });
-        handleSSLHandshake();
+        Certificado.handleSSLHandshake();
     }
 
     private void iniciarSesion() {
@@ -123,7 +114,14 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         try {
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             loadUserDataFromDatabase(jsonObject);
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            int idActividad = getIntent().getIntExtra("idActividad", 0);
+            if (idActividad != 0){ // iniciando sesion desde detalle actividad
+                Intent intent = new Intent(getApplicationContext(), DetailsAndApplyActivity.class);
+                intent.putExtra("idActividad", idActividad);
+                startActivity(intent);
+            } else { // iniciando sesion de manera normal
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -132,35 +130,5 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
     private void loadUserDataFromDatabase(JSONObject data) {
         ValidSession.usuarioLogueado = new User();
         ValidSession.usuarioLogueado.loadUserDataFromJsonObject(data);
-    }
-
-    @SuppressLint("TrulyRandom")
-    public static void handleSSLHandshake() {
-        try {
-            TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
-                public X509Certificate[] getAcceptedIssuers() {
-                    return new X509Certificate[0];
-                }
-
-                @Override
-                public void checkClientTrusted(X509Certificate[] certs, String authType) {
-                }
-
-                @Override
-                public void checkServerTrusted(X509Certificate[] certs, String authType) {
-                }
-            }};
-
-            SSLContext sc = SSLContext.getInstance("SSL");
-            sc.init(null, trustAllCerts, new SecureRandom());
-            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-            HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String arg0, SSLSession arg1) {
-                    return true;
-                }
-            });
-        } catch (Exception ignored) {
-        }
     }
 }
