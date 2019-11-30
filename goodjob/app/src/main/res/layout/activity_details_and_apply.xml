@@ -149,7 +149,7 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/title"
-                        android:textColor="@android:color/black"
+                        android:textColor="#778d04"
                         android:textSize="30sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -241,9 +241,10 @@
                 <LinearLayout
                     android:layout_width="350dp"
                     android:layout_height="120dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
-                    android:paddingStart="10dp">
+                    android:paddingStart="10dp"
+                    >
 
                     <TextView
                         android:id="@+id/tvDescription"
@@ -251,10 +252,10 @@
                         android:layout_height="120dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginStart="1dp"
-                        android:layout_marginTop="10dp"
                         android:text="@string/short_description"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="20sp" />
+                        android:textColor="#ab4c05"
+                        android:textSize="20sp"
+                        />
                 </LinearLayout>
             </LinearLayout>
 
@@ -265,6 +266,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/buttonstyle"
                 android:text="Postular Actividad"
+                android:textSize="15dp"
                 android:textColor="#fff" />
         </LinearLayout>
     </ScrollView>

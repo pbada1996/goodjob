@@ -8,7 +8,7 @@
     <!-- strings for fragment home -->
 
     <string name="title">Titulo</string>
-    <string name="author">Publicante</string>
+    <string name="author">Publicante :</string>
     <string name="author_name">Nombre Publicante</string>
     <string name="participants_counter">actuales / necesarios</string>
     <string name="short_description">Breve descripción</string>
@@ -17,8 +17,8 @@
 
     <!-- string for details and apply fragment -->
 
-    <string name="creation_date">Día de publicación</string>
-    <string name="end_date">Día a realizarse</string>
+    <string name="creation_date">Día de publicación :</string>
+    <string name="end_date">Día a realizarse :</string>
     <string name="apply">Postular a esta actividad!</string>
     <string name="estado">Estado</string>
 
