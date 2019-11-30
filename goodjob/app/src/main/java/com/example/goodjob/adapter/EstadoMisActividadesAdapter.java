@@ -17,16 +17,14 @@ public class EstadoMisActividadesAdapter extends RecyclerView.Adapter<EstadoMisA
     private List<EstadoMisActividadesResponse> misActividades;
     private OnEstadoActividadListener onEstadoActividadListener;
 
-    public EstadoMisActividadesAdapter(List<EstadoMisActividadesResponse> misActividades, OnEstadoActividadListener onEstadoActividadListener)
-    {
+    public EstadoMisActividadesAdapter(List<EstadoMisActividadesResponse> misActividades, OnEstadoActividadListener onEstadoActividadListener) {
         this.misActividades = misActividades;
         this.onEstadoActividadListener = onEstadoActividadListener;
     }
 
     @NonNull
     @Override
-    public EstadoMisActividadesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
-    {
+    public EstadoMisActividadesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.estado_mis_actividades_item,
                 viewGroup, false);
 
@@ -34,8 +32,7 @@ public class EstadoMisActividadesAdapter extends RecyclerView.Adapter<EstadoMisA
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EstadoMisActividadesViewHolder eav, int posicion)
-    {
+    public void onBindViewHolder(@NonNull EstadoMisActividadesViewHolder eav, int posicion) {
         eav.titulo.setText(misActividades.get(posicion).getTitulo());
         eav.fecha.setText(dateFormat(posicion));
         eav.estado.setText(misActividades.get(posicion).getEstado());
@@ -46,14 +43,12 @@ public class EstadoMisActividadesAdapter extends RecyclerView.Adapter<EstadoMisA
         return misActividades.size();
     }
 
-    private String dateFormat(int posicion)
-    {
-        String [] fechaEnPartes = misActividades.get(posicion).getFecha().split("-");
+    private String dateFormat(int posicion) {
+        String[] fechaEnPartes = misActividades.get(posicion).getFecha().split("-");
         return fechaEnPartes[2] + "/" + fechaEnPartes[1] + "/" + fechaEnPartes[0];
     }
 
-    public interface OnEstadoActividadListener
-    {
+    public interface OnEstadoActividadListener {
         void onEstadoActividadClick(int posicion);
     }
 }

@@ -15,8 +15,7 @@ public class UsuarioParticipanteViewHolder extends RecyclerView.ViewHolder imple
 
     private UsuarioParticipanteAdapter.OnUsuarioParticipanteListener onUsuarioParticipanteListener;
 
-    public UsuarioParticipanteViewHolder(@NonNull View itemView, UsuarioParticipanteAdapter.OnUsuarioParticipanteListener onUsuarioParticipanteListener)
-    {
+    public UsuarioParticipanteViewHolder(@NonNull View itemView, UsuarioParticipanteAdapter.OnUsuarioParticipanteListener onUsuarioParticipanteListener) {
         super(itemView);
         nombreUsuarioParticipante = itemView.findViewById(R.id.tvNombreUsuarioParticipante);
         reputacionPromedio = itemView.findViewById(R.id.tvReputacionPromedio);
@@ -26,8 +25,7 @@ public class UsuarioParticipanteViewHolder extends RecyclerView.ViewHolder imple
     }
 
     @Override
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
         onUsuarioParticipanteListener.onUsuarioParticipanteClick(getAdapterPosition());
     }
 }

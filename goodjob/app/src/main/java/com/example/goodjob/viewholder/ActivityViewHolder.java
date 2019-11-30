@@ -21,8 +21,7 @@ public class ActivityViewHolder extends RecyclerView.ViewHolder implements View.
     //added for click on items
     public ActivityAdapter.OnActivityListener onActivityListener;
 
-    public ActivityViewHolder(@NonNull View itemView, ActivityAdapter.OnActivityListener onActivityListener)
-    {
+    public ActivityViewHolder(@NonNull View itemView, ActivityAdapter.OnActivityListener onActivityListener) {
         super(itemView);
 
         title = itemView.findViewById(R.id.tvTitle);
@@ -37,8 +36,7 @@ public class ActivityViewHolder extends RecyclerView.ViewHolder implements View.
     }
 
     @Override
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
         onActivityListener.onActivityClick(getAdapterPosition());
     }
 }

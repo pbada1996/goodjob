@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.goodjob.R;
 import com.example.goodjob.classes.PerfilUsuario;
 import com.example.goodjob.classes.ValidSession;
 
@@ -26,7 +27,8 @@ public class ProfileFragment extends Fragment {
     private TextView reputacion;
     private TextView puntaje;
 
-    public ProfileFragment() {}
+    public ProfileFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,47 +55,40 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    private void mapearCampos(View view)
-    {
+    private void mapearCampos(View view) {
         nombreCompleto = view.findViewById(R.id.tvNombreCompletoPerfil);
         reputacion = view.findViewById(R.id.tvReputacionPerfil);
         puntaje = view.findViewById(R.id.tvPuntajePerfil);
     }
 
-    private void consultarPerfilUsuario(Integer idUsuario)
-    {
+    private void consultarPerfilUsuario(Integer idUsuario) {
         String url = ValidSession.IP + "/ws_consultarPerfilUsuario.php?id_usuario=" + idUsuario;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
+            public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     PerfilUsuario perfilUsuario = PerfilUsuario.cargarDataDesdeJsonObject(jsonObject);
                     setearCamposEnPantalla(perfilUsuario);
 
-                } catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-    private void setearCamposEnPantalla(PerfilUsuario perfilUsuario)
-    {
+    private void setearCamposEnPantalla(PerfilUsuario perfilUsuario) {
         nombreCompleto.setText(perfilUsuario.getNombre());
         reputacion.setText(String.valueOf(perfilUsuario.getReputacion()));
         puntaje.setText(String.valueOf(perfilUsuario.getPuntaje()));
     }
-
 }

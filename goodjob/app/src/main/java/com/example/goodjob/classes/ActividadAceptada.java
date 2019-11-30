@@ -10,9 +10,8 @@ public class ActividadAceptada {
     private String descripcion;
     private String recompensa;
 
-    public static ActividadAceptada cargarDatosDesdeJsonObject(JSONObject data)
-    {
-        ActividadAceptada actividadAceptada= new ActividadAceptada();
+    public static ActividadAceptada cargarDatosDesdeJsonObject(JSONObject data) {
+        ActividadAceptada actividadAceptada = new ActividadAceptada();
 
         actividadAceptada.titulo = data.optString("titulo");
         actividadAceptada.nombreAutor = data.optString("nombre_completo");

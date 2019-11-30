@@ -16,8 +16,7 @@ public class EstadoMisActividadesViewHolder extends RecyclerView.ViewHolder impl
 
     private EstadoMisActividadesAdapter.OnEstadoActividadListener onEstadoActividadListener;
 
-    public EstadoMisActividadesViewHolder(@NonNull View itemView, EstadoMisActividadesAdapter.OnEstadoActividadListener onEstadoActividadListener)
-    {
+    public EstadoMisActividadesViewHolder(@NonNull View itemView, EstadoMisActividadesAdapter.OnEstadoActividadListener onEstadoActividadListener) {
         super(itemView);
 
         titulo = itemView.findViewById(R.id.tvTitulo);

@@ -17,8 +17,7 @@ public class EstadoMisPublicacionesAdapter extends RecyclerView.Adapter<EstadoMi
     private List<EstadoMisPublicacionesResponse> publicaciones;
     private OnEstadoMisPublicacionesListener onEstadoMisPublicacionesListener;
 
-    public EstadoMisPublicacionesAdapter(List<EstadoMisPublicacionesResponse> publicaciones, OnEstadoMisPublicacionesListener onEstadoMisPublicacionesListener)
-    {
+    public EstadoMisPublicacionesAdapter(List<EstadoMisPublicacionesResponse> publicaciones, OnEstadoMisPublicacionesListener onEstadoMisPublicacionesListener) {
         this.publicaciones = publicaciones;
         this.onEstadoMisPublicacionesListener = onEstadoMisPublicacionesListener;
     }
@@ -34,27 +33,23 @@ public class EstadoMisPublicacionesAdapter extends RecyclerView.Adapter<EstadoMi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EstadoMisPublicacionesViewHolder evh, int posicion)
-    {
+    public void onBindViewHolder(@NonNull EstadoMisPublicacionesViewHolder evh, int posicion) {
         evh.titulo.setText(publicaciones.get(posicion).getTitulo());
         evh.fecha.setText(formatDate(publicaciones.get(posicion).getFecha()));
         evh.postulantes.setText(String.valueOf(publicaciones.get(posicion).getPostulantes()));
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return publicaciones.size();
     }
 
-    private String formatDate(String fecha)
-    {
-        String [] fechaEnPartes = fecha.split("-");
+    private String formatDate(String fecha) {
+        String[] fechaEnPartes = fecha.split("-");
         return fechaEnPartes[2] + "/" + fechaEnPartes[1] + "/" + fechaEnPartes[0];
     }
 
-    public interface OnEstadoMisPublicacionesListener
-    {
+    public interface OnEstadoMisPublicacionesListener {
         void onMisPublicacionesClick(int posicion);
     }
 }

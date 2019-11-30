@@ -146,5 +146,6 @@
     <string name="solicitud_empresa_texto_2">Nos estaremos comunicando contigo en las próximas 48H atraves del correo que nos brindaste para conocer el resultado de la solicitud</string>
     <string name="solicitud_empresa_texto_3">Atentamente el equipo de Goodjob</string>
     <string name="volver_home">Regresar al Listado de Actividades</string>
+    <string name="empresas_no_postulan">Las empresas no pueden postular</string>
 
 </resources>

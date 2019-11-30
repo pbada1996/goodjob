@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.example.goodjob.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,7 +20,12 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.goodjob.R;
+import com.example.goodjob.SuscriptionActivity;
 import com.example.goodjob.classes.ValidSession;
+import com.example.goodjob.fragments.HomeFragment;
+import com.example.goodjob.fragments.PreMyActivitesFragment;
+import com.example.goodjob.fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -202,5 +207,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

@@ -15,7 +15,8 @@
 	$id_usuario = $_GET['id_usuario'];
 	$id_actividad = $_GET['id_actividad'];
 	
-	$consulta_string = "insert into postulacion_actividad values(null, {$id_actividad}, {$id_usuario}, 1);";
+	$consulta_string = "INSERT INTO postulacion_actividad (id_actividad, id_usuario, fechaPostulacion,
+	estado) VALUES ($id_actividad, $id_usuario, curdate(), 1)";
 	
 	if (mysqli_query($con, $consulta_string))
 	{
