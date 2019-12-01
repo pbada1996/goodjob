@@ -147,5 +147,15 @@
     <string name="solicitud_empresa_texto_3">Atentamente el equipo de Goodjob</string>
     <string name="volver_home">Regresar al Listado de Actividades</string>
     <string name="empresas_no_postulan">Las empresas no pueden postular</string>
+    <string name="menu_registrar_producto">Registrar Producto</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titulo_registrar_producto">Registrar Producto</string>
+    <string name="imagen_producto">imagen_producto</string>
+    <string name="nombre_producto">Producto</string>
+    <string name="cantidad_producto">Cantidad</string>
+    <string name="valor_producto">Valor</string>
+    <string name="registrar_producto_ok">Registrar</string>
 
 </resources>

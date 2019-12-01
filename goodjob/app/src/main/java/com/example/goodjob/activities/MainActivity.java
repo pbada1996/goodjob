@@ -26,6 +26,7 @@ import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.fragments.HomeFragment;
 import com.example.goodjob.fragments.PreMyActivitesFragment;
 import com.example.goodjob.fragments.ProfileFragment;
+import com.example.goodjob.fragments.RegistrarProductoFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,13 +46,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         publicarActividad = findViewById(R.id.fabPublicarActividad);
 
-        // setting the initial fragment on app start
-        Fragment initialFragment = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments, initialFragment).commit();
+        cargarFragment(new HomeFragment());
 
         // navigation drawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        // here i'll do the magic trick
+        if (ValidSession.empresaLogueada != null) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.empresa_menu);
+        }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -186,11 +190,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
+        if (id == R.id.nav_registrar_producto) {
+            cargarFragment(new RegistrarProductoFragment());
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -206,5 +210,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void cargarFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerFragments, fragment)
+                .commit();
     }
 }
