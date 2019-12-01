@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient"
     android:gravity="center_horizontal"
     android:paddingTop="16dp"
@@ -11,7 +12,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="180dp"
         android:src="@drawable/jobimagen2" />
 
     <EditText
@@ -80,16 +81,19 @@
         android:layout_height="wrap_content"
         android:text="@string/Acept_Ter_Con" />
 
+
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="170dp"
+        android:layout_width="277dp"
         android:layout_height="wrap_content"
-        android:text="@string/Form_btn_Register" />
+        android:text="@string/Form_btn_Register"
+        android:background="@drawable/ovalo"/>
 
     <Button
         android:id="@+id/btn_Cancel"
         android:layout_width="277dp"
         android:layout_height="wrap_content"
-        android:text="@string/Form_btn_Noregister" />
+        android:text="@string/Form_btn_Noregister"
+        android:background="@drawable/ovalo"/>
 
 </LinearLayout>

@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient2"
+            android:background="@drawable/bgcoloritem"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:textColor="@color/aqua"
+                android:textColor="@color/fondoscuro"
                 android:padding="@dimen/small_padding"
                 android:text="@string/more_info"
                 android:background="@drawable/ovalo"

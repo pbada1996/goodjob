@@ -14,7 +14,7 @@
 
     <stroke
         android:width="10px"
-        android:color="@color/aqua">
+        android:color="@color/fondoscuro">
     </stroke>
 
 
