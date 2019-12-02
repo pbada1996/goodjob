@@ -157,5 +157,6 @@
     <string name="cantidad_producto">Cantidad</string>
     <string name="valor_producto">Valor</string>
     <string name="registrar_producto_ok">Registrar</string>
+    <string name="lugar_canje">Lugar de canje</string>
 
 </resources>

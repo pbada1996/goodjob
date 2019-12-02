@@ -154,8 +154,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin_top">
+                        android:layout_height="wrap_content">
 
                         <ImageView
                             android:layout_width="@dimen/icono_width"
@@ -165,7 +164,7 @@
                             android:src="@drawable/ic_place" />
 
                         <android.support.design.widget.TextInputLayout
-                            android:id="@+id/tilRecompensa"
+                            android:id="@+id/tilLugarCanje"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/small_margin_right"
@@ -173,12 +172,12 @@
                             app:hintTextAppearance="@style/publicar_actividad_hint_appearance">
 
                             <EditText
-                                android:id="@+id/txtRecompensa"
+                                android:id="@+id/etLugarCanje"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/Recompensa"
+                                android:hint="@string/lugar_canje"
                                 android:importantForAutofill="no"
-                                android:inputType="number" />
+                                android:inputType="text" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -188,9 +187,7 @@
                 android:id="@+id/btnRegistrarProducto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin_left"
-                android:layout_marginTop="@dimen/default_margin_top"
-                android:layout_marginEnd="@dimen/default_margin_right"
+                android:layout_margin="@dimen/default_margin_right"
                 android:background="@drawable/btn_uno"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:elevation="@dimen/button_elevation"
