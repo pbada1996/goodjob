@@ -158,5 +158,18 @@
     <string name="valor_producto">Valor</string>
     <string name="registrar_producto_ok">Registrar</string>
     <string name="lugar_canje">Lugar de canje</string>
+    <string name="productos">Productos</string>
+    <string name="productos_en_espera">Productos en Espera</string>
+    <string name="productos_aceptados">Productos Aceptados</string>
+    <string name="actividades">Actividades</string>
+    <string name="actividades_espera">Actividades en Espera</string>
+    <string name="actividades_aceptadas">Actividades Aceptadas</string>
+    <string name="actividades_rechazadas">Actividades Rechazadas</string>
+    <string name="actividades_registro">Registrar Actividad</string>
+    <string name="productos_rechazados">Productos Rechazados</string>
+    <string name="producto">Producto</string>
+    <string name="stock_producto">Stock</string>
+    <string name="valor_puntos_producto">Valor en Ptos</string>
+    <string name="fecha_registro_producto">Fecha Registro</string>
 
 </resources>

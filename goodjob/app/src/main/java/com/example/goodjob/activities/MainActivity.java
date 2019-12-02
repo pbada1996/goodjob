@@ -25,6 +25,7 @@ import com.example.goodjob.SuscriptionActivity;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.fragments.HomeFragment;
 import com.example.goodjob.fragments.PreMyActivitesFragment;
+import com.example.goodjob.fragments.ProductoEsperaFragment;
 import com.example.goodjob.fragments.ProfileFragment;
 import com.example.goodjob.fragments.RegistrarProductoFragment;
 
@@ -167,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void sendToLoginOrProfile() {
-        if (ValidSession.usuarioLogueado == null) {
+        if (ValidSession.usuarioLogueado == null && ValidSession.empresaLogueada == null) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         } else {
@@ -195,15 +196,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_registrar_producto) {
             cargarFragment(new RegistrarProductoFragment());
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_productos_espera) {
+            cargarFragment(new ProductoEsperaFragment());
+        } else if (id == R.id.nav_productos_aceptados) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_productos_rechazados) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_actividades_registro) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_actividades_espera) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_actividades_aceptadas) {
+
+        } else if (id == R.id.nav_actividades_rechazadas) {
 
         }
 

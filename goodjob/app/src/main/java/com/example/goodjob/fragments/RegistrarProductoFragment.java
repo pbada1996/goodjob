@@ -111,6 +111,9 @@ public class RegistrarProductoFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
+                        getFragmentManager().beginTransaction()
+                                .replace(R.id.containerFragments, new ProductoEsperaFragment())
+                                .commit();
                     }
                 }, new Response.ErrorListener() {
                     @Override

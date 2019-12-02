@@ -2,25 +2,52 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_registrar_producto"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_registrar_producto" />
-    </group>
-
-    <item android:title="Communicate">
+    <item
+        android:icon="@drawable/ic_content_paste_black_24dp"
+        android:title="@string/actividades">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_actividades_registro"
+                    android:icon="@drawable/ic_content_paste_black_24dp"
+                    android:title="@string/actividades_registro" />
+                <item
+                    android:id="@+id/nav_actividades_espera"
+                    android:icon="@drawable/ic_content_paste_black_24dp"
+                    android:title="@string/actividades_espera" />
+                <item
+                    android:id="@+id/nav_actividades_aceptadas"
+                    android:icon="@drawable/ic_content_paste_black_24dp"
+                    android:title="@string/actividades_aceptadas" />
+                <item
+                    android:id="@+id/nav_actividades_rechazadas"
+                    android:icon="@drawable/ic_content_paste_black_24dp"
+                    android:title="@string/actividades_rechazadas" />
+            </group>
         </menu>
     </item>
-
+    <item
+        android:icon="@drawable/producto"
+        android:title="@string/productos">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_registrar_producto"
+                    android:icon="@drawable/producto"
+                    android:title="@string/menu_registrar_producto" />
+                <item
+                    android:id="@+id/nav_productos_espera"
+                    android:icon="@drawable/producto"
+                    android:title="@string/productos_en_espera" />
+                <item
+                    android:id="@+id/nav_productos_aceptados"
+                    android:icon="@drawable/producto"
+                    android:title="@string/productos_aceptados" />
+                <item
+                    android:id="@+id/nav_productos_rechazados"
+                    android:icon="@drawable/producto"
+                    android:title="@string/productos_rechazados" />
+            </group>
+        </menu>
+    </item>
 </menu>
