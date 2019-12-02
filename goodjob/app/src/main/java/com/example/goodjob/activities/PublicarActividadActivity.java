@@ -128,7 +128,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
                 String[] format = fin.split("/");
                 final String f_fin = format[2] + "-" + format[1] + "-" + format[0];
 
-                String url = ValidSession.IP_IMAGENES_ACTIVIDADES + "/ws_publicarActividad.php";
+                String url = ValidSession.IP_IMAGENES + "/ws_publicarActividad.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override

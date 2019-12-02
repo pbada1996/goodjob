@@ -181,7 +181,7 @@ recompensa, distrito, tipo_seleccion, estado) values ('GoodJob Afterparty', 'Cel
 
 insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
 recompensa, distrito, tipo_seleccion, estado) values ('Navidad con GoodJob', 'Celebremos la navidad junto a los integrantes de GoodJob', 1, curdate(), '2019-12-25',
-7, '1Navidad con Goodjob', 1, 2000, 1, 1, 1);
+7, '1Navidad con GoodJob', 1, 2000, 1, 1, 1);
 
 insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
 recompensa, distrito, tipo_seleccion, estado) values ('Serruchando a Cachi', 'De la mano del gran Bratzon, veamos como se serrucha el piso como nunca antes', 1, 
@@ -208,8 +208,14 @@ CREATE TABLE `producto` (
   `valor` decimal(8,2) not NULL,
   `imagen` varchar(200) not NULL,
   empresa int not NULL,
+  fecha_registro date not null,
+  estado int default 0, -- 0: en espera | 1: aceptado | 2: rechazado
   foreign key (empresa) references empresa(idEmpresa)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO producto (nombre, stock, valor, imagen, empresa, fecha_registro) 
+VALUES ('Licuadora', 10, 100, '1Licuadora100', 1, curdate());
+
 
 CREATE TABLE lugares_canje (
   `id_lugar` int(11) primary key auto_increment,

@@ -15,16 +15,26 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.support.design.widget.TextInputLayout;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.goodjob.R;
+import com.example.goodjob.classes.ValidSession;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -32,6 +42,7 @@ public class RegistrarProductoFragment extends Fragment {
 
     private EditText producto, valor, stock, lugarCanje;
     private ImageView imagen;
+    private Button registrar;
     private TextInputLayout tilProducto, tilValor, tilStock,
             tilLugarCanje;
     private Bitmap bitmap;
@@ -52,6 +63,7 @@ public class RegistrarProductoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_registrar_producto, container, false);
 
         mapearViews(view);
+        clickEnBotonRegistrar();
 
         return view;
     }
@@ -72,6 +84,7 @@ public class RegistrarProductoFragment extends Fragment {
         tilValor = v.findViewById(R.id.tilValorProducto);
         tilStock = v.findViewById(R.id.tilCantidadProductoRegistro);
         tilLugarCanje = v.findViewById(R.id.tilLugarCanje);
+        registrar = v.findViewById(R.id.btnRegistrarProducto);
     }
 
     private void clickEnImagen() {
@@ -79,6 +92,39 @@ public class RegistrarProductoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 solicitarPermisosDeLectura();
+            }
+        });
+    }
+
+    private void clickEnBotonRegistrar(){
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String url = ValidSession.IP_IMAGENES + "/ws_registrarProducto.php";
+                StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("producto", producto.getText().toString().trim());
+                        params.put("valor", valor.getText().toString().trim());
+                        params.put("stock", stock.getText().toString().trim());
+                        params.put("id_empresa", String.valueOf(ValidSession.empresaLogueada.getId()));
+                        params.put("imagen", imageToString(bitmap));
+                        return params;
+                    }
+                };
+                Volley.newRequestQueue(getContext()).add(request);
             }
         });
     }

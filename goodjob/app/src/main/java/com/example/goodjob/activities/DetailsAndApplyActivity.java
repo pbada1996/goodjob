@@ -1,7 +1,6 @@
 package com.example.goodjob.activities;
 
 
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -135,7 +134,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         currentParticipants.setText("De momento hay " + actividad.getCurrentParticipants() + " postulantes");
         requiredParticipants.setText("Se necesitan " + actividad.getRequiredParticipants() + " personas");
         reward.setText(actividad.getRewardType() + " : " + actividad.getReward());
-        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES_GUARDADAS + actividad.getPhoto() + ".jpg", new Response.Listener<Bitmap>() {
+        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES + actividad.getPhoto() + ".jpg", new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 photo.setImageBitmap(response);
