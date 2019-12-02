@@ -8,7 +8,7 @@ public class ValidSession {
     // la línea debajo usa la conexión remota
     // private static final String LOCAL = "https://anthostudio.ga";
     public static final String IP = LOCAL + "/Conexiones";
-    public static final String IP_IMAGENES = LOCAL + "/imagenes-actividades";
-    public static final String IMAGENES_ACTIVIDADES = IP_IMAGENES + "/imagenes-subidas/";
+    public static final String IP_IMAGENES = LOCAL + "/imagenes";
+    public static final String IMAGENES_ACTIVIDADES = IP_IMAGENES + "/imagenes_actividades/";
     public static final String IMAGENES_PRODUCTOS = IP_IMAGENES + "/imagenes_productos/";
 }
