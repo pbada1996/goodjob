@@ -1,6 +1,5 @@
 package com.example.goodjob.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,7 +57,7 @@ public class EstadoMisPublicacionesFragment extends Fragment implements EstadoMi
     }
 
     private void cargarData() {
-        String url = ValidSession.IP + "/ws_listarMisPublicaciones.php?id_usuario=" + ValidSession.usuarioLogueado.getId();
+        String url = ValidSession.IP + "/ws_listarMisPublicaciones.php?id_empresa=" + ValidSession.empresaLogueada.getId();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override

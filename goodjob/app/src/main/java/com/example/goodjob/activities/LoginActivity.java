@@ -81,13 +81,14 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
                 public void onResponse(String response) {
                     try {
                         JSONArray array = new JSONArray(response);
-                        if (array.getJSONObject(0) == null) {
+                        if (array.length() == 0) {
                             Toast.makeText(LoginActivity.this, "RUC y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         JSONObject data = array.getJSONObject(0);
                         ValidSession.empresaLogueada = Empresa.cargarDatosDesdeJson(data);
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finish();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -119,8 +120,10 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
                 Intent intent = new Intent(getApplicationContext(), DetailsAndApplyActivity.class);
                 intent.putExtra("idActividad", idActividad);
                 startActivity(intent);
+                finish();
             } else { // iniciando sesion de manera normal
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         } catch (JSONException e) {
             e.printStackTrace();

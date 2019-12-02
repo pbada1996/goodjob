@@ -38,7 +38,7 @@ public class PreMyActivitesFragment extends Fragment {
         misPublicaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ValidSession.usuarioLogueado.getId() == 1)
+                if (ValidSession.empresaLogueada != null)
                     getFragmentManager().beginTransaction().replace(R.id.containerFragments, new EstadoMisPublicacionesFragment()).commit();
                 else
                     Toast.makeText(getContext(), "Debe ser usuario premium para acceder", Toast.LENGTH_LONG).show();

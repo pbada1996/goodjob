@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(new Intent(MainActivity.this, SuscriptionActivity.class));
                     return true;
                 case R.id.navigation_estado_mis_actividades:
-                    if (ValidSession.usuarioLogueado == null) {
+                    if (ValidSession.usuarioLogueado == null && ValidSession.empresaLogueada == null) {
                         cuadroDialogo();
                         return true;
                     }
