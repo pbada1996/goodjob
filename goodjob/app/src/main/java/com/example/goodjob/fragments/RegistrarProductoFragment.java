@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -64,7 +67,7 @@ public class RegistrarProductoFragment extends Fragment {
 
         mapearViews(view);
         clickEnBotonRegistrar();
-
+        checkeoDeCampos();
         return view;
     }
 
@@ -96,10 +99,12 @@ public class RegistrarProductoFragment extends Fragment {
         });
     }
 
-    private void clickEnBotonRegistrar(){
+    private void clickEnBotonRegistrar() {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (!validarDatos()) return;
 
                 String url = ValidSession.IP_IMAGENES + "/ws_registrarProducto.php";
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -112,7 +117,7 @@ public class RegistrarProductoFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                }){
+                }) {
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<>();
@@ -127,6 +132,138 @@ public class RegistrarProductoFragment extends Fragment {
                 Volley.newRequestQueue(getContext()).add(request);
             }
         });
+    }
+
+    private boolean validarDatos() {
+        return esProductoValido(producto.getText().toString().trim())
+                && esStockValido(stock.getText().toString().trim())
+                && esValorValido(valor.getText().toString().trim())
+                && esLugarCanjeValido(lugarCanje.getText().toString().trim());
+    }
+
+    private void checkeoDeCampos() {
+        producto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esProductoValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        stock.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esStockValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        valor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esValorValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        lugarCanje.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                esLugarCanjeValido(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    private boolean esProductoValido(String nombreProducto) {
+        Pattern patron = Pattern.compile("^[a-zA-Z ]+$");
+        if (nombreProducto.length() == CAMPO_VACIO) {
+            tilProducto.setError("Debe ingresar un nombre");
+            return false;
+        } else if (!patron.matcher(nombreProducto).matches()) {
+            tilProducto.setError("Ingrese un nombre valido");
+            return false;
+        } else if (nombreProducto.length() > NOMBRE_PRODUCTO_TOPE_LONGITUD) {
+            tilProducto.setError("No puede exceder 40 caracteres");
+            return false;
+        }
+        tilProducto.setError(null);
+        return true;
+    }
+
+    private boolean esStockValido(String stock) {
+        if (stock.length() == CAMPO_VACIO) {
+            tilStock.setError("Ingrese stock");
+            return false;
+        } else if (!stock.matches("^[0-9]+$")) {
+            tilStock.setError("Stock no valido");
+            return false;
+        } else if (Integer.valueOf(stock) < STOCK_MINIMO) {
+            tilStock.setError("Stock mìnimo: 1");
+            return false;
+        }
+        tilStock.setError(null);
+        return true;
+    }
+
+    private boolean esValorValido(String valor) {
+        if (valor.length() == CAMPO_VACIO) {
+            tilValor.setError("Ingrese un valor(S/.)");
+            return false;
+        } else if (!valor.matches("^[0-9]+$")) {
+            tilValor.setError("No es un valor valido");
+            return false;
+        } else if (Integer.valueOf(valor) < 0) {
+            tilValor.setError("No es un valor valido");
+            return false;
+        }
+        tilValor.setError(null);
+        return true;
+    }
+
+    private boolean esLugarCanjeValido(String lugarCanje) {
+        if (lugarCanje.length() == CAMPO_VACIO) {
+            tilLugarCanje.setError("Debe ingresar un lugar de canje");
+            return false;
+        } else if (lugarCanje.length() > LUGAR_CANJE_TOPE_LONGITUD) {
+            tilLugarCanje.setError("No puede exceder 250 caracteres");
+            return false;
+        }
+        tilLugarCanje.setError(null);
+        return true;
     }
 
     private void solicitarPermisosDeLectura() {
