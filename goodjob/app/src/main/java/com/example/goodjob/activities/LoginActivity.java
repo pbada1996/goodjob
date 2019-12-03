@@ -28,10 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
-
-    RequestQueue requestQueue;
-    JsonRequest jsonRequest;
+public class LoginActivity extends AppCompatActivity {
 
     private ImageButton btnIngresar;
     private TextView tvregister;
@@ -46,8 +43,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         txtPass = findViewById(R.id.txtPass);
         tvregister = findViewById(R.id.TvRegister);
         btnIngresar = findViewById(R.id.btnLogin);
-
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         tvregister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,9 +65,40 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
         String url;
         if (txtUser.getText().toString().contains("@")) {
-            url = ValidSession.IP + "/WS_Login.php?correo=" + txtUser.getText().toString() + "&pass=" + txtPass.getText().toString();
-            jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-            requestQueue.add(jsonRequest);
+            url = ValidSession.IP + "/WS_Login.php?correo=" + txtUser.getText().toString().trim()
+                    + "&pass=" + txtPass.getText().toString().trim();
+            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        if (array.length() == 0) {
+                            Toast.makeText(getApplicationContext(), R.string.incorrect_user, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        JSONObject jsonObject = array.getJSONObject(0);
+                        loadUserDataFromDatabase(jsonObject);
+                        int idActividad = getIntent().getIntExtra("idActividad", 0);
+                        if (idActividad != 0) { // iniciando sesion desde detalle actividad
+                            Intent intent = new Intent(getApplicationContext(), DetailsAndApplyActivity.class);
+                            intent.putExtra("idActividad", idActividad);
+                            startActivity(intent);
+                            finish();
+                        } else { // iniciando sesion de manera normal
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), R.string.incorrect_user, Toast.LENGTH_SHORT).show();
+                }
+            });
+            Volley.newRequestQueue(getApplicationContext()).add(request);
         } else {
             url = ValidSession.IP + "/ws_loginEmpresa.php?ruc=" + txtUser.getText().toString().trim()
                     + "&pass=" + txtPass.getText().toString().trim();
@@ -100,33 +126,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
                 }
             });
             Volley.newRequestQueue(getApplicationContext()).add(request);
-        }
-    }
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), R.string.incorrect_user, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onResponse(JSONObject response) {
-        JSONArray jsonArray = response.optJSONArray("datos");
-
-        try {
-            JSONObject jsonObject = jsonArray.getJSONObject(0);
-            loadUserDataFromDatabase(jsonObject);
-            int idActividad = getIntent().getIntExtra("idActividad", 0);
-            if (idActividad != 0){ // iniciando sesion desde detalle actividad
-                Intent intent = new Intent(getApplicationContext(), DetailsAndApplyActivity.class);
-                intent.putExtra("idActividad", idActividad);
-                startActivity(intent);
-                finish();
-            } else { // iniciando sesion de manera normal
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 
