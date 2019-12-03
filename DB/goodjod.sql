@@ -117,7 +117,7 @@ CREATE TABLE `usuario` (
   Ugenero varchar(20) default null,
   UestadoCivil varchar(20) default null,
   Ucv varchar(40) default null,
-  `idDistrito` int(11) DEFAULT NULL,
+  `idDistrito` int(11) DEFAULT 42,
   UlinkFacebook varchar(250) default null,
   UlinkLinkedin varchar(250) default null,
   tipo_usuario int default 1, 
@@ -130,13 +130,13 @@ INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRe
 ('Juan Carlos', 'Castillo', 'Aycachi', '70555913', 'carlosjordi@hotmail.com', sha1('admin'), '2019-07-01', 42, 2);
 
 INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRegistro, idDistrito, tipo_usuario) VALUES
-('Max Anthony', 'Cachi', 'Ayala', '63571099', 'anthonyca18m@gmail.com', 'admin', '2019-06-28', 17, 2);
+('Max Anthony', 'Cachi', 'Ayala', '63571099', 'anthonyca18m@gmail.com', sha1('admin'), '2019-06-28', 17, 2);
 
 INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRegistro, idDistrito, tipo_usuario) VALUES
-('Gustavo Adolfo', 'Lizarzaburu', 'Mercado', '78953215', 'lizarzaburu@gmail.com', 'admin', '2019-07-02', 42, 1);
+('Gustavo Adolfo', 'Lizarzaburu', 'Mercado', '78953215', 'lizarzaburu@gmail.com', sha1('admin'), '2019-07-02', 42, 1);
 
 INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRegistro, idDistrito, tipo_usuario) VALUES
-('Bratzon Hilser', 'Pacheco', 'Bada', '89214101', 'mituga6@gmail.com', 'admin', '2019-10-22', 42, 1);
+('Bratzon Hilser', 'Pacheco', 'Bada', '89214101', 'mituga6@gmail.com', sha1('admin'), '2019-10-22', 42, 1);
 
 
 create table tipo_recompensa

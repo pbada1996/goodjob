@@ -15,7 +15,7 @@
         android:src="@drawable/jobimagen2" />
 
     <EditText
-        android:id="@+id/txtnombreR"
+        android:id="@+id/etNombreRegistro"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -25,7 +25,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtpaternoR"
+        android:id="@+id/etPaternoRegistro"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -35,7 +35,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtrazonsocialR"
+        android:id="@+id/etMaternoRegistro"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -45,7 +45,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtcorreoR"
+        android:id="@+id/etCorreoRegistro"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_action_correo"
@@ -54,7 +54,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/txtpassR"
+        android:id="@+id/etPasswordRegistro"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -64,7 +64,7 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/txtpassdosR"
+        android:id="@+id/etPasswordRegistro2"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -74,7 +74,7 @@
         android:inputType="textPassword" />
 
     <CheckBox
-        android:id="@+id/cbterminosR"
+        android:id="@+id/chbTerminosRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Acept_Ter_Con" />

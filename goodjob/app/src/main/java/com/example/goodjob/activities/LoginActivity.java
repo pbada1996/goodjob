@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
         String url;
         if (txtUser.getText().toString().contains("@")) {
-            url = ValidSession.IP + "/WS_Login.php?Ucorreo=" + txtUser.getText().toString() + "&Upass=" + txtPass.getText().toString();
+            url = ValidSession.IP + "/WS_Login.php?correo=" + txtUser.getText().toString() + "&pass=" + txtPass.getText().toString();
             jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
             requestQueue.add(jsonRequest);
         } else {

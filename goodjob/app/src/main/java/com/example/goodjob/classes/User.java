@@ -222,28 +222,28 @@ public class User {
     }
 
     public void loadUserDataFromJsonObject(JSONObject jsonObject) {
-        this.id = jsonObject.optInt("idUsuario");
-        this.url_foto = jsonObject.optString("UFoto");
-        this.nombres = jsonObject.optString("Unombre");
-        this.paterno = jsonObject.optString("UPaterno");
-        this.materno = jsonObject.optString("UMaterno");
-        this.dni = jsonObject.optString("Udni");
-        this.fechaNacimiento = jsonObject.optString("UfechaNacimiento");
-        this.celular = jsonObject.optString("Ucelular");
-        this.correo = jsonObject.optString("Ucorreo");
-        this.direccion = jsonObject.optString("Udireccion");
-        this.fechaRegistro = jsonObject.optString("UfechaRegistro");
+        this.id = jsonObject.optInt("id_usuario");
+        this.url_foto = jsonObject.optString("url_foto");
+        this.nombres = jsonObject.optString("nombre");
+        this.paterno = jsonObject.optString("paterno");
+        this.materno = jsonObject.optString("materno");
+        this.dni = jsonObject.optString("dni");
+        this.fechaNacimiento = jsonObject.optString("fecha_nacimiento");
+        this.celular = jsonObject.optString("celular");
+        this.correo = jsonObject.optString("correo");
+        this.direccion = jsonObject.optString("direccion");
+        this.fechaRegistro = jsonObject.optString("fecha_registro");
         this.reputacionPuntos = jsonObject.optDouble("reputacion_ptos");
         this.cantidadVotos = jsonObject.optInt("cantidad_votos");
-        this.estado = jsonObject.optInt("Uestado");
-        this.numeroTarjeta = jsonObject.optString("UnumeroCuentaTarjeta");
-        this.genero = jsonObject.optString("Ugenero");
-        this.estadoCivil = jsonObject.optString("UestadoCivil");
-        this.cv = jsonObject.optString("Ucv");
+        this.estado = jsonObject.optInt("estado");
+        this.numeroTarjeta = jsonObject.optString("numero_tarjeta");
+        this.genero = jsonObject.optString("genero");
+        this.estadoCivil = jsonObject.optString("estado_civil");
+        this.cv = jsonObject.optString("cv");
         this.distrito = jsonObject.optString("distrito");
-        this.linkFb = jsonObject.optString("UlinkFacebook");
-        this.linkLd = jsonObject.optString("UlinkLinkedin");
-        this.tipoUsuario = jsonObject.optString("UlinkLinkedin");
+        this.linkFb = jsonObject.optString("link_fb");
+        this.linkLd = jsonObject.optString("link_linkedin");
+        this.tipoUsuario = jsonObject.optString("tipo_usuario");
         this.puntaje = jsonObject.optInt("puntaje");
     }
 }
