@@ -61,7 +61,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         reward = findViewById(R.id.tvReward);
 
         selectedActivity = getIntent().getExtras().getParcelable("selectedActivity");
-        if (selectedActivity != null){
+        if (selectedActivity != null) {
             loadData(selectedActivity);
         }
 
@@ -94,13 +94,12 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (validateStartedSession()) {
-                    if (selectedActivity!=null)
-                    {
+                    if (selectedActivity != null) {
                         realizarPostulacion(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
                         cambioDeEstadoBoton();
                         incrementarParticipantes(selectedActivity.getCurrentParticipants() + 1, selectedActivity.getId());
 
-                    }else {
+                    } else {
                         realizarPostulacion(ValidSession.usuarioLogueado.getId(), idActividad);
                         cambioDeEstadoBoton();
                         incrementarParticipantes(actividad.getCurrentParticipants() + 1, idActividad);
@@ -114,9 +113,9 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         });
 
         if (ValidSession.usuarioLogueado != null)
-            if (selectedActivity != null){
+            if (selectedActivity != null) {
                 consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
-            } else{
+            } else {
                 consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), idActividad);
             }
         else if (ValidSession.empresaLogueada != null)

@@ -195,8 +195,8 @@ create table postulacion_actividad
     id_usuario int not null,
     fechaPostulacion date not null,
     reputacion_promedio decimal(4,2) default 0,
-    asistencia int default null, -- 1: asistio | 2: no asistio
-    estado int, -- 1: en espera | 2: aceptado | 3: rechazado
+    asistencia int default 0, -- 0: nada | 1: asistio | 2: no asistio
+    estado int default 1, -- 1: en espera | 2: aceptado | 3: rechazado
     foreign key(id_actividad) references actividad(id),
     foreign key(id_usuario) references usuario(idUsuario)
 );

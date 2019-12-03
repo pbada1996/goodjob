@@ -222,7 +222,7 @@ public class User {
     }
 
     public void loadUserDataFromJsonObject(JSONObject jsonObject) {
-        this.id = jsonObject.optInt("id_usuario");
+        this.id = jsonObject.optInt("id");
         this.url_foto = jsonObject.optString("url_foto");
         this.nombres = jsonObject.optString("nombre");
         this.paterno = jsonObject.optString("paterno");
