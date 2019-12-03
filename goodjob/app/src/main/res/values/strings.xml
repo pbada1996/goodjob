@@ -171,5 +171,10 @@
     <string name="stock_producto">Stock</string>
     <string name="valor_puntos_producto">Valor en Ptos</string>
     <string name="fecha_registro_producto">Fecha Registro</string>
+    <string name="solicitudes">Solicitudes</string>
+    <string name="solicitud_empresa">Empresas</string>
+    <string name="solicitud_actividades">Actividades</string>
+    <string name="solicitud_productos">Productos</string>
+    <string name="empresas_espera">Solicitudes de Empresas</string>
 
 </resources>

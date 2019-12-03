@@ -24,6 +24,7 @@ import com.example.goodjob.R;
 import com.example.goodjob.SuscriptionActivity;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.fragments.HomeFragment;
+import com.example.goodjob.fragments.ListaEmpresasEsperaFragment;
 import com.example.goodjob.fragments.PreMyActivitesFragment;
 import com.example.goodjob.fragments.ProductoEsperaFragment;
 import com.example.goodjob.fragments.ProfileFragment;
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (ValidSession.empresaLogueada != null) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.empresa_menu);
+        } else if (ValidSession.usuarioLogueado != null && ValidSession.usuarioLogueado.getTipoUsuario().equals("Administrador")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.administrador_menu);
         }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -194,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_registrar_producto) {
+        if (id == R.id.nav_registrar_producto) { // empresas
             cargarFragment(new RegistrarProductoFragment());
         } else if (id == R.id.nav_productos_espera) {
             cargarFragment(new ProductoEsperaFragment());
@@ -209,6 +213,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_actividades_aceptadas) {
 
         } else if (id == R.id.nav_actividades_rechazadas) {
+
+        } else if (id == R.id.nav_solicitud_empresas) { // administradores
+            cargarFragment(new ListaEmpresasEsperaFragment());
+        } else if (id == R.id.nav_solicitud_actividades) {
+
+        } else if (id == R.id.nav_solicitud_productos) {
 
         }
 
