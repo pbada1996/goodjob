@@ -29,4 +29,8 @@
     </style>
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/colorWhite</item>
+    </style>
 </resources>
