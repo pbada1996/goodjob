@@ -37,7 +37,9 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ActivityViewHolder avh, int index) {
         avh.title.setText(activities.get(index).getTitle());
-        avh.authorName.setText(activities.get(index).getAuthor().substring(0, 20));
+        avh.authorName.setText(activities.get(index).getAuthor());
+        if (activities.get(index).getAuthor().length() > 20)
+            avh.authorName.setText(activities.get(index).getAuthor().substring(0, 20));
         avh.description.setText(activities.get(index).getDescription());
         if (activities.get(index).getDescription().length() > 50)
             avh.description.setText(activities.get(index).getDescription().substring(0, 50).concat("..."));

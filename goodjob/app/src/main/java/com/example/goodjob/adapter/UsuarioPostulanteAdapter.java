@@ -17,16 +17,14 @@ public class UsuarioPostulanteAdapter extends RecyclerView.Adapter<UsuarioPostul
     private List<UsuarioPostulante> postulantes;
     private OnUsuarioPostulanteListener onUsuarioPostulanteListener;
 
-    public UsuarioPostulanteAdapter(List<UsuarioPostulante> postulantes, OnUsuarioPostulanteListener onUsuarioPostulanteListener)
-    {
+    public UsuarioPostulanteAdapter(List<UsuarioPostulante> postulantes, OnUsuarioPostulanteListener onUsuarioPostulanteListener) {
         this.postulantes = postulantes;
         this.onUsuarioPostulanteListener = onUsuarioPostulanteListener;
     }
 
     @NonNull
     @Override
-    public UsuarioPostulanteViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
-    {
+    public UsuarioPostulanteViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.usuario_postulante_item,
                 viewGroup, false);
 
@@ -34,8 +32,7 @@ public class UsuarioPostulanteAdapter extends RecyclerView.Adapter<UsuarioPostul
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UsuarioPostulanteViewHolder uvh, int posicion)
-    {
+    public void onBindViewHolder(@NonNull UsuarioPostulanteViewHolder uvh, int posicion) {
         String nombre = postulantes.get(posicion).getNombre();
         if (nombre.length() > 11)
             nombre = nombre.substring(0, 11);
@@ -49,11 +46,11 @@ public class UsuarioPostulanteAdapter extends RecyclerView.Adapter<UsuarioPostul
         return postulantes.size();
     }
 
-    public interface OnUsuarioPostulanteListener
-    {
+    public interface OnUsuarioPostulanteListener {
         void onAceptarClick(int posicion);
+
         void onRechazarClick(int posicion);
+
         void onPostulanteClick(int posicion);
     }
-
 }

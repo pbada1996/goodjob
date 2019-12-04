@@ -8,8 +8,7 @@ public class UsuarioParticipante {
     private String nombre;
     private Double reputacionPromedio;
 
-    public static UsuarioParticipante cargarDataDesdeJsonObject(JSONObject data)
-    {
+    public static UsuarioParticipante cargarDataDesdeJsonObject(JSONObject data) {
         UsuarioParticipante usuarioParticipante = new UsuarioParticipante();
 
         usuarioParticipante.id = data.optInt("id");
@@ -21,7 +20,7 @@ public class UsuarioParticipante {
         else
             usuarioParticipante.reputacionPromedio = reputacion_ptos / cantidad_votos;
 
-        return  usuarioParticipante;
+        return usuarioParticipante;
     }
 
     public Integer getId() {

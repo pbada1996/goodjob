@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormRegisterUserActivity">
+    tools:context=".activities.FormRegisterUserActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/bgHeader"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="@drawable/header_register"
-        android:theme="@style/ToolbarTheme"
-        android:elevation="5dp" />
+        android:elevation="5dp"
+        android:theme="@style/ToolbarTheme" />
 
     <TextView
         android:id="@+id/tvSignUp"
@@ -21,18 +21,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:elevation="10dp"
-        android:transitionName="tvLogin"
         android:text="Sign up"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:transitionName="tvLogin" />
 
     <ImageView
         android:id="@+id/circle1"
         android:layout_width="134dp"
         android:layout_height="134dp"
         android:layout_below="@+id/bgHeader"
-        android:layout_marginLeft="-25dp"
+        android:layout_marginStart="-25dp"
         android:layout_marginTop="-5dp"
         android:src="@drawable/circletransparant" />
 
@@ -40,22 +40,22 @@
         android:id="@+id/circle3"
         android:layout_width="182dp"
         android:layout_height="182dp"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="-80dp"
+        android:layout_marginStart="-80dp"
         android:layout_marginBottom="-30dp"
         android:src="@drawable/circle" />
-
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/bgHeader"
         android:layout_margin="20dp">
+
         <RelativeLayout
             android:id="@+id/rlayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cv"
@@ -71,7 +71,7 @@
                     android:paddingBottom="50dp">
 
                     <EditText
-                        android:id="@+id/txtnombreR"
+                        android:id="@+id/etNombreRegistro"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -81,7 +81,7 @@
                         android:inputType="textPersonName" />
 
                     <EditText
-                        android:id="@+id/txtpaternoR"
+                        android:id="@+id/etPaternoRegistro"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -91,7 +91,7 @@
                         android:inputType="textPersonName" />
 
                     <EditText
-                        android:id="@+id/txtrazonsocialR"
+                        android:id="@+id/etMaternoRegistro"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -101,32 +101,13 @@
                         android:inputType="textPersonName" />
 
                     <EditText
-                        android:id="@+id/txtcorreoR"
+                        android:id="@+id/etCorreoRegistro"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_action_correo"
                         android:ems="10"
                         android:hint="Correo electronico"
                         android:inputType="textEmailAddress" />
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:errorEnabled="true"
-                    app:passwordToggleEnabled="true">
-
-                    <EditText
-                        android:id="@+id/txtpassR"
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_action_claves"
-                        android:ems="10"
-                        android:hint="Contraseña"
-                        android:inputType="textPassword" />
-
-
-                </android.support.design.widget.TextInputLayout>
-
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -135,7 +116,24 @@
                         app:passwordToggleEnabled="true">
 
                         <EditText
-                            android:id="@+id/txtpassdosR"
+                            android:id="@+id/etPasswordRegistro"
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_action_claves"
+                            android:ems="10"
+                            android:hint="Contraseña"
+                            android:inputType="textPassword" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <EditText
+                            android:id="@+id/etPasswordRegistro2"
                             android:layout_width="280dp"
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/ic_action_claves"
@@ -144,16 +142,11 @@
                             android:inputType="textPassword" />
                     </android.support.design.widget.TextInputLayout>
 
-¿
                     <CheckBox
                         android:id="@+id/cbterminosR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/Acept_Ter_Con" />
-
-                   />
-
-
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -166,17 +159,17 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="-30dp"
                 android:layout_marginRight="35dp"
-                android:orientation="horizontal"
-                android:elevation="10dp">
+                android:elevation="10dp"
+                android:orientation="horizontal">
 
                 <Button
-                android:id="@+id/btnRegister"
+                    android:id="@+id/btnRegister"
                     android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_ui"
-                android:text="@string/Form_btn_Register"
-                android:textAllCaps="false"
-                android:textColor="@color/fondoscuro" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_ui"
+                    android:text="@string/Form_btn_Register"
+                    android:textAllCaps="false"
+                    android:textColor="@color/fondoscuro" />
 
                 <Button
                     android:id="@+id/btn_Cancel"
@@ -186,9 +179,7 @@
                     android:text="@string/Form_btn_Noregister"
                     android:textAllCaps="false"
                     android:textColor="@color/fondoscuro" />
-
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-
 </RelativeLayout>

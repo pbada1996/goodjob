@@ -14,11 +14,11 @@
 	
 	$id_actividad = $_GET['id_actividad'];
 	
-	$consulta = $con->prepare("select a.titulo, concat(Unombre, ' ', Upaterno) as nombre,  a.fecha_fin, a.descripcion, concat(t.descripcion, ': ', a.recompensa) as recompensa
-		from actividad a inner join usuario u
-		on u.idUsuario = a.id_usuario inner join tipo_recompensa t 
-		on t.id = a.tipo_recompensa 
-		where a.id = {$id_actividad};");
+	$consulta = $con->prepare("SELECT a.titulo, e.EnombreComercial, a.fecha_fin, 
+	a.descripcion, concat(t.descripcion, ': ', a.recompensa) as recompensa
+	from actividad a INNER JOIN empresa e
+	ON a.empresa = e.idEmpresa INNER JOIN tipo_recompensa t ON t.id = a.tipo_recompensa 
+	WHERE a.id = $id_actividad;");
 		
 	$consulta->execute();
 	

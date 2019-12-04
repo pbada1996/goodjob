@@ -8,36 +8,36 @@ Proyecto con el fin de promover un mejor cuidado del medio ambiente
 * [Preparando el entorno local](#preparando-el-entorno-local)
 * [Como colaborar](#instrucciones-para-colaborar)
 
-### Integrantes
+## Integrantes
 * [Cachi Ayala](https://github.com/Anthonyca18m/)
 * [Castillo Aycachi](https://github.com/carlosjordi/)
 * [Lizarzaburu Mercado](https://github.com/glizarzaburu/)
 * [Pacheco Bada](https://github.com/pbada1996/)
 
-### Historias de Usuario
+## Historias de Usuario
 #### Cachi Ayala
-* Perfil de usuario	
-* Mantenimiento de usuarios
-* Aceptación/Rechazo de actividad	
-* Aceptación/Rechazo de producto
+- [ ] Aceptación/Rechazo de actividad	
+- [ ] Perfil de usuario	
+- [ ] Mantenimiento de usuarios
+- [ ] Aceptación/Rechazo de producto
 #### Castillo Aycachi
-* Registro de productos canjeados
-* Canje de puntos	
-* Solicitud de registro como empresa	
-* Publicar actividad	
-* Reparto de recompensa	
+- [ ] Solicitud de registro como empresa	
+- [ ] Publicar actividad	
+- [ ] Registro de productos canjeados
+- [ ] Canje de puntos	
+- [ ] Reparto de recompensa	
 #### Lizarzaburu Mercado
-* Inicio de sesión	
-* Estado de postulación a actividades	
-* Detalle de actividad aceptada
-* Aplicar a actividad	
-* Puntuación de compañeros 
+- [ ] Inicio de sesión	
+- [ ] Aplicar a actividad
+- [ ] Estado de postulación a actividades	
+- [ ] Detalle de actividad aceptada
+- [ ] Puntuación de compañeros 
 #### Pacheco Bada
-* Registro como usuario 
-* Aceptación/Rechazo de aplicantes
-* Listado de actividades
-* Mantenimiento de actividades	
-* Insignias y medallas de perfil
+- [ ] Registro como usuario 
+- [ ] Listado de actividades
+- [ ] Aceptación/Rechazo de aplicantes
+- [ ] Mantenimiento de actividades	
+- [ ] Insignias y medallas de perfil
 
 ## Prerequisitos
 
@@ -60,16 +60,14 @@ Para este proyecto solo necesitas:
 
 **Nota:** El archivo sql de goodjob se encuentra en la carpeta **DB** con el nombre de *goodjod.sql*
 
-3. Ahora debemos copiar toda la carpeta **Conexiones** dentro de la carpeta de *htdocs* de XAMPP. 
+3. Ahora debemos copiar toda la carpeta **Conexiones** e **imagenes-actividades** dentro de la carpeta de *htdocs* de XAMPP. 
 
-[htdocs-xampp]:https://i.ibb.co/WFSLVwX/Screenshot-from-2019-10-31-20-32-14.png "htdocs XAMPP"
+[htdocs-xampp]:https://i.ibb.co/FnpXhMd/xamp-carpetas.png "htdocs XAMPP"
 >![alt text][htdocs-xampp]
 
-**Nota:** Si estás en windows la ruta de la carpeta htdocs por defecto es -> C:/xampp/htdocs
+4. Genial! el último paso es chekar tu IP local y ubicarla en la variable ValidSession.LOCAL
 
-4. Genial! el último paso es chekar tu IP local y ubicarla en la variable ValidSession.IP
-
-[ip]:https://i.ibb.co/nCKHF1g/image.png "IP local"
+[ip]:https://i.ibb.co/7R09xHC/validsession-ip.png "IP local"
 >![alt text][ip]
 
 ## Instrucciones para colaborar
@@ -117,9 +115,7 @@ Como fue mencionado, donde dice 'castillo' pueden y deberían colocar su nombre/
 
 Una vez llegado a este paso ya hemos terminado todo para que empiecen a desarrollar de manera local sin tener que preocuparse, pero aún nos queda la parte de colaborar.
 
-7. Cada vez que se considere necesario y sus avances estén ![alt text][oki] uds harán uso del siguiente comando:
-
-[oki]:https://i.gyazo.com/c525c45dfacda814b97c8f9001e71676.png "oki"
+7. Cada vez que se considere necesario y sus avances estén :+1: uds harán uso del siguiente comando:
 
 ```bash
 git push origin castillo
@@ -149,4 +145,4 @@ git pull main master
 
 Con esto se actualizarán a los cambios que tenga el repositorio principal, y este comando les será útil cada vez que cada uno de nosotros mande nuevos cambios, para estar al día con lo que ocurre.
 
-Si notaron algún error hacermelo saber para corregirlo o en el mejor de los casos, corregirlo uds mismos y hacer el pull request para que se actualize en el repositorio principal. ![alt text][oki]
+Si notaron algún error hacermelo saber para corregirlo o en el mejor de los casos, corregirlo uds mismos y hacer el pull request para que se actualize en el repositorio principal. :+1:

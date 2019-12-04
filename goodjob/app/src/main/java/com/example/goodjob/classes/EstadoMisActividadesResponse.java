@@ -10,8 +10,7 @@ public class EstadoMisActividadesResponse {
     private String fecha;
     private String estado;
 
-    public static EstadoMisActividadesResponse cargarDataDesdeJsonObject(JSONObject data)
-    {
+    public static EstadoMisActividadesResponse cargarDataDesdeJsonObject(JSONObject data) {
         EstadoMisActividadesResponse miActividad = new EstadoMisActividadesResponse();
 
         miActividad.id = data.optInt("id");

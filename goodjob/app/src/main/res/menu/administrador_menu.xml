@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="@string/solicitudes">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_solicitud_empresas"
+                    android:icon="@drawable/corporation"
+                    android:title="@string/solicitud_empresa" />
+                <item
+                    android:id="@+id/nav_solicitud_actividades"
+                    android:icon="@drawable/ic_content_paste_black_24dp"
+                    android:title="@string/solicitud_actividades" />
+                <item
+                    android:id="@+id/nav_solicitud_productos"
+                    android:icon="@drawable/producto"
+                    android:title="@string/solicitud_productos" />
+            </group>
+        </menu>
+    </item>
+</menu>

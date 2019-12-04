@@ -13,11 +13,6 @@
     <color name="aqua">#76D7C4</color>
     <color name="plateado">#D0D3D4</color>
     <color name="fondoscuro">#34495E</color>
-
-    <style name="AppTheme.FullScreem">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
+    <color name="startblue">#09c6df</color>
+    <color name="endblue">#0bcce6</color>
 </resources>

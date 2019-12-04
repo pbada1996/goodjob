@@ -7,8 +7,6 @@ import org.json.JSONObject;
 
 public class Actividad implements Parcelable {
 
-    // TODO: probablemente me estoy olvidando de varios campos, agregarlos con confianza.
-
     private Integer id;
     private String title;
     private String description;
@@ -17,82 +15,35 @@ public class Actividad implements Parcelable {
     private String endDate;
     private Integer currentParticipants;
     private Integer requiredParticipants;
-    private Integer photo;
+    private String photo;
     private String rewardType;
     private Double reward;
+    private String distrito;
+    private String tipoSeleccion;
+    private String mensaje;
     private Integer status;
 
-    protected Actividad(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readInt();
-        }
-        title = in.readString();
-        description = in.readString();
-        author = in.readString();
-        creationDate = in.readString();
-        endDate = in.readString();
-        if (in.readByte() == 0) {
-            currentParticipants = null;
-        } else {
-            currentParticipants = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            requiredParticipants = null;
-        } else {
-            requiredParticipants = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            photo = null;
-        } else {
-            photo = in.readInt();
-        }
-        rewardType = in.readString();
-        if (in.readByte() == 0) {
-            reward = null;
-        } else {
-            reward = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            status = null;
-        } else {
-            status = in.readInt();
-        }
-    }
-
-    public static final Creator<Actividad> CREATOR = new Creator<Actividad>() {
-        @Override
-        public Actividad createFromParcel(Parcel in) {
-            return new Actividad(in);
-        }
-
-        @Override
-        public Actividad[] newArray(int size) {
-            return new Actividad[size];
-        }
-    };
-
-    public static Actividad loadActivityDataFromJsonObject(JSONObject jsonObject)
-    {
+    public static Actividad loadActivityDataFromJsonObject(JSONObject jsonObject) {
         Actividad actividad = new Actividad();
 
         actividad.id = jsonObject.optInt("id");
         actividad.title = jsonObject.optString("titulo");
         actividad.description = jsonObject.optString("descripcion");
-        actividad.author = jsonObject.optString("nombre_completo");
+        actividad.author = jsonObject.optString("empresa");
         actividad.creationDate = jsonObject.optString("fecha_creacion");
         actividad.endDate = jsonObject.optString("fecha_fin");
         actividad.currentParticipants = jsonObject.optInt("participantes_actuales");
         actividad.requiredParticipants = jsonObject.optInt("participantes_requeridos");
+        actividad.photo = jsonObject.optString("url_foto");
         actividad.rewardType = jsonObject.optString("tipo_recompensa");
         actividad.reward = jsonObject.optDouble("recompensa");
+        actividad.distrito = jsonObject.optString("distrito");
+        actividad.tipoSeleccion = jsonObject.optString("tipo_seleccion");
+        actividad.mensaje = jsonObject.optString("mensaje");
         actividad.status = jsonObject.optInt("estado");
 
         return actividad;
     }
-
-    public Actividad(){}
 
     public Integer getId() {
         return id;
@@ -158,11 +109,11 @@ public class Actividad implements Parcelable {
         this.requiredParticipants = requiredParticipants;
     }
 
-    public Integer getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Integer photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -182,6 +133,30 @@ public class Actividad implements Parcelable {
         this.reward = reward;
     }
 
+    public String getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
+
+    public String getTipoSeleccion() {
+        return tipoSeleccion;
+    }
+
+    public void setTipoSeleccion(String tipoSeleccion) {
+        this.tipoSeleccion = tipoSeleccion;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -189,6 +164,59 @@ public class Actividad implements Parcelable {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    public Actividad() {
+    }
+
+    protected Actividad(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        title = in.readString();
+        description = in.readString();
+        author = in.readString();
+        creationDate = in.readString();
+        endDate = in.readString();
+        if (in.readByte() == 0) {
+            currentParticipants = null;
+        } else {
+            currentParticipants = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            requiredParticipants = null;
+        } else {
+            requiredParticipants = in.readInt();
+        }
+        photo = in.readString();
+        rewardType = in.readString();
+        if (in.readByte() == 0) {
+            reward = null;
+        } else {
+            reward = in.readDouble();
+        }
+        distrito = in.readString();
+        tipoSeleccion = in.readString();
+        mensaje = in.readString();
+        if (in.readByte() == 0) {
+            status = null;
+        } else {
+            status = in.readInt();
+        }
+    }
+
+    public static final Creator<Actividad> CREATOR = new Creator<Actividad>() {
+        @Override
+        public Actividad createFromParcel(Parcel in) {
+            return new Actividad(in);
+        }
+
+        @Override
+        public Actividad[] newArray(int size) {
+            return new Actividad[size];
+        }
+    };
 
     @Override
     public int describeContents() {
@@ -220,12 +248,7 @@ public class Actividad implements Parcelable {
             parcel.writeByte((byte) 1);
             parcel.writeInt(requiredParticipants);
         }
-        if (photo == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeInt(photo);
-        }
+        parcel.writeString(photo);
         parcel.writeString(rewardType);
         if (reward == null) {
             parcel.writeByte((byte) 0);
@@ -233,6 +256,9 @@ public class Actividad implements Parcelable {
             parcel.writeByte((byte) 1);
             parcel.writeDouble(reward);
         }
+        parcel.writeString(distrito);
+        parcel.writeString(tipoSeleccion);
+        parcel.writeString(mensaje);
         if (status == null) {
             parcel.writeByte((byte) 0);
         } else {
