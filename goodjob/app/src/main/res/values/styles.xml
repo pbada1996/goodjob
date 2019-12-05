@@ -24,6 +24,10 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/colorWhite</item>
+    </style>
+
     <style name="listar_actividades_divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>

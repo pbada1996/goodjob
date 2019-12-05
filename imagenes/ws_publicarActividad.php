@@ -29,7 +29,7 @@
 	values(null, '{$titulo}', '{$descripcion}', $id_empresa, CURDATE(), '{$fecha_fin}', 0, {$participantes_requeridos}, 
 	'{$url_foto}', $tipo_recompensa, {$recompensa}, $distrito, $tipo_seleccion, 0);";
 
-	$ruta_subida = "imagenes-subidas/{$url_foto}.jpg";
+	$ruta_subida = "imagenes_actividades/{$url_foto}.jpg";
 	
 	if (mysqli_query($con, $consulta_string))
 	{

@@ -1,7 +1,6 @@
 package com.example.goodjob.activities;
 
 
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -64,7 +63,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         distrito = findViewById(R.id.tvDistritoValue);
 
         selectedActivity = getIntent().getExtras().getParcelable("selectedActivity");
-        if (selectedActivity != null){
+        if (selectedActivity != null) {
             loadData(selectedActivity);
         }
 
@@ -97,13 +96,12 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (validateStartedSession()) {
-                    if (selectedActivity!=null)
-                    {
+                    if (selectedActivity != null) {
                         realizarPostulacion(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
                         cambioDeEstadoBoton();
                         incrementarParticipantes(selectedActivity.getCurrentParticipants() + 1, selectedActivity.getId());
 
-                    }else {
+                    } else {
                         realizarPostulacion(ValidSession.usuarioLogueado.getId(), idActividad);
                         cambioDeEstadoBoton();
                         incrementarParticipantes(actividad.getCurrentParticipants() + 1, idActividad);
@@ -117,9 +115,9 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         });
 
         if (ValidSession.usuarioLogueado != null)
-            if (selectedActivity != null){
+            if (selectedActivity != null) {
                 consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
-            } else{
+            } else {
                 consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), idActividad);
             }
         else if (ValidSession.empresaLogueada != null)
@@ -138,7 +136,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         requiredParticipants.setText("Se necesitan " + actividad.getRequiredParticipants() + " personas");
         distrito.setText(actividad.getDistrito());
         reward.setText(actividad.getRewardType() + " : " + actividad.getReward());
-        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES_GUARDADAS + actividad.getPhoto() + ".jpg", new Response.Listener<Bitmap>() {
+        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES + actividad.getPhoto() + ".jpg", new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 photo.setImageBitmap(response);

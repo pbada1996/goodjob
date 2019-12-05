@@ -14,14 +14,11 @@
 	
 	$id_empresa = $_GET['id_empresa'];
 	
-	$consulta = $con->prepare("SELECT id, titulo, fecha_fin, 
-    participantes_actuales, estado 
-    FROM actividad 
-    where empresa = {$id_empresa};");
+	$consulta = $con->prepare("SELECT id_producto, nombre, stock, valor, fecha_registro FROM producto WHERE estado = 0 AND empresa = $id_empresa;");
 		
 	$consulta->execute();
 	
-	$consulta->bind_result($id, $titulo, $fecha_fin, $participantes_actuales, $estado);
+	$consulta->bind_result($id, $nombre, $stock, $valor, $fecha_registro);
 	
 	$actividad = array();
 	
@@ -29,10 +26,10 @@
 	{
 		$temp = array();
 		$temp['id'] = $id;
-		$temp['titulo'] = $titulo;
-		$temp['fecha_fin'] = $fecha_fin;
-		$temp['participantes_actuales'] = $participantes_actuales;
-		$temp['estado'] = $estado;
+		$temp['nombre'] = $nombre;
+		$temp['stock'] = $stock;
+        $temp['valor'] = $valor;
+        $temp['fecha_registro'] = $fecha_registro;
 		
 		array_push($actividad, $temp);
 	}

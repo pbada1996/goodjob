@@ -117,7 +117,7 @@ CREATE TABLE `usuario` (
   Ugenero varchar(20) default null,
   UestadoCivil varchar(20) default null,
   Ucv varchar(40) default null,
-  `idDistrito` int(11) DEFAULT NULL,
+  `idDistrito` int(11) DEFAULT 42,
   UlinkFacebook varchar(250) default null,
   UlinkLinkedin varchar(250) default null,
   tipo_usuario int default 1, 
@@ -130,13 +130,13 @@ INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRe
 ('Juan Carlos', 'Castillo', 'Aycachi', '70555913', 'carlosjordi@hotmail.com', sha1('admin'), '2019-07-01', 42, 2);
 
 INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRegistro, idDistrito, tipo_usuario) VALUES
-('Max Anthony', 'Cachi', 'Ayala', '63571099', 'anthonyca18m@gmail.com', 'admin', '2019-06-28', 17, 2);
+('Max Anthony', 'Cachi', 'Ayala', '63571099', 'anthonyca18m@gmail.com', sha1('admin'), '2019-06-28', 17, 2);
 
 INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRegistro, idDistrito, tipo_usuario) VALUES
-('Gustavo Adolfo', 'Lizarzaburu', 'Mercado', '78953215', 'lizarzaburu@gmail.com', 'admin', '2019-07-02', 42, 1);
+('Gustavo Adolfo', 'Lizarzaburu', 'Mercado', '78953215', 'lizarzaburu@gmail.com', sha1('admin'), '2019-07-02', 42, 1);
 
 INSERT INTO usuario (Unombre, Upaterno, Umaterno, Udni, Ucorreo, Upass, UfechaRegistro, idDistrito, tipo_usuario) VALUES
-('Bratzon Hilser', 'Pacheco', 'Bada', '89214101', 'mituga6@gmail.com', 'admin', '2019-10-22', 42, 1);
+('Bratzon Hilser', 'Pacheco', 'Bada', '89214101', 'mituga6@gmail.com', sha1('admin'), '2019-10-22', 42, 1);
 
 
 create table tipo_recompensa
@@ -181,7 +181,7 @@ recompensa, distrito, tipo_seleccion, estado) values ('GoodJob Afterparty', 'Cel
 
 insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
 recompensa, distrito, tipo_seleccion, estado) values ('Navidad con GoodJob', 'Celebremos la navidad junto a los integrantes de GoodJob', 1, curdate(), '2019-12-25',
-7, '1Navidad con Goodjob', 1, 2000, 1, 1, 1);
+7, '1Navidad con GoodJob', 1, 2000, 1, 1, 1);
 
 insert into actividad (titulo, descripcion, empresa, fecha_creacion, fecha_fin, participantes_requeridos, foto, tipo_recompensa, 
 recompensa, distrito, tipo_seleccion, estado) values ('Serruchando a Cachi', 'De la mano del gran Bratzon, veamos como se serrucha el piso como nunca antes', 1, 
@@ -195,8 +195,8 @@ create table postulacion_actividad
     id_usuario int not null,
     fechaPostulacion date not null,
     reputacion_promedio decimal(4,2) default 0,
-    asistencia int default null, -- 1: asistio | 2: no asistio
-    estado int, -- 1: en espera | 2: aceptado | 3: rechazado
+    asistencia int default 0, -- 0: nada | 1: asistio | 2: no asistio
+    estado int default 1, -- 1: en espera | 2: aceptado | 3: rechazado
     foreign key(id_actividad) references actividad(id),
     foreign key(id_usuario) references usuario(idUsuario)
 );
@@ -208,8 +208,14 @@ CREATE TABLE `producto` (
   `valor` decimal(8,2) not NULL,
   `imagen` varchar(200) not NULL,
   empresa int not NULL,
+  fecha_registro date not null,
+  estado int default 0, -- 0: en espera | 1: aceptado | 2: rechazado
   foreign key (empresa) references empresa(idEmpresa)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO producto (nombre, stock, valor, imagen, empresa, fecha_registro) 
+VALUES ('Licuadora', 10, 100, '1Licuadora100', 1, curdate());
+
 
 CREATE TABLE lugares_canje (
   `id_lugar` int(11) primary key auto_increment,

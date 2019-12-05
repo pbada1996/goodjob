@@ -24,8 +24,11 @@ import com.example.goodjob.R;
 import com.example.goodjob.SuscriptionActivity;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.fragments.HomeFragment;
+import com.example.goodjob.fragments.ListaEmpresasEsperaFragment;
 import com.example.goodjob.fragments.PreMyActivitesFragment;
+import com.example.goodjob.fragments.ProductoEsperaFragment;
 import com.example.goodjob.fragments.ProfileFragment;
+import com.example.goodjob.fragments.RegistrarProductoFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,13 +48,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         publicarActividad = findViewById(R.id.fabPublicarActividad);
 
-        // setting the initial fragment on app start
-        Fragment initialFragment = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragments, initialFragment).commit();
+        cargarFragment(new HomeFragment());
 
         // navigation drawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        // here i'll do the magic trick
+        if (ValidSession.empresaLogueada != null) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.empresa_menu);
+        } else if (ValidSession.usuarioLogueado != null && ValidSession.usuarioLogueado.getTipoUsuario().equals("Administrador")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.administrador_menu);
+        }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -103,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(new Intent(MainActivity.this, SuscriptionActivity.class));
                     return true;
                 case R.id.navigation_estado_mis_actividades:
-                    if (ValidSession.usuarioLogueado == null) {
+                    if (ValidSession.usuarioLogueado == null && ValidSession.empresaLogueada == null) {
                         cuadroDialogo();
                         return true;
                     }
@@ -163,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void sendToLoginOrProfile() {
-        if (ValidSession.usuarioLogueado == null) {
+        if (ValidSession.usuarioLogueado == null && ValidSession.empresaLogueada == null) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         } else {
@@ -186,25 +195,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_registrar_producto) { // empresas
+            cargarFragment(new RegistrarProductoFragment());
+        } else if (id == R.id.nav_productos_espera) {
+            cargarFragment(new ProductoEsperaFragment());
+        } else if (id == R.id.nav_productos_aceptados) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_productos_rechazados) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_actividades_registro) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_actividades_espera) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_actividades_aceptadas) {
+
+        } else if (id == R.id.nav_actividades_rechazadas) {
+
+        } else if (id == R.id.nav_solicitud_empresas) { // administradores
+            cargarFragment(new ListaEmpresasEsperaFragment());
+        } else if (id == R.id.nav_solicitud_actividades) {
+
+        } else if (id == R.id.nav_solicitud_productos) {
 
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void cargarFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerFragments, fragment)
+                .commit();
     }
 }

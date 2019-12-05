@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="200dp"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:background="@drawable/bgcolor3">
 
     <android.support.constraint.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/degradado_estados_mis_actividades">
+        android:background="@drawable/degradado_estados_mis_actividades2">
 
         <TextView
             android:id="@+id/textView3"

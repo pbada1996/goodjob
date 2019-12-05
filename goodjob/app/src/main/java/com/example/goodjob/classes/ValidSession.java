@@ -4,8 +4,11 @@ public class ValidSession {
 
     public static User usuarioLogueado = null;
     public static Empresa empresaLogueada = null;
-    private static final String LOCAL = "https://192.168.1.12";
+    private static final String LOCAL = "https://192.168.43.35";
+    // la línea debajo usa la conexión remota
+    // private static final String LOCAL = "https://anthostudio.ga";
     public static final String IP = LOCAL + "/Conexiones";
-    public static final String IP_IMAGENES_ACTIVIDADES = LOCAL + "/imagenes-actividades";
-    public static final String IMAGENES_ACTIVIDADES_GUARDADAS = IP_IMAGENES_ACTIVIDADES + "/imagenes-subidas/";
+    public static final String IP_IMAGENES = LOCAL + "/imagenes";
+    public static final String IMAGENES_ACTIVIDADES = IP_IMAGENES + "/imagenes_actividades/";
+    public static final String IMAGENES_PRODUCTOS = IP_IMAGENES + "/imagenes_productos/";
 }

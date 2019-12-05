@@ -10,6 +10,9 @@
     <color name="darkGustavo">#248e50</color>
     <color name="colorBlue">#28A2CF</color>
     <color name="colorGreen">#55E96A</color>
+    <color name="aqua">#76D7C4</color>
+    <color name="plateado">#D0D3D4</color>
+    <color name="fondoscuro">#34495E</color>
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
 </resources>
