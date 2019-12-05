@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="@drawable/header_register"
-        android:theme="@style/ToolbarTheme"
-        android:elevation="5dp" />
+        android:elevation="5dp"
+        android:theme="@style/ToolbarTheme" />
 
     <TextView
         android:id="@+id/tvSignUp"
@@ -21,11 +21,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:elevation="10dp"
-        android:transitionName="tvLogin"
-        android:text="Sign up"
+        android:text="Registro"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:transitionName="tvLogin" />
 
     <ImageView
         android:id="@+id/circle1"
@@ -52,6 +52,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/bgHeader"
         android:layout_margin="20dp">
+
         <RelativeLayout
             android:id="@+id/rlayout"
             android:layout_width="match_parent"
@@ -62,70 +63,85 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:contentPadding="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="70dp"
                     android:orientation="vertical"
-                    android:paddingBottom="50dp">
+                    android:paddingTop="20dp">
 
-                    <EditText
-                        android:id="@+id/txtnombreR"
-                        android:layout_width="280dp"
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:drawableStart="@drawable/ic_action_persona"
-                        android:ems="10"
-                        android:hint="Nombre"
-                        android:inputType="textPersonName" />
+                        app:errorEnabled="true">
 
-                    <EditText
-                        android:id="@+id/txtpaternoR"
-                        android:layout_width="280dp"
+                        <EditText
+                            android:id="@+id/etNombreRegistro"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:drawableStart="@drawable/ic_action_persona"
+                            android:ems="10"
+                            android:hint="Nombre"
+                            android:inputType="textPersonName" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:drawableStart="@drawable/ic_action_completar"
-                        android:ems="10"
-                        android:hint="Apellido Paterno"
-                        android:inputType="textPersonName" />
+                        app:errorEnabled="true">
 
-                    <EditText
-                        android:id="@+id/txtrazonsocialR"
-                        android:layout_width="280dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <EditText
+                                android:id="@+id/etPaternoRegistro"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:drawableStart="@drawable/ic_action_completar"
+                                android:ems="10"
+                                android:hint="Paterno"
+                                android:inputType="textPersonName" />
+
+                            <EditText
+                                android:id="@+id/etMaternoRegistro"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:drawableStart="@drawable/ic_action_completar"
+                                android:ems="10"
+                                android:hint="Materno"
+                                android:inputType="textPersonName" />
+
+
+                        </LinearLayout>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:drawableStart="@drawable/ic_action_completar"
-                        android:ems="10"
-                        android:hint="Apellido Materno"
-                        android:inputType="textPersonName" />
+                        app:errorEnabled="true">
 
-                    <EditText
-                        android:id="@+id/txtcorreoR"
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_action_correo"
-                        android:ems="10"
-                        android:hint="Correo electronico"
-                        android:inputType="textEmailAddress" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:errorEnabled="true"
-                    app:passwordToggleEnabled="true">
+                        <EditText
+                            android:id="@+id/etCorreoRegistro"
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_action_correo"
+                            android:ems="10"
+                            android:hint="Correo electronico"
+                            android:inputType="textEmailAddress" />
 
-                    <EditText
-                        android:id="@+id/txtpassR"
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_action_claves"
-                        android:ems="10"
-                        android:hint="Contraseña"
-                        android:inputType="textPassword" />
-
-                </android.support.design.widget.TextInputLayout>
-
+                    </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -134,14 +150,16 @@
                         app:passwordToggleEnabled="true">
 
                         <EditText
-                            android:id="@+id/txtpassdosR"
+                            android:id="@+id/etPasswordRegistro"
                             android:layout_width="280dp"
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/ic_action_claves"
                             android:ems="10"
-                            android:hint="Confirmar contraseña"
+                            android:hint="Contraseña"
                             android:inputType="textPassword" />
+
                     </android.support.design.widget.TextInputLayout>
+
 
                     <CheckBox
                         android:id="@+id/cbterminosR"
@@ -161,17 +179,17 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="-30dp"
                 android:layout_marginRight="35dp"
-                android:orientation="horizontal"
-                android:elevation="10dp">
+                android:elevation="10dp"
+                android:orientation="horizontal">
 
                 <Button
-                android:id="@+id/btnRegister"
+                    android:id="@+id/btnRegister"
                     android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_ui"
-                android:text="@string/Form_btn_Register"
-                android:textAllCaps="false"
-                android:textColor="@color/fondoscuro" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_ui"
+                    android:text="@string/Form_btn_Register"
+                    android:textAllCaps="false"
+                    android:textColor="@color/fondoscuro" />
 
                 <Button
                     android:id="@+id/btn_Cancel"
