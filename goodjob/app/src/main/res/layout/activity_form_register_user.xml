@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormRegisterUserActivity">
+    tools:context=".activities.FormRegisterUserActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/bgHeader"
@@ -149,9 +149,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/Acept_Ter_Con" />
 
-                   />
-
-
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -188,5 +185,4 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-
 </RelativeLayout>

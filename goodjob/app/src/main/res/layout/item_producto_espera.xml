@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/default_margin_bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/productoEsperaNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:paddingStart="@dimen/default_padding_left"
+        android:paddingEnd="@dimen/default_padding_right"
+        android:text="@string/producto"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    <TextView
+        android:id="@+id/tvProductoEsperaNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/default_margin_right"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:text="valor del nombre"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    <TextView
+        android:id="@+id/productoEsperaStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productoEsperaNombre"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:paddingStart="@dimen/default_padding_left"
+        android:paddingEnd="@dimen/default_padding_right"
+        android:text="@string/stock_producto"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    <TextView
+        android:id="@+id/tvProductoEsperaStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProductoEsperaNombre"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/default_margin_right"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:text="valor del stock"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    <TextView
+        android:id="@+id/productoEsperaValor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productoEsperaStock"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:paddingStart="@dimen/default_padding_left"
+        android:paddingEnd="@dimen/default_padding_right"
+        android:text="@string/valor_puntos_producto"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    <TextView
+        android:id="@+id/tvProductoEsperaValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProductoEsperaStock"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/default_margin_right"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:text="valor del valor"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    <TextView
+        android:id="@+id/productoEsperaFechaRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productoEsperaValor"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:paddingStart="@dimen/default_padding_left"
+        android:paddingEnd="@dimen/default_padding_right"
+        android:text="@string/fecha_registro_producto"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    <TextView
+        android:id="@+id/tvProductoEsperaFechaRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProductoEsperaValor"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/default_margin_right"
+        android:layout_marginBottom="@dimen/small_margin_right"
+        android:text="valor del stock"
+        android:textSize="@dimen/text_size_listado_productos_espera" />
+</RelativeLayout>

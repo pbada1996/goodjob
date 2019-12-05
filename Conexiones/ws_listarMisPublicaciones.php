@@ -12,12 +12,12 @@
 		die('Unable to connect to database' . mysqli_connect_error());
 	}
 	
-	$id_usuario = $_GET['id_usuario'];
+	$id_empresa = $_GET['id_empresa'];
 	
 	$consulta = $con->prepare("SELECT id, titulo, fecha_fin, 
     participantes_actuales, estado 
     FROM actividad 
-    where id_usuario = {$id_usuario};");
+    where empresa = {$id_empresa};");
 		
 	$consulta->execute();
 	

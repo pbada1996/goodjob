@@ -12,17 +12,19 @@
 		die('Unable to connect to database' . mysqli_connect_error());
 	}
 	
-	$consulta = $con->prepare("select a.id, titulo, a.descripcion, concat(Unombre, ' ', UPaterno, ' ', Umaterno), fecha_creacion, fecha_fin , participantes_actuales, participantes_requeridos, foto, t.descripcion as 'TipoRecompensa', recompensa, estado 
-		from actividad a inner join usuario u 
-		on a.id_usuario = u.idUsuario 
-		inner join tipo_recompensa t 
-		on t.id = a.tipo_recompensa 
-		where estado = 1;");
+	$consulta = $con->prepare("SELECT a.id, titulo, a.descripcion, e.EnombreComercial, a.fecha_creacion, a.fecha_fin,
+	a.participantes_actuales, a.participantes_requeridos, a.foto, t.descripcion, 
+	a.recompensa, d.DNombre, a.tipo_seleccion, mensaje, a.estado 
+	FROM actividad a INNER JOIN empresa e ON a.empresa = e.idEmpresa 
+	INNER JOIN tipo_recompensa t ON t.id = a.tipo_recompensa 
+	INNER JOIN distrito d ON d.idDistrito = a.distrito 
+	WHERE a.estado = 1;");
 		
 	$consulta->execute();
 	
-	$consulta->bind_result($id, $titulo, $descripcion, $nombre_completo, $fecha_creacion, $fecha_fin, 
-	$participantes_actuales, $participantes_requeridos, $foto, $tipo_recompensa, $recompensa, $estado);
+	$consulta->bind_result($id, $titulo, $descripcion, $empresa, $fecha_creacion, 
+	$fecha_fin, $participantes_actuales, $participantes_requeridos, $foto, $tipo_recompensa, 
+	$recompensa, $distrito, $tipo_seleccion, $mensaje, $estado);
 	
 	$actividad = array();
 	
@@ -32,14 +34,17 @@
 		$temp['id'] = $id;
 		$temp['titulo'] = $titulo;
 		$temp['descripcion'] = $descripcion;
-		$temp['nombre_completo'] = $nombre_completo;
+		$temp['empresa'] = $empresa;
 		$temp['fecha_creacion'] = $fecha_creacion;
 		$temp['fecha_fin'] = $fecha_fin;
 		$temp['participantes_actuales'] = $participantes_actuales;
 		$temp['participantes_requeridos'] = $participantes_requeridos;
-		$temp['foto'] = $foto;
+		$temp['url_foto'] = $foto;
 		$temp['tipo_recompensa'] = $tipo_recompensa;
 		$temp['recompensa'] = $recompensa;
+		$temp['distrito'] = $distrito;
+		$temp['tipo_seleccion'] = $tipo_seleccion;
+		$temp['mensaje'] = $mensaje;
 		$temp['estado'] = $estado;
 		
 		array_push($actividad, $temp);

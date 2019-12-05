@@ -9,8 +9,7 @@ public class UsuarioPostulante {
     private Double reputacion;
     private String estado;
 
-    public static UsuarioPostulante cargarDesdeJsonObject(JSONObject data)
-    {
+    public static UsuarioPostulante cargarDesdeJsonObject(JSONObject data) {
         UsuarioPostulante postulante = new UsuarioPostulante();
         postulante.id = data.optInt("id");
         postulante.nombre = data.optString("nombre");
@@ -23,8 +22,7 @@ public class UsuarioPostulante {
         else
             postulante.reputacion = reputacion_ptos / cantidad_votos;
 
-        switch (estado)
-        {
+        switch (estado) {
             case 1:
                 postulante.estado = "En Espera";
                 break;
