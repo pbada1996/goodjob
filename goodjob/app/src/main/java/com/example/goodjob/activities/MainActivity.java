@@ -25,6 +25,7 @@ import com.example.goodjob.SuscriptionActivity;
 import com.example.goodjob.classes.ValidSession;
 import com.example.goodjob.fragments.HomeFragment;
 import com.example.goodjob.fragments.ListaEmpresasEsperaFragment;
+import com.example.goodjob.fragments.ListadoActividadEmpresaEstadoFragment;
 import com.example.goodjob.fragments.PreMyActivitesFragment;
 import com.example.goodjob.fragments.ProductoEsperaFragment;
 import com.example.goodjob.fragments.ProfileFragment;
@@ -197,6 +198,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
+        Fragment fragment;
+        Bundle bundle = new Bundle();
 
         if (id == R.id.nav_registrar_producto) { // empresas
             cargarFragment(new RegistrarProductoFragment());
@@ -209,7 +212,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_actividades_registro) {
 
         } else if (id == R.id.nav_actividades_espera) {
-
+            fragment = new ListadoActividadEmpresaEstadoFragment();
+            bundle.putInt("estado", 0);
+            fragment.setArguments(bundle);
+            cargarFragment(fragment);
         } else if (id == R.id.nav_actividades_aceptadas) {
 
         } else if (id == R.id.nav_actividades_rechazadas) {
