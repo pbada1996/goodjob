@@ -167,10 +167,10 @@
     <string name="actividades_rechazadas">Actividades Rechazadas</string>
     <string name="actividades_registro">Registrar Actividad</string>
     <string name="productos_rechazados">Productos Rechazados</string>
-    <string name="producto">Producto</string>
-    <string name="stock_producto">Stock</string>
-    <string name="valor_puntos_producto">Valor en Ptos</string>
-    <string name="fecha_registro_producto">Fecha Registro</string>
+    <string name="producto">Producto :</string>
+    <string name="stock_producto">Stock :</string>
+    <string name="valor_puntos_producto">Valor en Ptos :</string>
+    <string name="fecha_registro_producto">Fecha Registro :</string>
     <string name="solicitudes">Solicitudes</string>
     <string name="solicitud_empresa">Empresas</string>
     <string name="solicitud_actividades">Actividades</string>

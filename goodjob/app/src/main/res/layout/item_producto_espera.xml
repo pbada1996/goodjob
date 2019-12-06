@@ -1,93 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/default_margin_bottom"
+    android:layout_height="230dp"
+    android:background="#f4fcf6"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/productoEsperaNombre"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/producto"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        android:layout_height="200dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_estado_mis_actividades">
 
-    <TextView
-        android:id="@+id/tvProductoEsperaNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor del nombre"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/productoEsperaNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/productoEsperaStock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/productoEsperaNombre"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/stock_producto"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/tvProductoEsperaNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="valor del nombre"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvProductoEsperaStock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvProductoEsperaNombre"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor del stock"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/productoEsperaStock"
+            android:layout_below="@id/productoEsperaNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/stock_producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productoEsperaNombre" />
 
-    <TextView
-        android:id="@+id/productoEsperaValor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/productoEsperaStock"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/valor_puntos_producto"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/tvProductoEsperaStock"
+            android:layout_below="@+id/tvProductoEsperaNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="235dp"
+            android:layout_marginTop="16dp"
+            android:text="valor del stock"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductoEsperaNombre" />
 
-    <TextView
-        android:id="@+id/tvProductoEsperaValor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvProductoEsperaStock"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor del valor"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/productoEsperaValor"
+            android:layout_below="@id/productoEsperaStock"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/valor_puntos_producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productoEsperaStock"/>
 
-    <TextView
-        android:id="@+id/productoEsperaFechaRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/productoEsperaValor"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/fecha_registro_producto"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/tvProductoEsperaValor"
+            android:layout_below="@+id/tvProductoEsperaStock"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="235dp"
+            android:layout_marginTop="16dp"
+            android:text="valor del valor"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductoEsperaStock"/>
 
-    <TextView
-        android:id="@+id/tvProductoEsperaFechaRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvProductoEsperaValor"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor del stock"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/productoEsperaFechaRegistro"
+            android:layout_below="@+id/productoEsperaValor"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/fecha_registro_producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productoEsperaValor"/>
+
+        <TextView
+            android:id="@+id/tvProductoEsperaFechaRegistro"
+            android:layout_below="@+id/tvProductoEsperaValor"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="235dp"
+            android:layout_marginTop="16dp"
+            android:text="valor del stock"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductoEsperaValor"/>
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
