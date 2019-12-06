@@ -198,8 +198,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        Fragment fragment;
-        Bundle bundle = new Bundle();
 
         if (id == R.id.nav_registrar_producto) { // empresas
             cargarFragment(new RegistrarProductoFragment());
@@ -212,14 +210,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_actividades_registro) {
 
         } else if (id == R.id.nav_actividades_espera) {
-            fragment = new ListadoActividadEmpresaEstadoFragment();
-            bundle.putInt("estado", 0);
-            fragment.setArguments(bundle);
-            cargarFragment(fragment);
+            cargarFragmentActividadesEmpresa(0);
         } else if (id == R.id.nav_actividades_aceptadas) {
-
+            cargarFragmentActividadesEmpresa(1);
         } else if (id == R.id.nav_actividades_rechazadas) {
-
+            cargarFragmentActividadesEmpresa(2);
         } else if (id == R.id.nav_solicitud_empresas) { // administradores
             cargarFragment(new ListaEmpresasEsperaFragment());
         } else if (id == R.id.nav_solicitud_actividades) {
@@ -237,5 +232,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containerFragments, fragment)
                 .commit();
+    }
+
+    private void cargarFragmentActividadesEmpresa(int estado) {
+        Fragment fragment = new ListadoActividadEmpresaEstadoFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("estado", estado);
+        fragment.setArguments(bundle);
+        cargarFragment(fragment);
     }
 }

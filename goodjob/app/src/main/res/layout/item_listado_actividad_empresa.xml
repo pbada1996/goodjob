@@ -77,7 +77,7 @@
         android:layout_marginBottom="@dimen/small_margin_right"
         android:paddingStart="@dimen/default_padding_left"
         android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/actividad_empresa"
+        android:text="@string/actividad_distrito"
         android:textSize="@dimen/text_size_listado_productos_espera" />
 
     <TextView
@@ -88,6 +88,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/default_margin_right"
         android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor de la empresa publicante"
+        android:text="valor del distrito"
         android:textSize="@dimen/text_size_listado_productos_espera" />
 </RelativeLayout>

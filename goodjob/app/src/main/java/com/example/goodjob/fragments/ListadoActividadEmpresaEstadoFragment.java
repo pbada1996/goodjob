@@ -15,12 +15,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.goodjob.R;
+import com.example.goodjob.adapter.ListadoActividadesEmpresaAdapter;
+import com.example.goodjob.classes.ListadoActividadesEmpresa;
 import com.example.goodjob.classes.ValidSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListadoActividadEmpresaEstadoFragment extends Fragment {
 
     private RecyclerView rvActividades;
-    private Integer estado =  null;
+    private List<ListadoActividadesEmpresa> actividadesEmpresas;
+    private Integer estado = null;
 
     public ListadoActividadEmpresaEstadoFragment() {
     }
@@ -33,7 +43,7 @@ public class ListadoActividadEmpresaEstadoFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         estado = bundle.getInt("estado");
-
+        actividadesEmpresas = new ArrayList<>();
         setRecycler(view);
         cargarData();
 
@@ -48,12 +58,22 @@ public class ListadoActividadEmpresaEstadoFragment extends Fragment {
     }
 
     private void cargarData() {
-        String url = ValidSession.IP + "ws_listarActividadesEmpresaPorEstado.php?id_empresa="
+        String url = ValidSession.IP + "/ws_listarActividadesEmpresaPorEstado.php?id_empresa="
                 + ValidSession.empresaLogueada.getId() + "&estado=" + estado;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                try {
+                    JSONArray array = new JSONArray(response);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject data = array.getJSONObject(i);
+                        ListadoActividadesEmpresa lae = ListadoActividadesEmpresa.crearDesdeJson(data);
+                        actividadesEmpresas.add(lae);
+                        cargarAdapter();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -62,5 +82,10 @@ public class ListadoActividadEmpresaEstadoFragment extends Fragment {
             }
         });
         Volley.newRequestQueue(getContext()).add(request);
+    }
+
+    private void cargarAdapter() {
+        ListadoActividadesEmpresaAdapter adapter = new ListadoActividadesEmpresaAdapter(actividadesEmpresas);
+        rvActividades.setAdapter(adapter);
     }
 }

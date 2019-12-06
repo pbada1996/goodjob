@@ -180,5 +180,6 @@
     <string name="actividad_fecha_registro">Registrada</string>
     <string name="actividad_fecha_realizarse">Se realiza</string>
     <string name="actividad_empresa">Empresa</string>
+    <string name="actividad_distrito">Distrito</string>
 
 </resources>
