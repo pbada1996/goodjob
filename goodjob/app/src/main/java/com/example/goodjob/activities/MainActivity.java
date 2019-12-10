@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BottomNavigationView navigation;
     private FloatingActionButton publicarActividad;
     private Toolbar toolbar;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // navigation drawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // here i'll do the magic trick
-        if (ValidSession.empresaLogueada != null) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.empresa_menu);
-        } else if (ValidSession.usuarioLogueado != null && ValidSession.usuarioLogueado.getTipoUsuario().equals("Administrador")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.administrador_menu);
-        }
+        navigationView = findViewById(R.id.nav_view);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -82,6 +76,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Toast.makeText(getApplicationContext(), "No puedes realizar esta acción", Toast.LENGTH_LONG).show();
             }
         });
+        // here i'll do the magic trick
+        if (ValidSession.empresaLogueada != null) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.empresa_menu);
+        } else if (ValidSession.usuarioLogueado != null && ValidSession.usuarioLogueado.getTipoUsuario().equals("Administrador")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.administrador_menu);
+        }
     }
 
     private void setToolbar() {
