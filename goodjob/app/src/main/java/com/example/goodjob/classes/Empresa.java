@@ -1,8 +1,11 @@
 package com.example.goodjob.classes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONObject;
 
-public class Empresa {
+public class Empresa implements Parcelable {
 
     private Integer id;
     private String razonSocial;
@@ -17,6 +20,49 @@ public class Empresa {
     private String distrito;
     private Integer numeroActividades; // publicadas me imagino, right ?
     private Integer estado;
+
+    public Empresa() {
+    }
+
+    protected Empresa(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        razonSocial = in.readString();
+        nombreComercial = in.readString();
+        ruc = in.readString();
+        telefono = in.readString();
+        correo = in.readString();
+        direccion = in.readString();
+        fechaRegistro = in.readString();
+        codigoPostal = in.readString();
+        password = in.readString();
+        distrito = in.readString();
+        if (in.readByte() == 0) {
+            numeroActividades = null;
+        } else {
+            numeroActividades = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            estado = null;
+        } else {
+            estado = in.readInt();
+        }
+    }
+
+    public static final Creator<Empresa> CREATOR = new Creator<Empresa>() {
+        @Override
+        public Empresa createFromParcel(Parcel in) {
+            return new Empresa(in);
+        }
+
+        @Override
+        public Empresa[] newArray(int size) {
+            return new Empresa[size];
+        }
+    };
 
     public static Empresa cargarDatosDesdeJson(JSONObject data) {
 
@@ -138,5 +184,42 @@ public class Empresa {
 
     public void setEstado(Integer estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (id == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(id);
+        }
+        parcel.writeString(razonSocial);
+        parcel.writeString(nombreComercial);
+        parcel.writeString(ruc);
+        parcel.writeString(telefono);
+        parcel.writeString(correo);
+        parcel.writeString(direccion);
+        parcel.writeString(fechaRegistro);
+        parcel.writeString(codigoPostal);
+        parcel.writeString(password);
+        parcel.writeString(distrito);
+        if (numeroActividades == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(numeroActividades);
+        }
+        if (estado == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(estado);
+        }
     }
 }
