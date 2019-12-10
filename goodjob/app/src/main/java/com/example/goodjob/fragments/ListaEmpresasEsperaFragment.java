@@ -2,6 +2,7 @@ package com.example.goodjob.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.example.goodjob.R;
 import com.example.goodjob.adapter.SolicitudEmpresaAdapter;
 import com.example.goodjob.classes.Empresa;
 import com.example.goodjob.classes.ValidSession;
+import com.example.goodjob.interfaces.OnSolicitudEmpresaListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaEmpresasEsperaFragment extends Fragment {
+public class ListaEmpresasEsperaFragment extends Fragment implements OnSolicitudEmpresaListener {
 
     private RecyclerView rvSolicitudes;
     private List<Empresa> empresas;
@@ -76,8 +78,19 @@ public class ListaEmpresasEsperaFragment extends Fragment {
     }
 
     private void cargarAdapter() {
-        SolicitudEmpresaAdapter adapter = new SolicitudEmpresaAdapter(empresas);
+        SolicitudEmpresaAdapter adapter = new SolicitudEmpresaAdapter(empresas, this);
         rvSolicitudes.setAdapter(adapter);
     }
 
+    @Override
+    public void onSolicitudEmpresaClick(int posicion) {
+        Empresa empresa = empresas.get(posicion);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("empresa", empresa);
+        Fragment detalle = new SolicitudEmpresaDetalleFragment();
+        detalle.setArguments(bundle);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.containerFragments, detalle)
+                .commit();
+    }
 }

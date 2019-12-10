@@ -9,15 +9,18 @@ import android.widget.TextView;
 
 import com.example.goodjob.R;
 import com.example.goodjob.classes.Empresa;
+import com.example.goodjob.interfaces.OnSolicitudEmpresaListener;
 
 import java.util.List;
 
 public class SolicitudEmpresaAdapter extends RecyclerView.Adapter<SolicitudEmpresaAdapter.SolicitudEmpresaViewHolder> {
 
     private List<Empresa> empresas;
+    private OnSolicitudEmpresaListener onSolicitudEmpresaListener;
 
-    public SolicitudEmpresaAdapter(List<Empresa> empresas) {
+    public SolicitudEmpresaAdapter(List<Empresa> empresas, OnSolicitudEmpresaListener onSolicitudEmpresaListener) {
         this.empresas = empresas;
+        this.onSolicitudEmpresaListener = onSolicitudEmpresaListener;
     }
 
     @NonNull
@@ -25,7 +28,7 @@ public class SolicitudEmpresaAdapter extends RecyclerView.Adapter<SolicitudEmpre
     public SolicitudEmpresaViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_lista_empresas_espera, viewGroup, false);
-        return new SolicitudEmpresaViewHolder(view);
+        return new SolicitudEmpresaViewHolder(view, onSolicitudEmpresaListener);
     }
 
     @Override
@@ -41,15 +44,23 @@ public class SolicitudEmpresaAdapter extends RecyclerView.Adapter<SolicitudEmpre
         return empresas.size();
     }
 
-    class SolicitudEmpresaViewHolder extends RecyclerView.ViewHolder {
+    class SolicitudEmpresaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView empresa, ruc, fechaRegistro;
+        private OnSolicitudEmpresaListener onSolicitudEmpresaListener;
 
-        private SolicitudEmpresaViewHolder(@NonNull View itemView) {
+        private SolicitudEmpresaViewHolder(@NonNull View itemView, final OnSolicitudEmpresaListener onSolicitudEmpresaListener) {
             super(itemView);
             empresa = itemView.findViewById(R.id.tvEmpresaNombre);
             ruc = itemView.findViewById(R.id.tvRucEmpresa);
             fechaRegistro = itemView.findViewById(R.id.tvEmpresaFechaRegistro);
+            this.onSolicitudEmpresaListener = onSolicitudEmpresaListener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onSolicitudEmpresaListener.onSolicitudEmpresaClick(getAdapterPosition());
         }
     }
 }

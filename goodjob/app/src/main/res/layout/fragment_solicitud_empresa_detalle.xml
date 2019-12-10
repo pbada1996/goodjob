@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.SolicitudEmpresaDetalleFragment">
+
+    <!-- TODO 1.0 diseñar la pantalla del detalle de la solicitud de empresa.
+    Los unicos IDs que me importan son de los botones para aceptar y rechazar
+    la solicitud. btnAceptarSolicitud y btnRechazarSolicitud respectivamente.
+    Los demás IDs eres libre.
+    -->
+</LinearLayout>
