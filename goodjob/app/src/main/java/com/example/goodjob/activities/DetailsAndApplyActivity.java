@@ -41,6 +41,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     private ImageView photo;
     private Button postular;
     private TextView reward;
+    private TextView distrito;
     private Actividad selectedActivity;
     Actividad actividad = null;
 
@@ -59,6 +60,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         photo = findViewById(R.id.imgPhoto);
         postular = findViewById(R.id.btnMoreInfo);
         reward = findViewById(R.id.tvReward);
+        distrito = findViewById(R.id.tvDistritoValue);
 
         selectedActivity = getIntent().getExtras().getParcelable("selectedActivity");
         if (selectedActivity != null) {
@@ -132,6 +134,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         endDate.setText(formatDate(actividad.getEndDate()));
         currentParticipants.setText("De momento hay " + actividad.getCurrentParticipants() + " postulantes");
         requiredParticipants.setText("Se necesitan " + actividad.getRequiredParticipants() + " personas");
+        distrito.setText(actividad.getDistrito());
         reward.setText(actividad.getRewardType() + " : " + actividad.getReward());
         ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES + actividad.getPhoto() + ".jpg", new Response.Listener<Bitmap>() {
             @Override

@@ -131,15 +131,13 @@
                 android:layout_width="360dp"
                 android:layout_height="360dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="1dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="1dp"
-                    android:paddingLeft="25dp">
+                    android:paddingLeft="1dp">
 
                     <TextView
                         android:id="@+id/tvTitle"
@@ -188,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/tvCreationDate"
@@ -216,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/tvEndDate"
@@ -239,9 +237,35 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvDistrito"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Distrito :"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDistritoValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="350dp"
                     android:layout_height="120dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="1dp"
                     android:orientation="horizontal"
                     android:paddingStart="10dp"
                     >
@@ -267,7 +291,8 @@
                 android:background="@drawable/buttonstyle"
                 android:text="Postular Actividad"
                 android:textSize="15dp"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:layout_marginTop="15dp"/>
         </LinearLayout>
     </ScrollView>
 
