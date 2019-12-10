@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:elevation="10dp"
-        android:text="Sign up"
+        android:text="Registro"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -32,7 +32,7 @@
         android:layout_width="134dp"
         android:layout_height="134dp"
         android:layout_below="@+id/bgHeader"
-        android:layout_marginStart="-25dp"
+        android:layout_marginLeft="-25dp"
         android:layout_marginTop="-5dp"
         android:src="@drawable/circletransparant" />
 
@@ -40,11 +40,12 @@
         android:id="@+id/circle3"
         android:layout_width="182dp"
         android:layout_height="182dp"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-80dp"
+        android:layout_marginLeft="-80dp"
         android:layout_marginBottom="-30dp"
         android:src="@drawable/circle" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -55,59 +56,92 @@
         <RelativeLayout
             android:id="@+id/rlayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:contentPadding="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="70dp"
                     android:orientation="vertical"
-                    android:paddingBottom="50dp">
+                    android:paddingTop="20dp">
 
-                    <EditText
-                        android:id="@+id/etNombreRegistro"
-                        android:layout_width="280dp"
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:drawableStart="@drawable/ic_action_persona"
-                        android:ems="10"
-                        android:hint="Nombre"
-                        android:inputType="textPersonName" />
+                        app:errorEnabled="true">
 
-                    <EditText
-                        android:id="@+id/etPaternoRegistro"
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:drawableStart="@drawable/ic_action_completar"
-                        android:ems="10"
-                        android:hint="Apellido Paterno"
-                        android:inputType="textPersonName" />
+                        <EditText
+                            android:id="@+id/etNombreRegistro"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:drawableStart="@drawable/ic_action_persona"
+                            android:ems="10"
+                            android:hint="Nombre"
+                            android:inputType="textPersonName" />
+                    </android.support.design.widget.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/etMaternoRegistro"
-                        android:layout_width="280dp"
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:drawableStart="@drawable/ic_action_completar"
-                        android:ems="10"
-                        android:hint="Apellido Materno"
-                        android:inputType="textPersonName" />
+                        app:errorEnabled="true">
 
-                    <EditText
-                        android:id="@+id/etCorreoRegistro"
-                        android:layout_width="280dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <EditText
+                                android:id="@+id/etPaternoRegistro"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:drawableStart="@drawable/ic_action_completar"
+                                android:ems="10"
+                                android:hint="Paterno"
+                                android:inputType="textPersonName" />
+
+                            <EditText
+                                android:id="@+id/etMaternoRegistro"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:drawableStart="@drawable/ic_action_completar"
+                                android:ems="10"
+                                android:hint="Materno"
+                                android:inputType="textPersonName" />
+
+
+                        </LinearLayout>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_action_correo"
-                        android:ems="10"
-                        android:hint="Correo electronico"
-                        android:inputType="textEmailAddress" />
+                        app:errorEnabled="true">
+
+
+                        <EditText
+                            android:id="@+id/etCorreoRegistro"
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_action_correo"
+                            android:ems="10"
+                            android:hint="Correo electronico"
+                            android:inputType="textEmailAddress" />
+
+                    </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -126,27 +160,13 @@
 
                     </android.support.design.widget.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-                        app:passwordToggleEnabled="true">
-
-                        <EditText
-                            android:id="@+id/etPasswordRegistro2"
-                            android:layout_width="280dp"
-                            android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_action_claves"
-                            android:ems="10"
-                            android:hint="Confirmar contraseña"
-                            android:inputType="textPassword" />
-                    </android.support.design.widget.TextInputLayout>
 
                     <CheckBox
                         android:id="@+id/cbterminosR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/Acept_Ter_Con" />
+
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -179,6 +199,7 @@
                     android:text="@string/Form_btn_Noregister"
                     android:textAllCaps="false"
                     android:textColor="@color/fondoscuro" />
+
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
