@@ -30,6 +30,7 @@ import com.example.goodjob.fragments.PreMyActivitesFragment;
 import com.example.goodjob.fragments.ProductoEsperaFragment;
 import com.example.goodjob.fragments.ProfileFragment;
 import com.example.goodjob.fragments.RegistrarProductoFragment;
+import com.example.goodjob.fragments.SolicitudActividadesEsperaFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -220,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_solicitud_empresas) { // administradores
             cargarFragment(new ListaEmpresasEsperaFragment());
         } else if (id == R.id.nav_solicitud_actividades) {
-
+            cargarFragment(new SolicitudActividadesEsperaFragment());
         } else if (id == R.id.nav_solicitud_productos) {
 
         }
