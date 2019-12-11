@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.SolicitudActividadesEsperaDetalleFragment">
+
+    <!-- TODO 2.0 diseñar la pantalla del detalle de la actividad a ser publicada.
+        Los unicos IDs que me importan son de los botones para aceptar y rechazar
+        la actividad. btnAceptarActividad y btnRechazarActividad respectivamente.
+        Los demás IDs eres libre.
+        -->
+</LinearLayout>

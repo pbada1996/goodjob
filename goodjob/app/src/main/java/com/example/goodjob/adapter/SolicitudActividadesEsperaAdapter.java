@@ -9,15 +9,19 @@ import android.widget.TextView;
 
 import com.example.goodjob.R;
 import com.example.goodjob.classes.Actividad;
+import com.example.goodjob.interfaces.OnSolicitudActividadListener;
 
 import java.util.List;
 
-public class SolicitudActividadesEsperaAdapter extends RecyclerView.Adapter<SolicitudActividadesEsperaAdapter.SolicitudActividadesEsperaViewHolder> {
+public class SolicitudActividadesEsperaAdapter extends
+        RecyclerView.Adapter<SolicitudActividadesEsperaAdapter.SolicitudActividadesEsperaViewHolder> {
 
-    List<Actividad> actividades;
+    private List<Actividad> actividades;
+    private OnSolicitudActividadListener onSolicitudActividadListener;
 
-    public SolicitudActividadesEsperaAdapter(List<Actividad> actividades) {
+    public SolicitudActividadesEsperaAdapter(List<Actividad> actividades, OnSolicitudActividadListener onSolicitudActividadListener) {
         this.actividades = actividades;
+        this.onSolicitudActividadListener = onSolicitudActividadListener;
     }
 
     @NonNull
@@ -25,7 +29,7 @@ public class SolicitudActividadesEsperaAdapter extends RecyclerView.Adapter<Soli
     public SolicitudActividadesEsperaViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_solicitud_actividades_espera, viewGroup, false);
-        return new SolicitudActividadesEsperaViewHolder(v);
+        return new SolicitudActividadesEsperaViewHolder(v, onSolicitudActividadListener);
     }
 
     @Override
@@ -41,15 +45,24 @@ public class SolicitudActividadesEsperaAdapter extends RecyclerView.Adapter<Soli
         return actividades.size();
     }
 
-    class SolicitudActividadesEsperaViewHolder extends RecyclerView.ViewHolder {
+    class SolicitudActividadesEsperaViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
 
         private TextView actividad, empresa, fechaRegistro;
+        private OnSolicitudActividadListener onSolicitudActividadListener;
 
-        private SolicitudActividadesEsperaViewHolder(@NonNull View v) {
+        private SolicitudActividadesEsperaViewHolder(@NonNull View v, OnSolicitudActividadListener onSolicitudActividadListener) {
             super(v);
             actividad = v.findViewById(R.id.tvActividadNombreSolicitud);
             empresa = v.findViewById(R.id.tvActividadEmpresaSolicitud);
             fechaRegistro = v.findViewById(R.id.tvActividadFechaRegistroSolicitud);
+            this.onSolicitudActividadListener = onSolicitudActividadListener;
+            v.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onSolicitudActividadListener.onSolicitudActividadClick(getAdapterPosition());
         }
     }
 }

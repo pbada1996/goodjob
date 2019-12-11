@@ -18,6 +18,7 @@ import com.example.goodjob.R;
 import com.example.goodjob.adapter.SolicitudActividadesEsperaAdapter;
 import com.example.goodjob.classes.Actividad;
 import com.example.goodjob.classes.ValidSession;
+import com.example.goodjob.interfaces.OnSolicitudActividadListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SolicitudActividadesEsperaFragment extends Fragment {
+public class SolicitudActividadesEsperaFragment extends Fragment implements OnSolicitudActividadListener {
 
     private RecyclerView rvSolicitudActividades;
     private List<Actividad> actividades;
@@ -79,7 +80,19 @@ public class SolicitudActividadesEsperaFragment extends Fragment {
     }
 
     private void cargarAdapter() {
-        SolicitudActividadesEsperaAdapter adapter = new SolicitudActividadesEsperaAdapter(actividades);
+        SolicitudActividadesEsperaAdapter adapter = new SolicitudActividadesEsperaAdapter(actividades, this);
         rvSolicitudActividades.setAdapter(adapter);
+    }
+
+    @Override
+    public void onSolicitudActividadClick(int posicion) {
+        Actividad a = actividades.get(posicion);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("actividad", a);
+        Fragment detalle = new SolicitudActividadesEsperaDetalleFragment();
+        detalle.setArguments(bundle);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.containerFragments, detalle)
+                .commit();
     }
 }
