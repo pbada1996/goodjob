@@ -174,5 +174,6 @@
     <string name="actividad_distrito">Distrito</string>
     <string name="empresa">Empresa</string>
     <string name="empresa_fecha_registrada">Solicitado</string>
+    <string name="actividades_solicitud">Solicitudes de Actividades</string>
 
 </resources>

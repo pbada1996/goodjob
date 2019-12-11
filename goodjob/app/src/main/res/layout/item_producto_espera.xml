@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="230dp"
     android:background="#f4fcf6"
@@ -39,9 +38,9 @@
 
         <TextView
             android:id="@+id/productoEsperaStock"
-            android:layout_below="@id/productoEsperaNombre"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_below="@id/productoEsperaNombre"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/stock_producto"
@@ -52,9 +51,9 @@
 
         <TextView
             android:id="@+id/tvProductoEsperaStock"
-            android:layout_below="@+id/tvProductoEsperaNombre"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_below="@+id/tvProductoEsperaNombre"
             android:layout_marginStart="235dp"
             android:layout_marginTop="16dp"
             android:text="valor del stock"
@@ -64,52 +63,52 @@
 
         <TextView
             android:id="@+id/productoEsperaValor"
-            android:layout_below="@id/productoEsperaStock"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_below="@id/productoEsperaStock"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/valor_puntos_producto"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productoEsperaStock"/>
+            app:layout_constraintTop_toBottomOf="@+id/productoEsperaStock" />
 
         <TextView
             android:id="@+id/tvProductoEsperaValor"
-            android:layout_below="@+id/tvProductoEsperaStock"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_below="@+id/tvProductoEsperaStock"
             android:layout_marginStart="235dp"
             android:layout_marginTop="16dp"
             android:text="valor del valor"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvProductoEsperaStock"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvProductoEsperaStock" />
 
         <TextView
             android:id="@+id/productoEsperaFechaRegistro"
-            android:layout_below="@+id/productoEsperaValor"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_below="@+id/productoEsperaValor"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/fecha_registro_producto"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productoEsperaValor"/>
+            app:layout_constraintTop_toBottomOf="@+id/productoEsperaValor" />
 
         <TextView
             android:id="@+id/tvProductoEsperaFechaRegistro"
-            android:layout_below="@+id/tvProductoEsperaValor"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_below="@+id/tvProductoEsperaValor"
             android:layout_marginStart="235dp"
             android:layout_marginTop="16dp"
             android:text="valor del stock"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvProductoEsperaValor"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvProductoEsperaValor" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
