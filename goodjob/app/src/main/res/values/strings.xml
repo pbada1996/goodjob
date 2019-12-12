@@ -175,5 +175,7 @@
     <string name="empresa">Empresa</string>
     <string name="empresa_fecha_registrada">Solicitado</string>
     <string name="actividades_solicitud">Solicitudes de Actividades</string>
+    <string name="fecha_fin">Fecha Fin</string>
+    <string name="fecha_creacion">Fecha Creacion</string>
 
 </resources>

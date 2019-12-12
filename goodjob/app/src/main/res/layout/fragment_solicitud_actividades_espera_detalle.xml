@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgcoloritem"
     android:orientation="vertical"
     tools:context=".fragments.SolicitudActividadesEsperaDetalleFragment">
 
@@ -11,4 +12,77 @@
         la actividad. btnAceptarActividad y btnRechazarActividad respectivamente.
         Los demás IDs eres libre.
         -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitledetespera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/title"
+                android:textColor="#778d04"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/border_estado_mis_actividades"
+                android:paddingBottom="@dimen/default_margin_bottom">
+
+                <TextView
+                    android:id="@+id/tvDescriptiondetespera"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ovalo"
+                    android:paddingLeft="20dp"
+
+                    android:paddingTop="@dimen/small_padding"
+                    android:text="@string/short_description"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/amount"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
 </LinearLayout>
