@@ -43,5 +43,6 @@ dependencies {
 
     implementation 'me.spark:submitbutton:1.0.1'
 
+    implementation 'yasic.library.ParticleTextView:particletextview:0.0.5'
 
 }
