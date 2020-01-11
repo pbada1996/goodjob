@@ -1,92 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/default_margin_bottom">
+    android:layout_marginBottom="@dimen/default_margin_bottom"
+    android:paddingTop="-105dp"
+    android:background="@drawable/border_estado_mis_actividades">
 
-    <TextView
-        android:id="@+id/actividadNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/actividad"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
 
-    <TextView
-        android:id="@+id/tvActividadNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor del nombre"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp">
 
-    <TextView
-        android:id="@+id/actividadFechaRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/actividadNombre"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/actividad_fecha_registro"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/actividadNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:paddingStart="@dimen/default_padding_left"
+            android:paddingEnd="@dimen/default_padding_right"
+            android:text="@string/actividad"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
 
-    <TextView
-        android:id="@+id/tvActividadFechaRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvActividadNombre"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor de la fecha registro"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/tvActividadNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:text="valor del nombre"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
 
-    <TextView
-        android:id="@+id/actividadFechaRealizarse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/actividadFechaRegistro"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/actividad_fecha_realizarse"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/actividadFechaRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/actividadNombre"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:paddingStart="@dimen/default_padding_left"
+            android:paddingEnd="@dimen/default_padding_right"
+            android:text="@string/actividad_fecha_registro"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
 
-    <TextView
-        android:id="@+id/tvActividadFechaRealizarse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvActividadFechaRegistro"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor de la fecha a realizarse"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/tvActividadFechaRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvActividadNombre"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/default_margin_right"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:text="valor de la fecha registro"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
 
-    <TextView
-        android:id="@+id/actividadEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/actividadFechaRealizarse"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:paddingStart="@dimen/default_padding_left"
-        android:paddingEnd="@dimen/default_padding_right"
-        android:text="@string/actividad_distrito"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        <TextView
+            android:id="@+id/actividadFechaRealizarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/actividadFechaRegistro"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:paddingStart="@dimen/default_padding_left"
+            android:paddingEnd="@dimen/default_padding_right"
+            android:text="@string/actividad_fecha_realizarse"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
 
-    <TextView
-        android:id="@+id/tvActividadEmpresa"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvActividadFechaRealizarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvActividadFechaRegistro"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/default_margin_right"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:text="valor de la fecha a realizarse"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
+
+        <TextView
+            android:id="@+id/actividadEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/actividadFechaRealizarse"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:paddingStart="@dimen/default_padding_left"
+            android:paddingEnd="@dimen/default_padding_right"
+            android:text="@string/actividad_distrito"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
+
+        <TextView
+            android:id="@+id/tvActividadEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvActividadFechaRealizarse"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/default_margin_right"
+            android:layout_marginBottom="@dimen/small_margin_right"
+            android:text="valor del distrito"
+            android:textSize="@dimen/text_size_listado_productos_espera" />
+
+    </RelativeLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvActividadFechaRealizarse"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin_right"
-        android:layout_marginBottom="@dimen/small_margin_right"
-        android:text="valor del distrito"
-        android:textSize="@dimen/text_size_listado_productos_espera" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-40dp"
+        >
+
+        <ImageView
+            android:id="@+id/tvEditarListEmpresa"
+            android:layout_width="30dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/ic_edit_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.824"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/tvDeleteListEmpresa"
+            android:layout_width="30dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/ic_clear_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
 </RelativeLayout>
